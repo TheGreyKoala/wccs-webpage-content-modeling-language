@@ -21,8 +21,9 @@ public class ConfigurationLanguageValidator extends AbstractConfigurationLanguag
   public void checkPropertyOrContentTypeDefineSelector(final Property property) {
     if (((property.getSelector() == null) && (property.getType().getSelector() == null))) {
       String _name = property.getType().getName();
-      String _plus = (_name + " does not specify a default selector.");
-      this.error(_plus, property, ConfigurationLanguagePackage.Literals.PROPERTY__SELECTOR, 
+      String _plus = ("Content type " + _name);
+      String _plus_1 = (_plus + " does not specify a default selector.");
+      this.error(_plus_1, property, ConfigurationLanguagePackage.Literals.PROPERTY__SELECTOR, 
         ConfigurationLanguageValidator.NO_CONTENT_SELECTOR);
     }
   }

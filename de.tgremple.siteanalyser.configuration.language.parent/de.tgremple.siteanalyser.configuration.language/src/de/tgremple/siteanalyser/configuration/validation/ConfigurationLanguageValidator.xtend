@@ -19,7 +19,7 @@ class ConfigurationLanguageValidator extends AbstractConfigurationLanguageValida
 	@Check
 	def checkPropertyOrContentTypeDefineSelector(Property property) {
 		if (property.selector === null && property.type.selector === null) {
-			error(property.type.name + " does not specify a default selector.",
+			error("Content type " + property.type.name + " does not specify a default selector.",
 				property, ConfigurationLanguagePackage.Literals.PROPERTY__SELECTOR,
 				NO_CONTENT_SELECTOR
 			);
