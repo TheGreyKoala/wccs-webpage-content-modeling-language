@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import de.tgremple.siteanalyser.configuration.configurationLanguage.ContentType
+import de.tgremple.siteanalyser.configuration.configurationLanguage.CssSelector
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +18,21 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class ConfigurationLanguageGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		fsa.generateFile("site-analyser.conf.js", '''
+		"use strict;"
+		const functions = [];
+		«FOR contentType : resource.allContents.filter(ContentType).toIterable»
+		«contentType.compile»
+		«ENDFOR»
+		exports.getFunctions = () => functions;
+		''')
+	}
+	
+	def compile(ContentType contentType) {
+		if (contentType.selector instanceof CssSelector) {
+			'''
+			functions.push((document, createAnnotation) => createAnnotation(document, "«(contentType.selector as CssSelector).definition»", "«contentType.name»"));
+			'''
+		}
 	}
 }
