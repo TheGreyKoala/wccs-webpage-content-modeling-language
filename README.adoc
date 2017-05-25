@@ -1,0 +1,3 @@
+= Configuration Language
+
+This little DSL is used to configure the analyser service.
