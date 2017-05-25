@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.tgremple.siteanalyser.configuration.language
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: de.tgremple.siteanalyser.configuration.language; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: de.tgremple.siteanalyser.configuration.serializer,
+ de.tgremple.siteanalyser.configuration.parser.antlr.internal,
+ de.tgremple.siteanalyser.configuration.parser.antlr,
+ de.tgremple.siteanalyser.configuration.scoping,
+ de.tgremple.siteanalyser.configuration.validation,
+ de.tgremple.siteanalyser.configuration,
+ de.tgremple.siteanalyser.configuration.services,
+ de.tgremple.siteanalyser.configuration.configurationLanguage.util,
+ de.tgremple.siteanalyser.configuration.configurationLanguage,
+ de.tgremple.siteanalyser.configuration.generator,
+ de.tgremple.siteanalyser.configuration.configurationLanguage.impl
+Import-Package: org.apache.log4j

@@ -1,0 +1,34 @@
+grammar de.tgremple.siteanalyser.configuration.ConfigurationLanguage with org.eclipse.xtext.common.Terminals
+
+generate configurationLanguage "http://www.tgremple.de/siteanalyser/configuration/ConfigurationLanguage"
+
+SiteStructure:
+	(typeDefinitions+=Type)*;
+
+Type:
+	ContentType | PageType;
+
+ContentType:
+	'content' 'type' name=ID
+	'is' 'recognized' 'by' selector=ContentSelector
+	('recognize' (properties+=Property)*)?;
+
+PageType:
+	'page' 'type' name=ID
+	'is' 'recognized' 'by' selector=PageSelector
+	('recognize' (properties+=Property)*)?;
+
+ContentSelector:
+	CssSelector;
+
+PageSelector:
+	CssSelector | UrlPatternSelector;
+
+CssSelector:
+	'css' definition=STRING;
+
+UrlPatternSelector:
+	'url' 'pattern' definition=STRING;
+
+Property:
+	name=ID 'as' type=[ContentType] ('by' selector=ContentSelector)?;

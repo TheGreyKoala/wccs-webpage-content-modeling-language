@@ -1,0 +1,93 @@
+<idea-plugin version="2">
+	<extensions defaultExtensionNs="org.eclipse.xtext.idea">
+		<package
+			uri="http://www.tgremple.de/siteanalyser/configuration/ConfigurationLanguage"
+			class="de.tgremple.siteanalyser.configuration.configurationLanguage.ConfigurationLanguagePackage"
+		/>
+		<resourceFactory 
+			type="sac"
+			class="org.eclipse.xtext.resource.IResourceFactory"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+		/>
+		<resourceServiceProvider
+			uriExtension="sac"
+			class="org.eclipse.xtext.idea.resource.IResourceIdeaServiceProvider"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+		/>
+
+		<lang.setup
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			implementationClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageIdeaSetup"
+		/>
+	</extensions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<psi.treeChangePreprocessor implementation="de.tgremple.siteanalyser.configuration.idea.lang.psi.ConfigurationLanguageCodeBlockModificationListener"/>
+
+		<fileTypeFactory implementation="de.tgremple.siteanalyser.configuration.idea.lang.ConfigurationLanguageFileTypeFactory"/>
+		<stubElementTypeHolder class="de.tgremple.siteanalyser.configuration.idea.lang.ConfigurationLanguageElementTypeProvider"/>
+		<lang.ast.factory 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.lang.BaseXtextASTFactory"
+		/>
+		<lang.parserDefinition 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="de.tgremple.siteanalyser.configuration.idea.lang.parser.ConfigurationLanguageParserDefinition"
+		/>
+		<lang.findUsagesProvider 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.findusages.BaseXtextFindUsageProvider"
+		/>
+		<lang.refactoringSupport 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.refactoring.BaseXtextRefactoringSupportProvider"
+		/>
+		<lang.namesValidator 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="com.intellij.lang.refactoring.NamesValidator"
+		/>
+		<lang.syntaxHighlighterFactory key="de.tgremple.siteanalyser.configuration.ConfigurationLanguage" implementationClass="de.tgremple.siteanalyser.configuration.idea.highlighting.ConfigurationLanguageSyntaxHighlighterFactory" />
+		<lang.braceMatcher 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="com.intellij.lang.PairedBraceMatcher"
+		/>
+		<annotator 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.annotation.IssueAnnotator"
+		/>
+		<completion.contributor language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage" implementationClass="de.tgremple.siteanalyser.configuration.idea.completion.ConfigurationLanguageCompletionContributor"/>
+		<pom.declarationSearcher implementation="de.tgremple.siteanalyser.configuration.idea.lang.pom.ConfigurationLanguagePomDeclarationSearcher"/>
+
+		<lang.psiStructureViewFactory 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="com.intellij.lang.PsiStructureViewFactory"
+		/>
+		<facetType implementation="de.tgremple.siteanalyser.configuration.idea.facet.ConfigurationLanguageFacetType"/>
+		<lang.documentationProvider 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.documentation.IdeaDocumentationProvider"
+		/>
+		<colorSettingsPage implementation="de.tgremple.siteanalyser.configuration.idea.highlighting.ConfigurationLanguageColorSettingsPage"/>
+		<highlightVisitor implementation="de.tgremple.siteanalyser.configuration.idea.highlighting.ConfigurationLanguageSemanticHighlightVisitor"/>
+
+		<lang.formatter 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="com.intellij.formatting.FormattingModelBuilder"
+		/>
+		<lang.commenter 
+			language="de.tgremple.siteanalyser.configuration.ConfigurationLanguage"
+			factoryClass="de.tgremple.siteanalyser.configuration.idea.ConfigurationLanguageExtensionFactory"
+			implementationClass="com.intellij.lang.CodeDocumentationAwareCommenter"
+		/>
+	</extensions>
+</idea-plugin>
