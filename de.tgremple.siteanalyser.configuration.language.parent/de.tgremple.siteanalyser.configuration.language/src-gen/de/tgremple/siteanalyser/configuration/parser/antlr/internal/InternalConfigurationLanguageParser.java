@@ -366,7 +366,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "ruleContentType"
-    // InternalConfigurationLanguage.g:143:1: ruleContentType returns [EObject current=null] : (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) ;
+    // InternalConfigurationLanguage.g:143:1: ruleContentType returns [EObject current=null] : (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) )? (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) ;
     public final EObject ruleContentType() throws RecognitionException {
         EObject current = null;
 
@@ -386,11 +386,11 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
         	enterRule();
 
         try {
-            // InternalConfigurationLanguage.g:149:2: ( (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) )
-            // InternalConfigurationLanguage.g:150:2: (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
+            // InternalConfigurationLanguage.g:149:2: ( (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) )? (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) )
+            // InternalConfigurationLanguage.g:150:2: (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) )? (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
             {
-            // InternalConfigurationLanguage.g:150:2: (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
-            // InternalConfigurationLanguage.g:151:3: otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
+            // InternalConfigurationLanguage.g:150:2: (otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) )? (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
+            // InternalConfigurationLanguage.g:151:3: otherlv_0= 'content' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) )? (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
             {
             otherlv_0=(Token)match(input,11,FOLLOW_4); 
 
@@ -426,84 +426,101 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
             }
 
-            otherlv_3=(Token)match(input,13,FOLLOW_7); 
+            // InternalConfigurationLanguage.g:177:3: (otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) ) )?
+            int alt3=2;
+            int LA3_0 = input.LA(1);
 
-            			newLeafNode(otherlv_3, grammarAccess.getContentTypeAccess().getIsKeyword_3());
-            		
-            otherlv_4=(Token)match(input,14,FOLLOW_8); 
-
-            			newLeafNode(otherlv_4, grammarAccess.getContentTypeAccess().getRecognizedKeyword_4());
-            		
-            otherlv_5=(Token)match(input,15,FOLLOW_9); 
-
-            			newLeafNode(otherlv_5, grammarAccess.getContentTypeAccess().getByKeyword_5());
-            		
-            // InternalConfigurationLanguage.g:189:3: ( (lv_selector_6_0= ruleContentSelector ) )
-            // InternalConfigurationLanguage.g:190:4: (lv_selector_6_0= ruleContentSelector )
-            {
-            // InternalConfigurationLanguage.g:190:4: (lv_selector_6_0= ruleContentSelector )
-            // InternalConfigurationLanguage.g:191:5: lv_selector_6_0= ruleContentSelector
-            {
-
-            					newCompositeNode(grammarAccess.getContentTypeAccess().getSelectorContentSelectorParserRuleCall_6_0());
-            				
-            pushFollow(FOLLOW_10);
-            lv_selector_6_0=ruleContentSelector();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getContentTypeRule());
-            					}
-            					set(
-            						current,
-            						"selector",
-            						lv_selector_6_0,
-            						"de.tgremple.siteanalyser.configuration.ConfigurationLanguage.ContentSelector");
-            					afterParserOrEnumRuleCall();
-            				
-
+            if ( (LA3_0==13) ) {
+                alt3=1;
             }
-
-
-            }
-
-            // InternalConfigurationLanguage.g:208:3: (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
-
-            if ( (LA4_0==16) ) {
-                alt4=1;
-            }
-            switch (alt4) {
+            switch (alt3) {
                 case 1 :
-                    // InternalConfigurationLanguage.g:209:4: otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )*
+                    // InternalConfigurationLanguage.g:178:4: otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= ruleContentSelector ) )
+                    {
+                    otherlv_3=(Token)match(input,13,FOLLOW_7); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getContentTypeAccess().getIsKeyword_3_0());
+                    			
+                    otherlv_4=(Token)match(input,14,FOLLOW_8); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getContentTypeAccess().getRecognizedKeyword_3_1());
+                    			
+                    otherlv_5=(Token)match(input,15,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_5, grammarAccess.getContentTypeAccess().getByKeyword_3_2());
+                    			
+                    // InternalConfigurationLanguage.g:190:4: ( (lv_selector_6_0= ruleContentSelector ) )
+                    // InternalConfigurationLanguage.g:191:5: (lv_selector_6_0= ruleContentSelector )
+                    {
+                    // InternalConfigurationLanguage.g:191:5: (lv_selector_6_0= ruleContentSelector )
+                    // InternalConfigurationLanguage.g:192:6: lv_selector_6_0= ruleContentSelector
+                    {
+
+                    						newCompositeNode(grammarAccess.getContentTypeAccess().getSelectorContentSelectorParserRuleCall_3_3_0());
+                    					
+                    pushFollow(FOLLOW_10);
+                    lv_selector_6_0=ruleContentSelector();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getContentTypeRule());
+                    						}
+                    						set(
+                    							current,
+                    							"selector",
+                    							lv_selector_6_0,
+                    							"de.tgremple.siteanalyser.configuration.ConfigurationLanguage.ContentSelector");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // InternalConfigurationLanguage.g:210:3: (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==16) ) {
+                alt5=1;
+            }
+            switch (alt5) {
+                case 1 :
+                    // InternalConfigurationLanguage.g:211:4: otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )*
                     {
                     otherlv_7=(Token)match(input,16,FOLLOW_11); 
 
-                    				newLeafNode(otherlv_7, grammarAccess.getContentTypeAccess().getRecognizeKeyword_7_0());
+                    				newLeafNode(otherlv_7, grammarAccess.getContentTypeAccess().getRecognizeKeyword_4_0());
                     			
-                    // InternalConfigurationLanguage.g:213:4: ( (lv_properties_8_0= ruleProperty ) )*
-                    loop3:
+                    // InternalConfigurationLanguage.g:215:4: ( (lv_properties_8_0= ruleProperty ) )*
+                    loop4:
                     do {
-                        int alt3=2;
-                        int LA3_0 = input.LA(1);
+                        int alt4=2;
+                        int LA4_0 = input.LA(1);
 
-                        if ( (LA3_0==RULE_ID) ) {
-                            alt3=1;
+                        if ( (LA4_0==RULE_ID) ) {
+                            alt4=1;
                         }
 
 
-                        switch (alt3) {
+                        switch (alt4) {
                     	case 1 :
-                    	    // InternalConfigurationLanguage.g:214:5: (lv_properties_8_0= ruleProperty )
+                    	    // InternalConfigurationLanguage.g:216:5: (lv_properties_8_0= ruleProperty )
                     	    {
-                    	    // InternalConfigurationLanguage.g:214:5: (lv_properties_8_0= ruleProperty )
-                    	    // InternalConfigurationLanguage.g:215:6: lv_properties_8_0= ruleProperty
+                    	    // InternalConfigurationLanguage.g:216:5: (lv_properties_8_0= ruleProperty )
+                    	    // InternalConfigurationLanguage.g:217:6: lv_properties_8_0= ruleProperty
                     	    {
 
-                    	    						newCompositeNode(grammarAccess.getContentTypeAccess().getPropertiesPropertyParserRuleCall_7_1_0());
+                    	    						newCompositeNode(grammarAccess.getContentTypeAccess().getPropertiesPropertyParserRuleCall_4_1_0());
                     	    					
                     	    pushFollow(FOLLOW_11);
                     	    lv_properties_8_0=ruleProperty();
@@ -529,7 +546,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
                     	    break;
 
                     	default :
-                    	    break loop3;
+                    	    break loop4;
                         }
                     } while (true);
 
@@ -562,7 +579,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "entryRulePageType"
-    // InternalConfigurationLanguage.g:237:1: entryRulePageType returns [EObject current=null] : iv_rulePageType= rulePageType EOF ;
+    // InternalConfigurationLanguage.g:239:1: entryRulePageType returns [EObject current=null] : iv_rulePageType= rulePageType EOF ;
     public final EObject entryRulePageType() throws RecognitionException {
         EObject current = null;
 
@@ -570,8 +587,8 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
         try {
-            // InternalConfigurationLanguage.g:237:49: (iv_rulePageType= rulePageType EOF )
-            // InternalConfigurationLanguage.g:238:2: iv_rulePageType= rulePageType EOF
+            // InternalConfigurationLanguage.g:239:49: (iv_rulePageType= rulePageType EOF )
+            // InternalConfigurationLanguage.g:240:2: iv_rulePageType= rulePageType EOF
             {
              newCompositeNode(grammarAccess.getPageTypeRule()); 
             pushFollow(FOLLOW_1);
@@ -598,7 +615,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "rulePageType"
-    // InternalConfigurationLanguage.g:244:1: rulePageType returns [EObject current=null] : (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) ;
+    // InternalConfigurationLanguage.g:246:1: rulePageType returns [EObject current=null] : (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) ;
     public final EObject rulePageType() throws RecognitionException {
         EObject current = null;
 
@@ -618,11 +635,11 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
         	enterRule();
 
         try {
-            // InternalConfigurationLanguage.g:250:2: ( (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) )
-            // InternalConfigurationLanguage.g:251:2: (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
+            // InternalConfigurationLanguage.g:252:2: ( (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? ) )
+            // InternalConfigurationLanguage.g:253:2: (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
             {
-            // InternalConfigurationLanguage.g:251:2: (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
-            // InternalConfigurationLanguage.g:252:3: otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
+            // InternalConfigurationLanguage.g:253:2: (otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )? )
+            // InternalConfigurationLanguage.g:254:3: otherlv_0= 'page' otherlv_1= 'type' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'is' otherlv_4= 'recognized' otherlv_5= 'by' ( (lv_selector_6_0= rulePageSelector ) ) (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
             {
             otherlv_0=(Token)match(input,17,FOLLOW_4); 
 
@@ -632,13 +649,13 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
             			newLeafNode(otherlv_1, grammarAccess.getPageTypeAccess().getTypeKeyword_1());
             		
-            // InternalConfigurationLanguage.g:260:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalConfigurationLanguage.g:261:4: (lv_name_2_0= RULE_ID )
+            // InternalConfigurationLanguage.g:262:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalConfigurationLanguage.g:263:4: (lv_name_2_0= RULE_ID )
             {
-            // InternalConfigurationLanguage.g:261:4: (lv_name_2_0= RULE_ID )
-            // InternalConfigurationLanguage.g:262:5: lv_name_2_0= RULE_ID
+            // InternalConfigurationLanguage.g:263:4: (lv_name_2_0= RULE_ID )
+            // InternalConfigurationLanguage.g:264:5: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_6); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_12); 
 
             					newLeafNode(lv_name_2_0, grammarAccess.getPageTypeAccess().getNameIDTerminalRuleCall_2_0());
             				
@@ -666,15 +683,15 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
             			newLeafNode(otherlv_4, grammarAccess.getPageTypeAccess().getRecognizedKeyword_4());
             		
-            otherlv_5=(Token)match(input,15,FOLLOW_12); 
+            otherlv_5=(Token)match(input,15,FOLLOW_13); 
 
             			newLeafNode(otherlv_5, grammarAccess.getPageTypeAccess().getByKeyword_5());
             		
-            // InternalConfigurationLanguage.g:290:3: ( (lv_selector_6_0= rulePageSelector ) )
-            // InternalConfigurationLanguage.g:291:4: (lv_selector_6_0= rulePageSelector )
+            // InternalConfigurationLanguage.g:292:3: ( (lv_selector_6_0= rulePageSelector ) )
+            // InternalConfigurationLanguage.g:293:4: (lv_selector_6_0= rulePageSelector )
             {
-            // InternalConfigurationLanguage.g:291:4: (lv_selector_6_0= rulePageSelector )
-            // InternalConfigurationLanguage.g:292:5: lv_selector_6_0= rulePageSelector
+            // InternalConfigurationLanguage.g:293:4: (lv_selector_6_0= rulePageSelector )
+            // InternalConfigurationLanguage.g:294:5: lv_selector_6_0= rulePageSelector
             {
 
             					newCompositeNode(grammarAccess.getPageTypeAccess().getSelectorPageSelectorParserRuleCall_6_0());
@@ -701,38 +718,38 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
             }
 
-            // InternalConfigurationLanguage.g:309:3: (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
+            // InternalConfigurationLanguage.g:311:3: (otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )* )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-            if ( (LA6_0==16) ) {
-                alt6=1;
+            if ( (LA7_0==16) ) {
+                alt7=1;
             }
-            switch (alt6) {
+            switch (alt7) {
                 case 1 :
-                    // InternalConfigurationLanguage.g:310:4: otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )*
+                    // InternalConfigurationLanguage.g:312:4: otherlv_7= 'recognize' ( (lv_properties_8_0= ruleProperty ) )*
                     {
                     otherlv_7=(Token)match(input,16,FOLLOW_11); 
 
                     				newLeafNode(otherlv_7, grammarAccess.getPageTypeAccess().getRecognizeKeyword_7_0());
                     			
-                    // InternalConfigurationLanguage.g:314:4: ( (lv_properties_8_0= ruleProperty ) )*
-                    loop5:
+                    // InternalConfigurationLanguage.g:316:4: ( (lv_properties_8_0= ruleProperty ) )*
+                    loop6:
                     do {
-                        int alt5=2;
-                        int LA5_0 = input.LA(1);
+                        int alt6=2;
+                        int LA6_0 = input.LA(1);
 
-                        if ( (LA5_0==RULE_ID) ) {
-                            alt5=1;
+                        if ( (LA6_0==RULE_ID) ) {
+                            alt6=1;
                         }
 
 
-                        switch (alt5) {
+                        switch (alt6) {
                     	case 1 :
-                    	    // InternalConfigurationLanguage.g:315:5: (lv_properties_8_0= ruleProperty )
+                    	    // InternalConfigurationLanguage.g:317:5: (lv_properties_8_0= ruleProperty )
                     	    {
-                    	    // InternalConfigurationLanguage.g:315:5: (lv_properties_8_0= ruleProperty )
-                    	    // InternalConfigurationLanguage.g:316:6: lv_properties_8_0= ruleProperty
+                    	    // InternalConfigurationLanguage.g:317:5: (lv_properties_8_0= ruleProperty )
+                    	    // InternalConfigurationLanguage.g:318:6: lv_properties_8_0= ruleProperty
                     	    {
 
                     	    						newCompositeNode(grammarAccess.getPageTypeAccess().getPropertiesPropertyParserRuleCall_7_1_0());
@@ -761,7 +778,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
                     	    break;
 
                     	default :
-                    	    break loop5;
+                    	    break loop6;
                         }
                     } while (true);
 
@@ -794,7 +811,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "entryRuleContentSelector"
-    // InternalConfigurationLanguage.g:338:1: entryRuleContentSelector returns [EObject current=null] : iv_ruleContentSelector= ruleContentSelector EOF ;
+    // InternalConfigurationLanguage.g:340:1: entryRuleContentSelector returns [EObject current=null] : iv_ruleContentSelector= ruleContentSelector EOF ;
     public final EObject entryRuleContentSelector() throws RecognitionException {
         EObject current = null;
 
@@ -802,8 +819,8 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
         try {
-            // InternalConfigurationLanguage.g:338:56: (iv_ruleContentSelector= ruleContentSelector EOF )
-            // InternalConfigurationLanguage.g:339:2: iv_ruleContentSelector= ruleContentSelector EOF
+            // InternalConfigurationLanguage.g:340:56: (iv_ruleContentSelector= ruleContentSelector EOF )
+            // InternalConfigurationLanguage.g:341:2: iv_ruleContentSelector= ruleContentSelector EOF
             {
              newCompositeNode(grammarAccess.getContentSelectorRule()); 
             pushFollow(FOLLOW_1);
@@ -830,7 +847,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "ruleContentSelector"
-    // InternalConfigurationLanguage.g:345:1: ruleContentSelector returns [EObject current=null] : this_CssSelector_0= ruleCssSelector ;
+    // InternalConfigurationLanguage.g:347:1: ruleContentSelector returns [EObject current=null] : this_CssSelector_0= ruleCssSelector ;
     public final EObject ruleContentSelector() throws RecognitionException {
         EObject current = null;
 
@@ -841,8 +858,8 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
         	enterRule();
 
         try {
-            // InternalConfigurationLanguage.g:351:2: (this_CssSelector_0= ruleCssSelector )
-            // InternalConfigurationLanguage.g:352:2: this_CssSelector_0= ruleCssSelector
+            // InternalConfigurationLanguage.g:353:2: (this_CssSelector_0= ruleCssSelector )
+            // InternalConfigurationLanguage.g:354:2: this_CssSelector_0= ruleCssSelector
             {
 
             		newCompositeNode(grammarAccess.getContentSelectorAccess().getCssSelectorParserRuleCall());
@@ -876,7 +893,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "entryRulePageSelector"
-    // InternalConfigurationLanguage.g:363:1: entryRulePageSelector returns [EObject current=null] : iv_rulePageSelector= rulePageSelector EOF ;
+    // InternalConfigurationLanguage.g:365:1: entryRulePageSelector returns [EObject current=null] : iv_rulePageSelector= rulePageSelector EOF ;
     public final EObject entryRulePageSelector() throws RecognitionException {
         EObject current = null;
 
@@ -884,8 +901,8 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
         try {
-            // InternalConfigurationLanguage.g:363:53: (iv_rulePageSelector= rulePageSelector EOF )
-            // InternalConfigurationLanguage.g:364:2: iv_rulePageSelector= rulePageSelector EOF
+            // InternalConfigurationLanguage.g:365:53: (iv_rulePageSelector= rulePageSelector EOF )
+            // InternalConfigurationLanguage.g:366:2: iv_rulePageSelector= rulePageSelector EOF
             {
              newCompositeNode(grammarAccess.getPageSelectorRule()); 
             pushFollow(FOLLOW_1);
@@ -912,7 +929,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "rulePageSelector"
-    // InternalConfigurationLanguage.g:370:1: rulePageSelector returns [EObject current=null] : (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector ) ;
+    // InternalConfigurationLanguage.g:372:1: rulePageSelector returns [EObject current=null] : (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector ) ;
     public final EObject rulePageSelector() throws RecognitionException {
         EObject current = null;
 
@@ -925,28 +942,28 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
         	enterRule();
 
         try {
-            // InternalConfigurationLanguage.g:376:2: ( (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector ) )
-            // InternalConfigurationLanguage.g:377:2: (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector )
+            // InternalConfigurationLanguage.g:378:2: ( (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector ) )
+            // InternalConfigurationLanguage.g:379:2: (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector )
             {
-            // InternalConfigurationLanguage.g:377:2: (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector )
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // InternalConfigurationLanguage.g:379:2: (this_CssSelector_0= ruleCssSelector | this_UrlPatternSelector_1= ruleUrlPatternSelector )
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA7_0==18) ) {
-                alt7=1;
+            if ( (LA8_0==18) ) {
+                alt8=1;
             }
-            else if ( (LA7_0==19) ) {
-                alt7=2;
+            else if ( (LA8_0==19) ) {
+                alt8=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
-            switch (alt7) {
+            switch (alt8) {
                 case 1 :
-                    // InternalConfigurationLanguage.g:378:3: this_CssSelector_0= ruleCssSelector
+                    // InternalConfigurationLanguage.g:380:3: this_CssSelector_0= ruleCssSelector
                     {
 
                     			newCompositeNode(grammarAccess.getPageSelectorAccess().getCssSelectorParserRuleCall_0());
@@ -964,7 +981,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
                     }
                     break;
                 case 2 :
-                    // InternalConfigurationLanguage.g:387:3: this_UrlPatternSelector_1= ruleUrlPatternSelector
+                    // InternalConfigurationLanguage.g:389:3: this_UrlPatternSelector_1= ruleUrlPatternSelector
                     {
 
                     			newCompositeNode(grammarAccess.getPageSelectorAccess().getUrlPatternSelectorParserRuleCall_1());
@@ -1004,7 +1021,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "entryRuleCssSelector"
-    // InternalConfigurationLanguage.g:399:1: entryRuleCssSelector returns [EObject current=null] : iv_ruleCssSelector= ruleCssSelector EOF ;
+    // InternalConfigurationLanguage.g:401:1: entryRuleCssSelector returns [EObject current=null] : iv_ruleCssSelector= ruleCssSelector EOF ;
     public final EObject entryRuleCssSelector() throws RecognitionException {
         EObject current = null;
 
@@ -1012,8 +1029,8 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
         try {
-            // InternalConfigurationLanguage.g:399:52: (iv_ruleCssSelector= ruleCssSelector EOF )
-            // InternalConfigurationLanguage.g:400:2: iv_ruleCssSelector= ruleCssSelector EOF
+            // InternalConfigurationLanguage.g:401:52: (iv_ruleCssSelector= ruleCssSelector EOF )
+            // InternalConfigurationLanguage.g:402:2: iv_ruleCssSelector= ruleCssSelector EOF
             {
              newCompositeNode(grammarAccess.getCssSelectorRule()); 
             pushFollow(FOLLOW_1);
@@ -1040,7 +1057,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "ruleCssSelector"
-    // InternalConfigurationLanguage.g:406:1: ruleCssSelector returns [EObject current=null] : (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) ) ;
+    // InternalConfigurationLanguage.g:408:1: ruleCssSelector returns [EObject current=null] : (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) ) ;
     public final EObject ruleCssSelector() throws RecognitionException {
         EObject current = null;
 
@@ -1051,21 +1068,21 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
         	enterRule();
 
         try {
-            // InternalConfigurationLanguage.g:412:2: ( (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) ) )
-            // InternalConfigurationLanguage.g:413:2: (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) )
+            // InternalConfigurationLanguage.g:414:2: ( (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) ) )
+            // InternalConfigurationLanguage.g:415:2: (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) )
             {
-            // InternalConfigurationLanguage.g:413:2: (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) )
-            // InternalConfigurationLanguage.g:414:3: otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) )
+            // InternalConfigurationLanguage.g:415:2: (otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) ) )
+            // InternalConfigurationLanguage.g:416:3: otherlv_0= 'css' ( (lv_definition_1_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,18,FOLLOW_13); 
+            otherlv_0=(Token)match(input,18,FOLLOW_14); 
 
             			newLeafNode(otherlv_0, grammarAccess.getCssSelectorAccess().getCssKeyword_0());
             		
-            // InternalConfigurationLanguage.g:418:3: ( (lv_definition_1_0= RULE_STRING ) )
-            // InternalConfigurationLanguage.g:419:4: (lv_definition_1_0= RULE_STRING )
+            // InternalConfigurationLanguage.g:420:3: ( (lv_definition_1_0= RULE_STRING ) )
+            // InternalConfigurationLanguage.g:421:4: (lv_definition_1_0= RULE_STRING )
             {
-            // InternalConfigurationLanguage.g:419:4: (lv_definition_1_0= RULE_STRING )
-            // InternalConfigurationLanguage.g:420:5: lv_definition_1_0= RULE_STRING
+            // InternalConfigurationLanguage.g:421:4: (lv_definition_1_0= RULE_STRING )
+            // InternalConfigurationLanguage.g:422:5: lv_definition_1_0= RULE_STRING
             {
             lv_definition_1_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -1110,7 +1127,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "entryRuleUrlPatternSelector"
-    // InternalConfigurationLanguage.g:440:1: entryRuleUrlPatternSelector returns [EObject current=null] : iv_ruleUrlPatternSelector= ruleUrlPatternSelector EOF ;
+    // InternalConfigurationLanguage.g:442:1: entryRuleUrlPatternSelector returns [EObject current=null] : iv_ruleUrlPatternSelector= ruleUrlPatternSelector EOF ;
     public final EObject entryRuleUrlPatternSelector() throws RecognitionException {
         EObject current = null;
 
@@ -1118,8 +1135,8 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
         try {
-            // InternalConfigurationLanguage.g:440:59: (iv_ruleUrlPatternSelector= ruleUrlPatternSelector EOF )
-            // InternalConfigurationLanguage.g:441:2: iv_ruleUrlPatternSelector= ruleUrlPatternSelector EOF
+            // InternalConfigurationLanguage.g:442:59: (iv_ruleUrlPatternSelector= ruleUrlPatternSelector EOF )
+            // InternalConfigurationLanguage.g:443:2: iv_ruleUrlPatternSelector= ruleUrlPatternSelector EOF
             {
              newCompositeNode(grammarAccess.getUrlPatternSelectorRule()); 
             pushFollow(FOLLOW_1);
@@ -1146,7 +1163,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "ruleUrlPatternSelector"
-    // InternalConfigurationLanguage.g:447:1: ruleUrlPatternSelector returns [EObject current=null] : (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) ) ;
+    // InternalConfigurationLanguage.g:449:1: ruleUrlPatternSelector returns [EObject current=null] : (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) ) ;
     public final EObject ruleUrlPatternSelector() throws RecognitionException {
         EObject current = null;
 
@@ -1158,25 +1175,25 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
         	enterRule();
 
         try {
-            // InternalConfigurationLanguage.g:453:2: ( (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) ) )
-            // InternalConfigurationLanguage.g:454:2: (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) )
+            // InternalConfigurationLanguage.g:455:2: ( (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) ) )
+            // InternalConfigurationLanguage.g:456:2: (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) )
             {
-            // InternalConfigurationLanguage.g:454:2: (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) )
-            // InternalConfigurationLanguage.g:455:3: otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) )
+            // InternalConfigurationLanguage.g:456:2: (otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) ) )
+            // InternalConfigurationLanguage.g:457:3: otherlv_0= 'url' otherlv_1= 'pattern' ( (lv_definition_2_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,19,FOLLOW_14); 
+            otherlv_0=(Token)match(input,19,FOLLOW_15); 
 
             			newLeafNode(otherlv_0, grammarAccess.getUrlPatternSelectorAccess().getUrlKeyword_0());
             		
-            otherlv_1=(Token)match(input,20,FOLLOW_13); 
+            otherlv_1=(Token)match(input,20,FOLLOW_14); 
 
             			newLeafNode(otherlv_1, grammarAccess.getUrlPatternSelectorAccess().getPatternKeyword_1());
             		
-            // InternalConfigurationLanguage.g:463:3: ( (lv_definition_2_0= RULE_STRING ) )
-            // InternalConfigurationLanguage.g:464:4: (lv_definition_2_0= RULE_STRING )
+            // InternalConfigurationLanguage.g:465:3: ( (lv_definition_2_0= RULE_STRING ) )
+            // InternalConfigurationLanguage.g:466:4: (lv_definition_2_0= RULE_STRING )
             {
-            // InternalConfigurationLanguage.g:464:4: (lv_definition_2_0= RULE_STRING )
-            // InternalConfigurationLanguage.g:465:5: lv_definition_2_0= RULE_STRING
+            // InternalConfigurationLanguage.g:466:4: (lv_definition_2_0= RULE_STRING )
+            // InternalConfigurationLanguage.g:467:5: lv_definition_2_0= RULE_STRING
             {
             lv_definition_2_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -1221,7 +1238,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "entryRuleProperty"
-    // InternalConfigurationLanguage.g:485:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
+    // InternalConfigurationLanguage.g:487:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
     public final EObject entryRuleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -1229,8 +1246,8 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
         try {
-            // InternalConfigurationLanguage.g:485:49: (iv_ruleProperty= ruleProperty EOF )
-            // InternalConfigurationLanguage.g:486:2: iv_ruleProperty= ruleProperty EOF
+            // InternalConfigurationLanguage.g:487:49: (iv_ruleProperty= ruleProperty EOF )
+            // InternalConfigurationLanguage.g:488:2: iv_ruleProperty= ruleProperty EOF
             {
              newCompositeNode(grammarAccess.getPropertyRule()); 
             pushFollow(FOLLOW_1);
@@ -1257,7 +1274,7 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
 
     // $ANTLR start "ruleProperty"
-    // InternalConfigurationLanguage.g:492:1: ruleProperty returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? ) ;
+    // InternalConfigurationLanguage.g:494:1: ruleProperty returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? ) ;
     public final EObject ruleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -1272,19 +1289,19 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
         	enterRule();
 
         try {
-            // InternalConfigurationLanguage.g:498:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? ) )
-            // InternalConfigurationLanguage.g:499:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? )
+            // InternalConfigurationLanguage.g:500:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? ) )
+            // InternalConfigurationLanguage.g:501:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? )
             {
-            // InternalConfigurationLanguage.g:499:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? )
-            // InternalConfigurationLanguage.g:500:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )?
+            // InternalConfigurationLanguage.g:501:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )? )
+            // InternalConfigurationLanguage.g:502:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'as' ( (otherlv_2= RULE_ID ) ) (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )?
             {
-            // InternalConfigurationLanguage.g:500:3: ( (lv_name_0_0= RULE_ID ) )
-            // InternalConfigurationLanguage.g:501:4: (lv_name_0_0= RULE_ID )
+            // InternalConfigurationLanguage.g:502:3: ( (lv_name_0_0= RULE_ID ) )
+            // InternalConfigurationLanguage.g:503:4: (lv_name_0_0= RULE_ID )
             {
-            // InternalConfigurationLanguage.g:501:4: (lv_name_0_0= RULE_ID )
-            // InternalConfigurationLanguage.g:502:5: lv_name_0_0= RULE_ID
+            // InternalConfigurationLanguage.g:503:4: (lv_name_0_0= RULE_ID )
+            // InternalConfigurationLanguage.g:504:5: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_15); 
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_16); 
 
             					newLeafNode(lv_name_0_0, grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_0_0());
             				
@@ -1308,18 +1325,18 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
             			newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getAsKeyword_1());
             		
-            // InternalConfigurationLanguage.g:522:3: ( (otherlv_2= RULE_ID ) )
-            // InternalConfigurationLanguage.g:523:4: (otherlv_2= RULE_ID )
+            // InternalConfigurationLanguage.g:524:3: ( (otherlv_2= RULE_ID ) )
+            // InternalConfigurationLanguage.g:525:4: (otherlv_2= RULE_ID )
             {
-            // InternalConfigurationLanguage.g:523:4: (otherlv_2= RULE_ID )
-            // InternalConfigurationLanguage.g:524:5: otherlv_2= RULE_ID
+            // InternalConfigurationLanguage.g:525:4: (otherlv_2= RULE_ID )
+            // InternalConfigurationLanguage.g:526:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getPropertyRule());
             					}
             				
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_16); 
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_17); 
 
             					newLeafNode(otherlv_2, grammarAccess.getPropertyAccess().getTypeContentTypeCrossReference_2_0());
             				
@@ -1329,26 +1346,26 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
 
             }
 
-            // InternalConfigurationLanguage.g:535:3: (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )?
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            // InternalConfigurationLanguage.g:537:3: (otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) ) )?
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA8_0==15) ) {
-                alt8=1;
+            if ( (LA9_0==15) ) {
+                alt9=1;
             }
-            switch (alt8) {
+            switch (alt9) {
                 case 1 :
-                    // InternalConfigurationLanguage.g:536:4: otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) )
+                    // InternalConfigurationLanguage.g:538:4: otherlv_3= 'by' ( (lv_selector_4_0= ruleContentSelector ) )
                     {
                     otherlv_3=(Token)match(input,15,FOLLOW_9); 
 
                     				newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getByKeyword_3_0());
                     			
-                    // InternalConfigurationLanguage.g:540:4: ( (lv_selector_4_0= ruleContentSelector ) )
-                    // InternalConfigurationLanguage.g:541:5: (lv_selector_4_0= ruleContentSelector )
+                    // InternalConfigurationLanguage.g:542:4: ( (lv_selector_4_0= ruleContentSelector ) )
+                    // InternalConfigurationLanguage.g:543:5: (lv_selector_4_0= ruleContentSelector )
                     {
-                    // InternalConfigurationLanguage.g:541:5: (lv_selector_4_0= ruleContentSelector )
-                    // InternalConfigurationLanguage.g:542:6: lv_selector_4_0= ruleContentSelector
+                    // InternalConfigurationLanguage.g:543:5: (lv_selector_4_0= ruleContentSelector )
+                    // InternalConfigurationLanguage.g:544:6: lv_selector_4_0= ruleContentSelector
                     {
 
                     						newCompositeNode(grammarAccess.getPropertyAccess().getSelectorContentSelectorParserRuleCall_3_1_0());
@@ -1412,16 +1429,17 @@ public class InternalConfigurationLanguageParser extends AbstractInternalAntlrPa
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000020802L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000012002L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000010002L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000000C0000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000008002L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x00000000000C0000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000008002L});
 
 }

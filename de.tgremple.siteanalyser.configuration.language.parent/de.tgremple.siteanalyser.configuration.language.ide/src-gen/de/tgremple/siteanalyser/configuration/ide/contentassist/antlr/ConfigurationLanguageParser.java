@@ -34,7 +34,8 @@ public class ConfigurationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getPageSelectorAccess().getAlternatives(), "rule__PageSelector__Alternatives");
 					put(grammarAccess.getContentTypeAccess().getGroup(), "rule__ContentType__Group__0");
-					put(grammarAccess.getContentTypeAccess().getGroup_7(), "rule__ContentType__Group_7__0");
+					put(grammarAccess.getContentTypeAccess().getGroup_3(), "rule__ContentType__Group_3__0");
+					put(grammarAccess.getContentTypeAccess().getGroup_4(), "rule__ContentType__Group_4__0");
 					put(grammarAccess.getPageTypeAccess().getGroup(), "rule__PageType__Group__0");
 					put(grammarAccess.getPageTypeAccess().getGroup_7(), "rule__PageType__Group_7__0");
 					put(grammarAccess.getCssSelectorAccess().getGroup(), "rule__CssSelector__Group__0");
@@ -43,8 +44,8 @@ public class ConfigurationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyAccess().getGroup_3(), "rule__Property__Group_3__0");
 					put(grammarAccess.getSiteStructureAccess().getTypeDefinitionsAssignment(), "rule__SiteStructure__TypeDefinitionsAssignment");
 					put(grammarAccess.getContentTypeAccess().getNameAssignment_2(), "rule__ContentType__NameAssignment_2");
-					put(grammarAccess.getContentTypeAccess().getSelectorAssignment_6(), "rule__ContentType__SelectorAssignment_6");
-					put(grammarAccess.getContentTypeAccess().getPropertiesAssignment_7_1(), "rule__ContentType__PropertiesAssignment_7_1");
+					put(grammarAccess.getContentTypeAccess().getSelectorAssignment_3_3(), "rule__ContentType__SelectorAssignment_3_3");
+					put(grammarAccess.getContentTypeAccess().getPropertiesAssignment_4_1(), "rule__ContentType__PropertiesAssignment_4_1");
 					put(grammarAccess.getPageTypeAccess().getNameAssignment_2(), "rule__PageType__NameAssignment_2");
 					put(grammarAccess.getPageTypeAccess().getSelectorAssignment_6(), "rule__PageType__SelectorAssignment_6");
 					put(grammarAccess.getPageTypeAccess().getPropertiesAssignment_7_1(), "rule__PageType__PropertiesAssignment_7_1");

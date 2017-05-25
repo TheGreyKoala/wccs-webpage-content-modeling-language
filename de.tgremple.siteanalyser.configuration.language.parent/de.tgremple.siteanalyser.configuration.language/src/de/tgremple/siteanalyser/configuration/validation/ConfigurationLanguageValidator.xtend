@@ -3,6 +3,9 @@
  */
 package de.tgremple.siteanalyser.configuration.validation
 
+import org.eclipse.xtext.validation.Check
+import de.tgremple.siteanalyser.configuration.configurationLanguage.Property;
+import de.tgremple.siteanalyser.configuration.configurationLanguage.ConfigurationLanguagePackage
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +14,15 @@ package de.tgremple.siteanalyser.configuration.validation
  */
 class ConfigurationLanguageValidator extends AbstractConfigurationLanguageValidator {
 	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					ConfigurationLanguagePackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-	
+	public static val NO_CONTENT_SELECTOR = 'noContentSelector'
+
+	@Check
+	def checkPropertyOrContentTypeDefineSelector(Property property) {
+		if (property.selector === null && property.type.selector === null) {
+			error(property.type.name + " does not specify a default selector.",
+				property, ConfigurationLanguagePackage.Literals.PROPERTY__SELECTOR,
+				NO_CONTENT_SELECTOR
+			);
+		}
+	}
 }

@@ -174,46 +174,48 @@ ruleContentType returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='is'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getContentTypeAccess().getIsKeyword_3());
-		}
-		otherlv_4='recognized'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getContentTypeAccess().getRecognizedKeyword_4());
-		}
-		otherlv_5='by'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getContentTypeAccess().getByKeyword_5());
-		}
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getContentTypeAccess().getSelectorContentSelectorParserRuleCall_6_0());
-				}
-				lv_selector_6_0=ruleContentSelector
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getContentTypeRule());
-					}
-					set(
-						$current,
-						"selector",
-						lv_selector_6_0,
-						"de.tgremple.siteanalyser.configuration.ConfigurationLanguage.ContentSelector");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_7='recognize'
+			otherlv_3='is'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getContentTypeAccess().getRecognizeKeyword_7_0());
+				newLeafNode(otherlv_3, grammarAccess.getContentTypeAccess().getIsKeyword_3_0());
+			}
+			otherlv_4='recognized'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getContentTypeAccess().getRecognizedKeyword_3_1());
+			}
+			otherlv_5='by'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getContentTypeAccess().getByKeyword_3_2());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getContentTypeAccess().getPropertiesPropertyParserRuleCall_7_1_0());
+						newCompositeNode(grammarAccess.getContentTypeAccess().getSelectorContentSelectorParserRuleCall_3_3_0());
+					}
+					lv_selector_6_0=ruleContentSelector
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getContentTypeRule());
+						}
+						set(
+							$current,
+							"selector",
+							lv_selector_6_0,
+							"de.tgremple.siteanalyser.configuration.ConfigurationLanguage.ContentSelector");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_7='recognize'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getContentTypeAccess().getRecognizeKeyword_4_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getContentTypeAccess().getPropertiesPropertyParserRuleCall_4_1_0());
 					}
 					lv_properties_8_0=ruleProperty
 					{

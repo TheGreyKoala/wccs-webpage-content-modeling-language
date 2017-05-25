@@ -10,7 +10,7 @@ Type:
 
 ContentType:
 	'content' 'type' name=ID
-	'is' 'recognized' 'by' selector=ContentSelector
+	('is' 'recognized' 'by' selector=ContentSelector)?
 	('recognize' (properties+=Property)*)?;
 
 PageType:

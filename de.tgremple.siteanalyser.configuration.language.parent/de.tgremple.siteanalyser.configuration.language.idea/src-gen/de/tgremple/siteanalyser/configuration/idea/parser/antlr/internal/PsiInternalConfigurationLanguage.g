@@ -148,45 +148,47 @@ ruleContentType returns [Boolean current=false]
 				}
 			)
 		)
-		{
-			markLeaf(elementTypeProvider.getContentType_IsKeyword_3ElementType());
-		}
-		otherlv_3='is'
-		{
-			doneLeaf(otherlv_3);
-		}
-		{
-			markLeaf(elementTypeProvider.getContentType_RecognizedKeyword_4ElementType());
-		}
-		otherlv_4='recognized'
-		{
-			doneLeaf(otherlv_4);
-		}
-		{
-			markLeaf(elementTypeProvider.getContentType_ByKeyword_5ElementType());
-		}
-		otherlv_5='by'
-		{
-			doneLeaf(otherlv_5);
-		}
-		(
-			(
-				{
-					markComposite(elementTypeProvider.getContentType_SelectorContentSelectorParserRuleCall_6_0ElementType());
-				}
-				lv_selector_6_0=ruleContentSelector
-				{
-					doneComposite();
-					if(!$current) {
-						associateWithSemanticElement();
-						$current = true;
-					}
-				}
-			)
-		)
 		(
 			{
-				markLeaf(elementTypeProvider.getContentType_RecognizeKeyword_7_0ElementType());
+				markLeaf(elementTypeProvider.getContentType_IsKeyword_3_0ElementType());
+			}
+			otherlv_3='is'
+			{
+				doneLeaf(otherlv_3);
+			}
+			{
+				markLeaf(elementTypeProvider.getContentType_RecognizedKeyword_3_1ElementType());
+			}
+			otherlv_4='recognized'
+			{
+				doneLeaf(otherlv_4);
+			}
+			{
+				markLeaf(elementTypeProvider.getContentType_ByKeyword_3_2ElementType());
+			}
+			otherlv_5='by'
+			{
+				doneLeaf(otherlv_5);
+			}
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getContentType_SelectorContentSelectorParserRuleCall_3_3_0ElementType());
+					}
+					lv_selector_6_0=ruleContentSelector
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+		)?
+		(
+			{
+				markLeaf(elementTypeProvider.getContentType_RecognizeKeyword_4_0ElementType());
 			}
 			otherlv_7='recognize'
 			{
@@ -195,7 +197,7 @@ ruleContentType returns [Boolean current=false]
 			(
 				(
 					{
-						markComposite(elementTypeProvider.getContentType_PropertiesPropertyParserRuleCall_7_1_0ElementType());
+						markComposite(elementTypeProvider.getContentType_PropertiesPropertyParserRuleCall_4_1_0ElementType());
 					}
 					lv_properties_8_0=ruleProperty
 					{

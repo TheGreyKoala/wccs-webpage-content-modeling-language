@@ -3,7 +3,10 @@
  */
 package de.tgremple.siteanalyser.configuration.validation;
 
+import de.tgremple.siteanalyser.configuration.configurationLanguage.ConfigurationLanguagePackage;
+import de.tgremple.siteanalyser.configuration.configurationLanguage.Property;
 import de.tgremple.siteanalyser.configuration.validation.AbstractConfigurationLanguageValidator;
+import org.eclipse.xtext.validation.Check;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +15,15 @@ import de.tgremple.siteanalyser.configuration.validation.AbstractConfigurationLa
  */
 @SuppressWarnings("all")
 public class ConfigurationLanguageValidator extends AbstractConfigurationLanguageValidator {
+  public final static String NO_CONTENT_SELECTOR = "noContentSelector";
+  
+  @Check
+  public void checkPropertyOrContentTypeDefineSelector(final Property property) {
+    if (((property.getSelector() == null) && (property.getType().getSelector() == null))) {
+      String _name = property.getType().getName();
+      String _plus = (_name + " does not specify a default selector.");
+      this.error(_plus, property, ConfigurationLanguagePackage.Literals.PROPERTY__SELECTOR, 
+        ConfigurationLanguageValidator.NO_CONTENT_SELECTOR);
+    }
+  }
 }

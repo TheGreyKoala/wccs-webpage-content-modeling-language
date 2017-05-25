@@ -50,10 +50,10 @@ public class ConfigurationLanguageParserDefinition extends AbstractXtextParserDe
 			if (elementType == elementTypeProvider.getContentTypeElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getContentType_SelectorContentSelectorParserRuleCall_6_0ElementType()) {
+			if (elementType == elementTypeProvider.getContentType_SelectorContentSelectorParserRuleCall_3_3_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getContentType_PropertiesPropertyParserRuleCall_7_1_0ElementType()) {
+			if (elementType == elementTypeProvider.getContentType_PropertiesPropertyParserRuleCall_4_1_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPageTypeElementType()) {

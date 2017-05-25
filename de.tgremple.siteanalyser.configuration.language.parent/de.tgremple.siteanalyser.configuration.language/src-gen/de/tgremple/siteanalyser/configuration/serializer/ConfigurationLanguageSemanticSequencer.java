@@ -66,7 +66,7 @@ public class ConfigurationLanguageSemanticSequencer extends AbstractDelegatingSe
 	 *     ContentType returns ContentType
 	 *
 	 * Constraint:
-	 *     (name=ID selector=ContentSelector properties+=Property*)
+	 *     (name=ID selector=ContentSelector? properties+=Property*)
 	 */
 	protected void sequence_ContentType(ISerializationContext context, ContentType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
