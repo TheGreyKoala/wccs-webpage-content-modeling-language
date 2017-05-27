@@ -24,7 +24,7 @@ public class ConfigurationLanguageGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\"use strict;\"");
+    _builder.append("\"use strict\";");
     _builder.newLine();
     _builder.append("const functions = [];");
     _builder.newLine();

@@ -19,7 +19,7 @@ class ConfigurationLanguageGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		fsa.generateFile("site-analyser.conf.js", '''
-		"use strict;"
+		"use strict";
 		const functions = [];
 		«FOR contentType : resource.allContents.filter(ContentType).toIterable»
 		«contentType.compile»
