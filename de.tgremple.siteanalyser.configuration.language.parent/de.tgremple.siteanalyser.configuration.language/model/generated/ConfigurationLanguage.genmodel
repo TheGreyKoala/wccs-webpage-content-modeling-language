@@ -16,6 +16,9 @@
     <genClasses ecoreClass="ConfigurationLanguage.ecore#//ContentType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ConfigurationLanguage.ecore#//ContentType/selector"/>
     </genClasses>
+    <genClasses ecoreClass="ConfigurationLanguage.ecore#//ReferenceType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ConfigurationLanguage.ecore#//ReferenceType/selector"/>
+    </genClasses>
     <genClasses ecoreClass="ConfigurationLanguage.ecore#//PageType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ConfigurationLanguage.ecore#//PageType/selector"/>
     </genClasses>

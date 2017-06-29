@@ -22,12 +22,14 @@ public class ConfigurationLanguageSyntacticSequencer extends AbstractSyntacticSe
 	protected ConfigurationLanguageGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_ContentType_RecognizeKeyword_4_0_q;
 	protected AbstractElementAlias match_PageType_RecognizeKeyword_7_0_q;
+	protected AbstractElementAlias match_ReferenceType_RecognizeKeyword_4_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ConfigurationLanguageGrammarAccess) access;
 		match_ContentType_RecognizeKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getContentTypeAccess().getRecognizeKeyword_4_0());
 		match_PageType_RecognizeKeyword_7_0_q = new TokenAlias(false, true, grammarAccess.getPageTypeAccess().getRecognizeKeyword_7_0());
+		match_ReferenceType_RecognizeKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getReferenceTypeAccess().getRecognizeKeyword_4_0());
 	}
 	
 	@Override
@@ -46,6 +48,8 @@ public class ConfigurationLanguageSyntacticSequencer extends AbstractSyntacticSe
 				emit_ContentType_RecognizeKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PageType_RecognizeKeyword_7_0_q.equals(syntax))
 				emit_PageType_RecognizeKeyword_7_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ReferenceType_RecognizeKeyword_4_0_q.equals(syntax))
+				emit_ReferenceType_RecognizeKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -70,6 +74,18 @@ public class ConfigurationLanguageSyntacticSequencer extends AbstractSyntacticSe
 	 *     selector=PageSelector (ambiguity) (rule end)
 	 */
 	protected void emit_PageType_RecognizeKeyword_7_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'recognize'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) (rule end)
+	 *     selector=ContentSelector (ambiguity) (rule end)
+	 */
+	protected void emit_ReferenceType_RecognizeKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

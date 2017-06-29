@@ -68,6 +68,7 @@ public class ConfigurationLanguageFactoryImpl extends EFactoryImpl implements Co
       case ConfigurationLanguagePackage.SITE_STRUCTURE: return createSiteStructure();
       case ConfigurationLanguagePackage.TYPE: return createType();
       case ConfigurationLanguagePackage.CONTENT_TYPE: return createContentType();
+      case ConfigurationLanguagePackage.REFERENCE_TYPE: return createReferenceType();
       case ConfigurationLanguagePackage.PAGE_TYPE: return createPageType();
       case ConfigurationLanguagePackage.CONTENT_SELECTOR: return createContentSelector();
       case ConfigurationLanguagePackage.PAGE_SELECTOR: return createPageSelector();
@@ -110,6 +111,17 @@ public class ConfigurationLanguageFactoryImpl extends EFactoryImpl implements Co
   {
     ContentTypeImpl contentType = new ContentTypeImpl();
     return contentType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ReferenceType createReferenceType()
+  {
+    ReferenceTypeImpl referenceType = new ReferenceTypeImpl();
+    return referenceType;
   }
 
   /**

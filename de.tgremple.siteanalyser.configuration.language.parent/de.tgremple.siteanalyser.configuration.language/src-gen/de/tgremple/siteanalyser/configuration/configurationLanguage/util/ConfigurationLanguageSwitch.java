@@ -95,6 +95,14 @@ public class ConfigurationLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ConfigurationLanguagePackage.REFERENCE_TYPE:
+      {
+        ReferenceType referenceType = (ReferenceType)theEObject;
+        T result = caseReferenceType(referenceType);
+        if (result == null) result = caseType(referenceType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ConfigurationLanguagePackage.PAGE_TYPE:
       {
         PageType pageType = (PageType)theEObject;
@@ -189,6 +197,22 @@ public class ConfigurationLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseContentType(ContentType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reference Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reference Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReferenceType(ReferenceType object)
   {
     return null;
   }

@@ -91,6 +91,11 @@ public class ConfigurationLanguageAdapterFactory extends AdapterFactoryImpl
         return createContentTypeAdapter();
       }
       @Override
+      public Adapter caseReferenceType(ReferenceType object)
+      {
+        return createReferenceTypeAdapter();
+      }
+      @Override
       public Adapter casePageType(PageType object)
       {
         return createPageTypeAdapter();
@@ -183,6 +188,21 @@ public class ConfigurationLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createContentTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType <em>Reference Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType
+   * @generated
+   */
+  public Adapter createReferenceTypeAdapter()
   {
     return null;
   }

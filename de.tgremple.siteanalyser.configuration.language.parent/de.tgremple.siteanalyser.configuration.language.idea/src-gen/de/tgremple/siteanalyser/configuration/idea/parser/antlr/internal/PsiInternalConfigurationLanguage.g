@@ -103,6 +103,15 @@ ruleType returns [Boolean current=false]
 			$current = $this_PageType_1.current;
 			doneComposite();
 		}
+		    |
+		{
+			markComposite(elementTypeProvider.getType_ReferenceTypeParserRuleCall_2ElementType());
+		}
+		this_ReferenceType_2=ruleReferenceType
+		{
+			$current = $this_ReferenceType_2.current;
+			doneComposite();
+		}
 	)
 ;
 
@@ -198,6 +207,113 @@ ruleContentType returns [Boolean current=false]
 				(
 					{
 						markComposite(elementTypeProvider.getContentType_PropertiesPropertyParserRuleCall_4_1_0ElementType());
+					}
+					lv_properties_8_0=ruleProperty
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)*
+		)?
+	)
+;
+
+//Entry rule entryRuleReferenceType
+entryRuleReferenceType returns [Boolean current=false]:
+	{ markComposite(elementTypeProvider.getReferenceTypeElementType()); }
+	iv_ruleReferenceType=ruleReferenceType
+	{ $current=$iv_ruleReferenceType.current; }
+	EOF;
+
+// Rule ReferenceType
+ruleReferenceType returns [Boolean current=false]
+:
+	(
+		{
+			markLeaf(elementTypeProvider.getReferenceType_ReferenceKeyword_0ElementType());
+		}
+		otherlv_0='reference'
+		{
+			doneLeaf(otherlv_0);
+		}
+		{
+			markLeaf(elementTypeProvider.getReferenceType_TypeKeyword_1ElementType());
+		}
+		otherlv_1='type'
+		{
+			doneLeaf(otherlv_1);
+		}
+		(
+			(
+				{
+					markLeaf(elementTypeProvider.getReferenceType_NameIDTerminalRuleCall_2_0ElementType());
+				}
+				lv_name_2_0=RULE_ID
+				{
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+				{
+					doneLeaf(lv_name_2_0);
+				}
+			)
+		)
+		(
+			{
+				markLeaf(elementTypeProvider.getReferenceType_IsKeyword_3_0ElementType());
+			}
+			otherlv_3='is'
+			{
+				doneLeaf(otherlv_3);
+			}
+			{
+				markLeaf(elementTypeProvider.getReferenceType_RecognizedKeyword_3_1ElementType());
+			}
+			otherlv_4='recognized'
+			{
+				doneLeaf(otherlv_4);
+			}
+			{
+				markLeaf(elementTypeProvider.getReferenceType_ByKeyword_3_2ElementType());
+			}
+			otherlv_5='by'
+			{
+				doneLeaf(otherlv_5);
+			}
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getReferenceType_SelectorContentSelectorParserRuleCall_3_3_0ElementType());
+					}
+					lv_selector_6_0=ruleContentSelector
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+		)?
+		(
+			{
+				markLeaf(elementTypeProvider.getReferenceType_RecognizeKeyword_4_0ElementType());
+			}
+			otherlv_7='recognize'
+			{
+				doneLeaf(otherlv_7);
+			}
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getReferenceType_PropertiesPropertyParserRuleCall_4_1_0ElementType());
 					}
 					lv_properties_8_0=ruleProperty
 					{

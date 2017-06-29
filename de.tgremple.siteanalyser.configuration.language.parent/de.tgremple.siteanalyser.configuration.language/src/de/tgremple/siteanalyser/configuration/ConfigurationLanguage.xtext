@@ -6,10 +6,15 @@ SiteStructure:
 	(typeDefinitions+=Type)*;
 
 Type:
-	ContentType | PageType;
+	ContentType | PageType | ReferenceType;
 
 ContentType:
 	'content' 'type' name=ID
+	('is' 'recognized' 'by' selector=ContentSelector)?
+	('recognize' (properties+=Property)*)?;
+
+ReferenceType:
+	'reference' 'type' name=ID
 	('is' 'recognized' 'by' selector=ContentSelector)?
 	('recognize' (properties+=Property)*)?;
 

@@ -43,12 +43,13 @@ public class ConfigurationLanguageGrammarAccess extends AbstractGrammarElementFi
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cContentTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cPageTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cReferenceTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//Type:
-		//	ContentType | PageType;
+		//	ContentType | PageType | ReferenceType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ContentType | PageType
+		//ContentType | PageType | ReferenceType
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ContentType
@@ -56,6 +57,9 @@ public class ConfigurationLanguageGrammarAccess extends AbstractGrammarElementFi
 		
 		//PageType
 		public RuleCall getPageTypeParserRuleCall_1() { return cPageTypeParserRuleCall_1; }
+		
+		//ReferenceType
+		public RuleCall getReferenceTypeParserRuleCall_2() { return cReferenceTypeParserRuleCall_2; }
 	}
 	public class ContentTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.tgremple.siteanalyser.configuration.ConfigurationLanguage.ContentType");
@@ -84,6 +88,73 @@ public class ConfigurationLanguageGrammarAccess extends AbstractGrammarElementFi
 		
 		//'content'
 		public Keyword getContentKeyword_0() { return cContentKeyword_0; }
+		
+		//'type'
+		public Keyword getTypeKeyword_1() { return cTypeKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//('is' 'recognized' 'by' selector=ContentSelector)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'is'
+		public Keyword getIsKeyword_3_0() { return cIsKeyword_3_0; }
+		
+		//'recognized'
+		public Keyword getRecognizedKeyword_3_1() { return cRecognizedKeyword_3_1; }
+		
+		//'by'
+		public Keyword getByKeyword_3_2() { return cByKeyword_3_2; }
+		
+		//selector=ContentSelector
+		public Assignment getSelectorAssignment_3_3() { return cSelectorAssignment_3_3; }
+		
+		//ContentSelector
+		public RuleCall getSelectorContentSelectorParserRuleCall_3_3_0() { return cSelectorContentSelectorParserRuleCall_3_3_0; }
+		
+		//('recognize' properties+=Property*)?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'recognize'
+		public Keyword getRecognizeKeyword_4_0() { return cRecognizeKeyword_4_0; }
+		
+		//properties+=Property*
+		public Assignment getPropertiesAssignment_4_1() { return cPropertiesAssignment_4_1; }
+		
+		//Property
+		public RuleCall getPropertiesPropertyParserRuleCall_4_1_0() { return cPropertiesPropertyParserRuleCall_4_1_0; }
+	}
+	public class ReferenceTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.tgremple.siteanalyser.configuration.ConfigurationLanguage.ReferenceType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cReferenceKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cTypeKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cIsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cRecognizedKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Keyword cByKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Assignment cSelectorAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
+		private final RuleCall cSelectorContentSelectorParserRuleCall_3_3_0 = (RuleCall)cSelectorAssignment_3_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cRecognizeKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cPropertiesAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cPropertiesPropertyParserRuleCall_4_1_0 = (RuleCall)cPropertiesAssignment_4_1.eContents().get(0);
+		
+		//ReferenceType:
+		//	'reference' 'type' name=ID ('is' 'recognized' 'by' selector=ContentSelector)? ('recognize' properties+=Property*)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'reference' 'type' name=ID ('is' 'recognized' 'by' selector=ContentSelector)? ('recognize' properties+=Property*)?
+		public Group getGroup() { return cGroup; }
+		
+		//'reference'
+		public Keyword getReferenceKeyword_0() { return cReferenceKeyword_0; }
 		
 		//'type'
 		public Keyword getTypeKeyword_1() { return cTypeKeyword_1; }
@@ -324,6 +395,7 @@ public class ConfigurationLanguageGrammarAccess extends AbstractGrammarElementFi
 	private final SiteStructureElements pSiteStructure;
 	private final TypeElements pType;
 	private final ContentTypeElements pContentType;
+	private final ReferenceTypeElements pReferenceType;
 	private final PageTypeElements pPageType;
 	private final ContentSelectorElements pContentSelector;
 	private final PageSelectorElements pPageSelector;
@@ -343,6 +415,7 @@ public class ConfigurationLanguageGrammarAccess extends AbstractGrammarElementFi
 		this.pSiteStructure = new SiteStructureElements();
 		this.pType = new TypeElements();
 		this.pContentType = new ContentTypeElements();
+		this.pReferenceType = new ReferenceTypeElements();
 		this.pPageType = new PageTypeElements();
 		this.pContentSelector = new ContentSelectorElements();
 		this.pPageSelector = new PageSelectorElements();
@@ -389,7 +462,7 @@ public class ConfigurationLanguageGrammarAccess extends AbstractGrammarElementFi
 	}
 	
 	//Type:
-	//	ContentType | PageType;
+	//	ContentType | PageType | ReferenceType;
 	public TypeElements getTypeAccess() {
 		return pType;
 	}
@@ -406,6 +479,16 @@ public class ConfigurationLanguageGrammarAccess extends AbstractGrammarElementFi
 	
 	public ParserRule getContentTypeRule() {
 		return getContentTypeAccess().getRule();
+	}
+	
+	//ReferenceType:
+	//	'reference' 'type' name=ID ('is' 'recognized' 'by' selector=ContentSelector)? ('recognize' properties+=Property*)?;
+	public ReferenceTypeElements getReferenceTypeAccess() {
+		return pReferenceType;
+	}
+	
+	public ParserRule getReferenceTypeRule() {
+		return getReferenceTypeAccess().getRule();
 	}
 	
 	//PageType:

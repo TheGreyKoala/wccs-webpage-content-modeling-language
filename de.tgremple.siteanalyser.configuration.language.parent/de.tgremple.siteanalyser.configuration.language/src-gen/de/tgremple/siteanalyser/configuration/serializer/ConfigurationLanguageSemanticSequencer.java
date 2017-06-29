@@ -9,6 +9,7 @@ import de.tgremple.siteanalyser.configuration.configurationLanguage.ContentType;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.CssSelector;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.PageType;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.Property;
+import de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.SiteStructure;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.UrlPatternSelector;
 import de.tgremple.siteanalyser.configuration.services.ConfigurationLanguageGrammarAccess;
@@ -48,6 +49,9 @@ public class ConfigurationLanguageSemanticSequencer extends AbstractDelegatingSe
 				return; 
 			case ConfigurationLanguagePackage.PROPERTY:
 				sequence_Property(context, (Property) semanticObject); 
+				return; 
+			case ConfigurationLanguagePackage.REFERENCE_TYPE:
+				sequence_ReferenceType(context, (ReferenceType) semanticObject); 
 				return; 
 			case ConfigurationLanguagePackage.SITE_STRUCTURE:
 				sequence_SiteStructure(context, (SiteStructure) semanticObject); 
@@ -114,6 +118,19 @@ public class ConfigurationLanguageSemanticSequencer extends AbstractDelegatingSe
 	 *     (name=ID type=[ContentType|ID] selector=ContentSelector?)
 	 */
 	protected void sequence_Property(ISerializationContext context, Property semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Type returns ReferenceType
+	 *     ReferenceType returns ReferenceType
+	 *
+	 * Constraint:
+	 *     (name=ID selector=ContentSelector? properties+=Property*)
+	 */
+	protected void sequence_ReferenceType(ISerializationContext context, ReferenceType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

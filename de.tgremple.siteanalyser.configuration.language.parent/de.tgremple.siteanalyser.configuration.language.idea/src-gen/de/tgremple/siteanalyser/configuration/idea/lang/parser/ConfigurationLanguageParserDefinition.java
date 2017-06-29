@@ -47,6 +47,9 @@ public class ConfigurationLanguageParserDefinition extends AbstractXtextParserDe
 			if (elementType == elementTypeProvider.getType_PageTypeParserRuleCall_1ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
+			if (elementType == elementTypeProvider.getType_ReferenceTypeParserRuleCall_2ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
 			if (elementType == elementTypeProvider.getContentTypeElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
@@ -54,6 +57,15 @@ public class ConfigurationLanguageParserDefinition extends AbstractXtextParserDe
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getContentType_PropertiesPropertyParserRuleCall_4_1_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getReferenceTypeElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getReferenceType_SelectorContentSelectorParserRuleCall_3_3_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getReferenceType_PropertiesPropertyParserRuleCall_4_1_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPageTypeElementType()) {

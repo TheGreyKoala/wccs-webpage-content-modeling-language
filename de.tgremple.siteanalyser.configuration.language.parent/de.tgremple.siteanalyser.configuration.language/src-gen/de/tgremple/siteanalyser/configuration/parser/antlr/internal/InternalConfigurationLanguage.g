@@ -129,6 +129,15 @@ ruleType returns [EObject current=null]
 			$current = $this_PageType_1.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTypeAccess().getReferenceTypeParserRuleCall_2());
+		}
+		this_ReferenceType_2=ruleReferenceType
+		{
+			$current = $this_ReferenceType_2.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -221,6 +230,109 @@ ruleContentType returns [EObject current=null]
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getContentTypeRule());
+						}
+						add(
+							$current,
+							"properties",
+							lv_properties_8_0,
+							"de.tgremple.siteanalyser.configuration.ConfigurationLanguage.Property");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)*
+		)?
+	)
+;
+
+// Entry rule entryRuleReferenceType
+entryRuleReferenceType returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getReferenceTypeRule()); }
+	iv_ruleReferenceType=ruleReferenceType
+	{ $current=$iv_ruleReferenceType.current; }
+	EOF;
+
+// Rule ReferenceType
+ruleReferenceType returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='reference'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getReferenceTypeAccess().getReferenceKeyword_0());
+		}
+		otherlv_1='type'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getReferenceTypeAccess().getTypeKeyword_1());
+		}
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getReferenceTypeAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getReferenceTypeRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_3='is'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getReferenceTypeAccess().getIsKeyword_3_0());
+			}
+			otherlv_4='recognized'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getReferenceTypeAccess().getRecognizedKeyword_3_1());
+			}
+			otherlv_5='by'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getReferenceTypeAccess().getByKeyword_3_2());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getReferenceTypeAccess().getSelectorContentSelectorParserRuleCall_3_3_0());
+					}
+					lv_selector_6_0=ruleContentSelector
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getReferenceTypeRule());
+						}
+						set(
+							$current,
+							"selector",
+							lv_selector_6_0,
+							"de.tgremple.siteanalyser.configuration.ConfigurationLanguage.ContentSelector");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_7='recognize'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getReferenceTypeAccess().getRecognizeKeyword_4_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getReferenceTypeAccess().getPropertiesPropertyParserRuleCall_4_1_0());
+					}
+					lv_properties_8_0=ruleProperty
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getReferenceTypeRule());
 						}
 						add(
 							$current,

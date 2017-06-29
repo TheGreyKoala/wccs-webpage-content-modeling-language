@@ -36,6 +36,9 @@ public class ConfigurationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getContentTypeAccess().getGroup(), "rule__ContentType__Group__0");
 					put(grammarAccess.getContentTypeAccess().getGroup_3(), "rule__ContentType__Group_3__0");
 					put(grammarAccess.getContentTypeAccess().getGroup_4(), "rule__ContentType__Group_4__0");
+					put(grammarAccess.getReferenceTypeAccess().getGroup(), "rule__ReferenceType__Group__0");
+					put(grammarAccess.getReferenceTypeAccess().getGroup_3(), "rule__ReferenceType__Group_3__0");
+					put(grammarAccess.getReferenceTypeAccess().getGroup_4(), "rule__ReferenceType__Group_4__0");
 					put(grammarAccess.getPageTypeAccess().getGroup(), "rule__PageType__Group__0");
 					put(grammarAccess.getPageTypeAccess().getGroup_7(), "rule__PageType__Group_7__0");
 					put(grammarAccess.getCssSelectorAccess().getGroup(), "rule__CssSelector__Group__0");
@@ -46,6 +49,9 @@ public class ConfigurationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getContentTypeAccess().getNameAssignment_2(), "rule__ContentType__NameAssignment_2");
 					put(grammarAccess.getContentTypeAccess().getSelectorAssignment_3_3(), "rule__ContentType__SelectorAssignment_3_3");
 					put(grammarAccess.getContentTypeAccess().getPropertiesAssignment_4_1(), "rule__ContentType__PropertiesAssignment_4_1");
+					put(grammarAccess.getReferenceTypeAccess().getNameAssignment_2(), "rule__ReferenceType__NameAssignment_2");
+					put(grammarAccess.getReferenceTypeAccess().getSelectorAssignment_3_3(), "rule__ReferenceType__SelectorAssignment_3_3");
+					put(grammarAccess.getReferenceTypeAccess().getPropertiesAssignment_4_1(), "rule__ReferenceType__PropertiesAssignment_4_1");
 					put(grammarAccess.getPageTypeAccess().getNameAssignment_2(), "rule__PageType__NameAssignment_2");
 					put(grammarAccess.getPageTypeAccess().getSelectorAssignment_6(), "rule__PageType__SelectorAssignment_6");
 					put(grammarAccess.getPageTypeAccess().getPropertiesAssignment_7_1(), "rule__PageType__PropertiesAssignment_7_1");

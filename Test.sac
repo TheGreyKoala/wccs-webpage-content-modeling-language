@@ -25,3 +25,8 @@ page type Service
 		faqItems as FaqItem
 		imageGallery as Gallery
 
+reference type NextPage
+	is recognized by linktext pattern "Next"
+
+reference type NewsDetailPage
+	is recognized by css "h4.entry-title a"

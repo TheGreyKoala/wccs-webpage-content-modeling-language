@@ -169,6 +169,52 @@ public interface ConfigurationLanguagePackage extends EPackage
   int CONTENT_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ReferenceTypeImpl <em>Reference Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ReferenceTypeImpl
+   * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getReferenceType()
+   * @generated
+   */
+  int REFERENCE_TYPE = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_TYPE__NAME = TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_TYPE__PROPERTIES = TYPE__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Selector</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_TYPE__SELECTOR = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Reference Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.impl.PageTypeImpl <em>Page Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -176,7 +222,7 @@ public interface ConfigurationLanguagePackage extends EPackage
    * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getPageType()
    * @generated
    */
-  int PAGE_TYPE = 3;
+  int PAGE_TYPE = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -222,7 +268,7 @@ public interface ConfigurationLanguagePackage extends EPackage
    * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getContentSelector()
    * @generated
    */
-  int CONTENT_SELECTOR = 4;
+  int CONTENT_SELECTOR = 5;
 
   /**
    * The number of structural features of the '<em>Content Selector</em>' class.
@@ -241,7 +287,7 @@ public interface ConfigurationLanguagePackage extends EPackage
    * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getPageSelector()
    * @generated
    */
-  int PAGE_SELECTOR = 5;
+  int PAGE_SELECTOR = 6;
 
   /**
    * The feature id for the '<em><b>Definition</b></em>' attribute.
@@ -269,7 +315,7 @@ public interface ConfigurationLanguagePackage extends EPackage
    * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getCssSelector()
    * @generated
    */
-  int CSS_SELECTOR = 6;
+  int CSS_SELECTOR = 7;
 
   /**
    * The feature id for the '<em><b>Definition</b></em>' attribute.
@@ -297,7 +343,7 @@ public interface ConfigurationLanguagePackage extends EPackage
    * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getUrlPatternSelector()
    * @generated
    */
-  int URL_PATTERN_SELECTOR = 7;
+  int URL_PATTERN_SELECTOR = 8;
 
   /**
    * The feature id for the '<em><b>Definition</b></em>' attribute.
@@ -325,7 +371,7 @@ public interface ConfigurationLanguagePackage extends EPackage
    * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 8;
+  int PROPERTY = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -437,6 +483,27 @@ public interface ConfigurationLanguagePackage extends EPackage
    * @generated
    */
   EReference getContentType_Selector();
+
+  /**
+   * Returns the meta object for class '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType <em>Reference Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Reference Type</em>'.
+   * @see de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType
+   * @generated
+   */
+  EClass getReferenceType();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType#getSelector <em>Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Selector</em>'.
+   * @see de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType#getSelector()
+   * @see #getReferenceType()
+   * @generated
+   */
+  EReference getReferenceType_Selector();
 
   /**
    * Returns the meta object for class '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.PageType <em>Page Type</em>}'.
@@ -637,6 +704,24 @@ public interface ConfigurationLanguagePackage extends EPackage
      * @generated
      */
     EReference CONTENT_TYPE__SELECTOR = eINSTANCE.getContentType_Selector();
+
+    /**
+     * The meta object literal for the '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ReferenceTypeImpl <em>Reference Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ReferenceTypeImpl
+     * @see de.tgremple.siteanalyser.configuration.configurationLanguage.impl.ConfigurationLanguagePackageImpl#getReferenceType()
+     * @generated
+     */
+    EClass REFERENCE_TYPE = eINSTANCE.getReferenceType();
+
+    /**
+     * The meta object literal for the '<em><b>Selector</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REFERENCE_TYPE__SELECTOR = eINSTANCE.getReferenceType_Selector();
 
     /**
      * The meta object literal for the '{@link de.tgremple.siteanalyser.configuration.configurationLanguage.impl.PageTypeImpl <em>Page Type</em>}' class.

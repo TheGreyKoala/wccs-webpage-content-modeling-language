@@ -51,6 +51,15 @@ public interface ConfigurationLanguageFactory extends EFactory
   ContentType createContentType();
 
   /**
+   * Returns a new object of class '<em>Reference Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reference Type</em>'.
+   * @generated
+   */
+  ReferenceType createReferenceType();
+
+  /**
    * Returns a new object of class '<em>Page Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

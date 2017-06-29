@@ -11,6 +11,7 @@ import de.tgremple.siteanalyser.configuration.configurationLanguage.CssSelector;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.PageSelector;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.PageType;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.Property;
+import de.tgremple.siteanalyser.configuration.configurationLanguage.ReferenceType;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.SiteStructure;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.Type;
 import de.tgremple.siteanalyser.configuration.configurationLanguage.UrlPatternSelector;
@@ -50,6 +51,13 @@ public class ConfigurationLanguagePackageImpl extends EPackageImpl implements Co
    * @generated
    */
   private EClass contentTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass referenceTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -231,6 +239,26 @@ public class ConfigurationLanguagePackageImpl extends EPackageImpl implements Co
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getReferenceType()
+  {
+    return referenceTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getReferenceType_Selector()
+  {
+    return (EReference)referenceTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getPageType()
   {
     return pageTypeEClass;
@@ -376,6 +404,9 @@ public class ConfigurationLanguagePackageImpl extends EPackageImpl implements Co
     contentTypeEClass = createEClass(CONTENT_TYPE);
     createEReference(contentTypeEClass, CONTENT_TYPE__SELECTOR);
 
+    referenceTypeEClass = createEClass(REFERENCE_TYPE);
+    createEReference(referenceTypeEClass, REFERENCE_TYPE__SELECTOR);
+
     pageTypeEClass = createEClass(PAGE_TYPE);
     createEReference(pageTypeEClass, PAGE_TYPE__SELECTOR);
 
@@ -424,6 +455,7 @@ public class ConfigurationLanguagePackageImpl extends EPackageImpl implements Co
 
     // Add supertypes to classes
     contentTypeEClass.getESuperTypes().add(this.getType());
+    referenceTypeEClass.getESuperTypes().add(this.getType());
     pageTypeEClass.getESuperTypes().add(this.getType());
     cssSelectorEClass.getESuperTypes().add(this.getContentSelector());
     cssSelectorEClass.getESuperTypes().add(this.getPageSelector());
@@ -439,6 +471,9 @@ public class ConfigurationLanguagePackageImpl extends EPackageImpl implements Co
 
     initEClass(contentTypeEClass, ContentType.class, "ContentType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getContentType_Selector(), this.getContentSelector(), null, "selector", null, 0, 1, ContentType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(referenceTypeEClass, ReferenceType.class, "ReferenceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getReferenceType_Selector(), this.getContentSelector(), null, "selector", null, 0, 1, ReferenceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(pageTypeEClass, PageType.class, "PageType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPageType_Selector(), this.getPageSelector(), null, "selector", null, 0, 1, PageType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

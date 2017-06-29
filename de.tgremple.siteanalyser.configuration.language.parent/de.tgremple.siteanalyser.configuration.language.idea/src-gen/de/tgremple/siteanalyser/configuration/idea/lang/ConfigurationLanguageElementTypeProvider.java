@@ -58,6 +58,9 @@ public class ConfigurationLanguageElementTypeProvider implements IElementTypePro
 		public static IGrammarAwareElementType createType_PageTypeParserRuleCall_1ElementType() {
 			return new IGrammarAwareElementType("Type_PageTypeParserRuleCall_1_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getTypeAccess().getPageTypeParserRuleCall_1());
 		}
+		public static IGrammarAwareElementType createType_ReferenceTypeParserRuleCall_2ElementType() {
+			return new IGrammarAwareElementType("Type_ReferenceTypeParserRuleCall_2_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getTypeAccess().getReferenceTypeParserRuleCall_2());
+		}
 	}
 
 	public static final IGrammarAwareElementType Type_ELEMENT_TYPE = associate(TypeFactory.createTypeElementType());
@@ -67,6 +70,8 @@ public class ConfigurationLanguageElementTypeProvider implements IElementTypePro
 	public static final IGrammarAwareElementType Type_ContentTypeParserRuleCall_0_ELEMENT_TYPE = associate(TypeFactory.createType_ContentTypeParserRuleCall_0ElementType());
 
 	public static final IGrammarAwareElementType Type_PageTypeParserRuleCall_1_ELEMENT_TYPE = associate(TypeFactory.createType_PageTypeParserRuleCall_1ElementType());
+
+	public static final IGrammarAwareElementType Type_ReferenceTypeParserRuleCall_2_ELEMENT_TYPE = associate(TypeFactory.createType_ReferenceTypeParserRuleCall_2ElementType());
 
 	private static class ContentTypeFactory {
 		public static IGrammarAwareElementType createContentTypeElementType() {
@@ -150,6 +155,89 @@ public class ConfigurationLanguageElementTypeProvider implements IElementTypePro
 	public static final IGrammarAwareElementType ContentType_PropertiesAssignment_4_1_ELEMENT_TYPE = associate(ContentTypeFactory.createContentType_PropertiesAssignment_4_1ElementType());
 
 	public static final IGrammarAwareElementType ContentType_PropertiesPropertyParserRuleCall_4_1_0_ELEMENT_TYPE = associate(ContentTypeFactory.createContentType_PropertiesPropertyParserRuleCall_4_1_0ElementType());
+
+	private static class ReferenceTypeFactory {
+		public static IGrammarAwareElementType createReferenceTypeElementType() {
+			return new IGrammarAwareElementType("ReferenceType_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeRule());
+		}
+		public static IGrammarAwareElementType createReferenceType_GroupElementType() {
+			return new IGrammarAwareElementType("ReferenceType_Group_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getGroup());
+		}
+		public static IGrammarAwareElementType createReferenceType_ReferenceKeyword_0ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_ReferenceKeyword_0_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getReferenceKeyword_0());
+		}
+		public static IGrammarAwareElementType createReferenceType_TypeKeyword_1ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_TypeKeyword_1_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getTypeKeyword_1());
+		}
+		public static IGrammarAwareElementType createReferenceType_NameAssignment_2ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_NameAssignment_2_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getNameAssignment_2());
+		}
+		public static IGrammarAwareElementType createReferenceType_NameIDTerminalRuleCall_2_0ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_NameIDTerminalRuleCall_2_0_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getNameIDTerminalRuleCall_2_0());
+		}
+		public static IGrammarAwareElementType createReferenceType_Group_3ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_Group_3_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getGroup_3());
+		}
+		public static IGrammarAwareElementType createReferenceType_IsKeyword_3_0ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_IsKeyword_3_0_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getIsKeyword_3_0());
+		}
+		public static IGrammarAwareElementType createReferenceType_RecognizedKeyword_3_1ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_RecognizedKeyword_3_1_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getRecognizedKeyword_3_1());
+		}
+		public static IGrammarAwareElementType createReferenceType_ByKeyword_3_2ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_ByKeyword_3_2_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getByKeyword_3_2());
+		}
+		public static IGrammarAwareElementType createReferenceType_SelectorAssignment_3_3ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_SelectorAssignment_3_3_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getSelectorAssignment_3_3());
+		}
+		public static IGrammarAwareElementType createReferenceType_SelectorContentSelectorParserRuleCall_3_3_0ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_SelectorContentSelectorParserRuleCall_3_3_0_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getSelectorContentSelectorParserRuleCall_3_3_0());
+		}
+		public static IGrammarAwareElementType createReferenceType_Group_4ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_Group_4_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getGroup_4());
+		}
+		public static IGrammarAwareElementType createReferenceType_RecognizeKeyword_4_0ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_RecognizeKeyword_4_0_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getRecognizeKeyword_4_0());
+		}
+		public static IGrammarAwareElementType createReferenceType_PropertiesAssignment_4_1ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_PropertiesAssignment_4_1_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getPropertiesAssignment_4_1());
+		}
+		public static IGrammarAwareElementType createReferenceType_PropertiesPropertyParserRuleCall_4_1_0ElementType() {
+			return new IGrammarAwareElementType("ReferenceType_PropertiesPropertyParserRuleCall_4_1_0_ELEMENT_TYPE", ConfigurationLanguageLanguage.INSTANCE, GRAMMAR_ACCESS.getReferenceTypeAccess().getPropertiesPropertyParserRuleCall_4_1_0());
+		}
+	}
+
+	public static final IGrammarAwareElementType ReferenceType_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceTypeElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_Group_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_GroupElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_ReferenceKeyword_0_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_ReferenceKeyword_0ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_TypeKeyword_1_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_TypeKeyword_1ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_NameAssignment_2_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_NameAssignment_2ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_NameIDTerminalRuleCall_2_0_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_NameIDTerminalRuleCall_2_0ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_Group_3_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_Group_3ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_IsKeyword_3_0_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_IsKeyword_3_0ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_RecognizedKeyword_3_1_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_RecognizedKeyword_3_1ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_ByKeyword_3_2_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_ByKeyword_3_2ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_SelectorAssignment_3_3_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_SelectorAssignment_3_3ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_SelectorContentSelectorParserRuleCall_3_3_0_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_SelectorContentSelectorParserRuleCall_3_3_0ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_Group_4_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_Group_4ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_RecognizeKeyword_4_0_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_RecognizeKeyword_4_0ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_PropertiesAssignment_4_1_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_PropertiesAssignment_4_1ElementType());
+
+	public static final IGrammarAwareElementType ReferenceType_PropertiesPropertyParserRuleCall_4_1_0_ELEMENT_TYPE = associate(ReferenceTypeFactory.createReferenceType_PropertiesPropertyParserRuleCall_4_1_0ElementType());
 
 	private static class PageTypeFactory {
 		public static IGrammarAwareElementType createPageTypeElementType() {
@@ -427,6 +515,10 @@ public class ConfigurationLanguageElementTypeProvider implements IElementTypePro
 		return Type_PageTypeParserRuleCall_1_ELEMENT_TYPE;
 	}
 	
+	public IGrammarAwareElementType getType_ReferenceTypeParserRuleCall_2ElementType() {
+		return Type_ReferenceTypeParserRuleCall_2_ELEMENT_TYPE;
+	}
+	
 	public IGrammarAwareElementType getContentTypeElementType() {
 		return ContentType_ELEMENT_TYPE;
 	}
@@ -489,6 +581,70 @@ public class ConfigurationLanguageElementTypeProvider implements IElementTypePro
 	
 	public IGrammarAwareElementType getContentType_PropertiesPropertyParserRuleCall_4_1_0ElementType() {
 		return ContentType_PropertiesPropertyParserRuleCall_4_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceTypeElementType() {
+		return ReferenceType_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_GroupElementType() {
+		return ReferenceType_Group_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_ReferenceKeyword_0ElementType() {
+		return ReferenceType_ReferenceKeyword_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_TypeKeyword_1ElementType() {
+		return ReferenceType_TypeKeyword_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_NameAssignment_2ElementType() {
+		return ReferenceType_NameAssignment_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_NameIDTerminalRuleCall_2_0ElementType() {
+		return ReferenceType_NameIDTerminalRuleCall_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_Group_3ElementType() {
+		return ReferenceType_Group_3_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_IsKeyword_3_0ElementType() {
+		return ReferenceType_IsKeyword_3_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_RecognizedKeyword_3_1ElementType() {
+		return ReferenceType_RecognizedKeyword_3_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_ByKeyword_3_2ElementType() {
+		return ReferenceType_ByKeyword_3_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_SelectorAssignment_3_3ElementType() {
+		return ReferenceType_SelectorAssignment_3_3_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_SelectorContentSelectorParserRuleCall_3_3_0ElementType() {
+		return ReferenceType_SelectorContentSelectorParserRuleCall_3_3_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_Group_4ElementType() {
+		return ReferenceType_Group_4_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_RecognizeKeyword_4_0ElementType() {
+		return ReferenceType_RecognizeKeyword_4_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_PropertiesAssignment_4_1ElementType() {
+		return ReferenceType_PropertiesAssignment_4_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getReferenceType_PropertiesPropertyParserRuleCall_4_1_0ElementType() {
+		return ReferenceType_PropertiesPropertyParserRuleCall_4_1_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPageTypeElementType() {
