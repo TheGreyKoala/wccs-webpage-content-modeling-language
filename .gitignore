@@ -6,3 +6,5 @@
 node_modules/
 target/
 src-gen/
+xtend-gen/
+model/
