@@ -2,38 +2,8 @@ grammar de.koalaworks.wcts.TypeDefinitionLanguage with org.eclipse.xtext.common.
 
 generate typeDefinitionLanguage "http://www.koalaworks.de/wcts/TypeDefinitionLanguage"
 
-SiteStructure:
-	(typeDefinitions+=Type)*;
-
-Type:
-	ContentType | PageType | ReferenceType;
-
-ContentType:
-	'content' 'type' name=ID
-	('is' 'recognized' 'by' selector=ContentSelector)?
-	('recognize' (properties+=Property)*)?;
-
-ReferenceType:
-	'reference' 'type' name=ID
-	('is' 'recognized' 'by' selector=ContentSelector)?
-	('recognize' (properties+=Property)*)?;
-
-PageType:
-	'page' 'type' name=ID
-	'is' 'recognized' 'by' selector=PageSelector
-	('recognize' (properties+=Property)*)?;
-
-ContentSelector:
-	CssSelector;
-
-PageSelector:
-	CssSelector | UrlPatternSelector;
-
-CssSelector:
-	'css' definition=STRING;
-
-UrlPatternSelector:
-	'url' 'pattern' definition=STRING;
-
-Property:
-	name=ID 'as' type=[ContentType] ('by' selector=ContentSelector)?;
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
