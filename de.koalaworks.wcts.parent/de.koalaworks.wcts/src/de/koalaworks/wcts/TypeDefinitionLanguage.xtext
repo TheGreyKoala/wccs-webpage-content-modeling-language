@@ -1,9 +1,0 @@
-grammar de.koalaworks.wcts.TypeDefinitionLanguage with org.eclipse.xtext.common.Terminals
-
-generate typeDefinitionLanguage "http://www.koalaworks.de/wcts/TypeDefinitionLanguage"
-
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
