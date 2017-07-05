@@ -1,4 +1,0 @@
-include 'de.tgremple.siteanalyser.configuration.language'
-include 'de.tgremple.siteanalyser.configuration.language.ide'
-include 'de.tgremple.siteanalyser.configuration.language.idea'
-include 'de.tgremple.siteanalyser.configuration.language.tests'
