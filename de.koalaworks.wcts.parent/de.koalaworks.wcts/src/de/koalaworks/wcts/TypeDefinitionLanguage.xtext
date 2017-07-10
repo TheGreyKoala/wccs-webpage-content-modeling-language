@@ -11,7 +11,7 @@ Type:
 ContentType:
 	'content' 'type' name=ID
 	('is' 'recognized' 'by' selector=ContentSelector)?
-	('recognize' (properties+=Property)*)?;
+	('recognize' (features+=Feature)*)?;
 
 FeatureType:
 	ContentType | ReferenceType;
@@ -19,12 +19,12 @@ FeatureType:
 PageType:
 	'page' 'type' name=ID
 	'is' 'recognized' 'by' selector=PageSelector
-	('recognize' (properties+=Property)*)?;
+	('recognize' (features+=Feature)*)?;
 
 ReferenceType:
 	'reference' 'type' name=ID
 	('is' 'recognized' 'by' selector=ReferenceSelector)?
-	('recognize' (properties+=Property)*)?;
+	('recognize' (features+=Feature)*)?;
 
 ContentSelector:
 	CssSelector;
@@ -45,5 +45,5 @@ UrlPatternSelector:
 	'url' 'pattern' definition=STRING;
 
 // TODO Semantic check that ensures that referenced feature type and selector fit
-Property:
+Feature:
 	name=ID 'as' type=[FeatureType] ('by' selector=(FeatureSelector))?;
