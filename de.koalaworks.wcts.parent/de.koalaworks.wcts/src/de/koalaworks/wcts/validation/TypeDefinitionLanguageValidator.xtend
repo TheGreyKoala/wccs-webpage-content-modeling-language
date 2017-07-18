@@ -6,6 +6,8 @@ package de.koalaworks.wcts.validation
 import org.eclipse.xtext.validation.Check
 import de.koalaworks.wcts.typeDefinitionLanguage.Feature
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
+import de.koalaworks.wcts.typeDefinitionLanguage.ContentType
+import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceType
 
 /**
  * This class contains custom validation rules. 
@@ -16,14 +18,29 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	
 	public static val NO_CONTENT_SELECTOR = 'noContentSelector'
 
-	/* @Check
-	def checkPropertyOrContentTypeDefineSelector(Feature feature) {
-		if (feature.selector === null && feature.type.selector === null) {
-			error("Content type " + feature.type.name + " does not specify a default selector.",
-				feature, TypeDefinitionLanguagePackage.Literals.PROPERTY__SELECTOR,
+	@Check
+	def ensureFeatureSelector(Feature feature) {
+		if (feature.selector === null && feature.type.noSelector) {
+			error("Type " + feature.type.name + " does not specify a default selector.",
+				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
 				NO_CONTENT_SELECTOR
 			);
 		}
-	}*/
+	}
 	
+	def dispatch noSelector(ContentType contentType) {
+		return contentType.selector === null;
+	}
+	
+	def dispatch noSelector(ReferenceType referenceType) {
+		return referenceType.selector === null;
+	}
+	
+	def dispatch name(ContentType contentType) {
+		return contentType.name;
+	}
+	
+	def dispatch name(ReferenceType referenceType) {
+		return referenceType.name;
+	}
 }
