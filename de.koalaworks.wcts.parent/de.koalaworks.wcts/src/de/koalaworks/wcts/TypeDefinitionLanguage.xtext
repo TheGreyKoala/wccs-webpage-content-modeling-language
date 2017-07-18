@@ -13,9 +13,6 @@ ContentType:
 	('is' 'recognized' 'by' selector=ContentSelector)?
 	('recognize' (features+=Feature)*)?;
 
-FeatureType:
-	ContentType | ReferenceType;
-
 PageType:
 	'page' 'type' name=ID
 	'is' 'recognized' 'by' selector=PageSelector
@@ -28,9 +25,6 @@ ReferenceType:
 
 ContentSelector:
 	CssSelector;
-
-FeatureSelector:
-	CssSelector | UrlPatternSelector;
 
 PageSelector:
 	CssSelector | UrlPatternSelector;
@@ -45,5 +39,12 @@ UrlPatternSelector:
 	'url' 'pattern' definition=STRING;
 
 // TODO Semantic check that ensures that referenced feature type and selector fit
+// TODO Semantic check that ensures that references have no references
 Feature:
 	name=ID 'as' type=[FeatureType] ('by' selector=(FeatureSelector))?;
+
+FeatureType:
+	ContentType | ReferenceType;
+
+FeatureSelector:
+	CssSelector | UrlPatternSelector;
