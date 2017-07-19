@@ -8,22 +8,31 @@ import de.koalaworks.wcts.typeDefinitionLanguage.SiteStructure
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 
 @RunWith(XtextRunner)
 @InjectWith(TypeDefinitionLanguageInjectorProvider)
 class TypeDefinitionLanguageParsingTest {
+	
 	@Inject
-	ParseHelper<SiteStructure> parseHelper
+	extension ParseHelper<SiteStructure>
+	
+	@Inject
+	extension ValidationTestHelper
 	
 	@Test
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.isEmpty)
+		val result = 
+		'''
+		content type cType1 is recognized by css "h1"
+		reference type rType1 is recognized by css "a.test"
+		page type pType1 is recognized by url pattern "123"
+		    recognize f1 as cType1
+		              f2 as rType1
+		'''.parse
+
+		result.assertNoErrors
 	}
 }

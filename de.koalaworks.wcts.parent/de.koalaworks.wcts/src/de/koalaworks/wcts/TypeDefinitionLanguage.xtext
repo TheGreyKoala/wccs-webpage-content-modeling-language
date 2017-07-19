@@ -38,8 +38,6 @@ CssSelector:
 UrlPatternSelector:
 	'url' 'pattern' definition=STRING;
 
-// TODO Semantic check that ensures that referenced feature type and selector fit
-// TODO Semantic check that ensures that references have no references
 Feature:
 	name=ID 'as' type=[FeatureType] ('by' selector=(FeatureSelector))?;
 
