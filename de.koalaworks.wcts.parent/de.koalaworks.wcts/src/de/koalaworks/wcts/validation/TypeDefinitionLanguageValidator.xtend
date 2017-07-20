@@ -26,7 +26,8 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 
 	@Check
 	def ensureInferableFeatureSelector(Feature feature) {
-		if (feature.selector === null && feature.type.noSelector) {
+		// feature.type.eContainer is null, if type is not found in current scope
+		if (feature.selector === null && feature.type.eContainer !== null && feature.type.noSelector) {
 			error("Type " + feature.type.name + " does not specify a default selector.",
 				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
 				NO_INFERABLE_FEATURE_SELECTOR
