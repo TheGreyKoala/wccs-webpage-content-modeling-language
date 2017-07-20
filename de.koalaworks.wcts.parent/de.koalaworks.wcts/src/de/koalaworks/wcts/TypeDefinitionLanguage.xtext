@@ -11,17 +11,17 @@ Type:
 ContentType:
 	'content' 'type' name=ID
 	('is' 'recognized' 'by' selector=ContentSelector)?
-	('recognize' (features+=Feature)*)?;
+	('recognize' (features+=Feature)+)?;
 
 PageType:
 	'page' 'type' name=ID
 	'is' 'recognized' 'by' selector=PageSelector
-	('recognize' (features+=Feature)*)?;
+	('recognize' (features+=Feature)+)?;
 
 ReferenceType:
 	'reference' 'type' name=ID
 	('is' 'recognized' 'by' selector=ReferenceSelector)?
-	('recognize' (features+=Feature)*)?;
+	('recognize' (features+=Feature)+)?;
 
 ContentSelector:
 	CssSelector;
