@@ -14,14 +14,14 @@ import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.emf.ecore.resource.Resource
 
 class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValidator {
-	
+
 	@Inject
 	private IResourceDescriptions descriptions;
-	
+
 	@Check
 	def ensureUniqeNames(SiteStructure siteStructure) {
 		if (isNotYetValidated(siteStructure)) {
-			val typeNamesInCurrentResource = getContentAndReferenceTypesByName(siteStructure)
+			val typeNamesInCurrentResource = getTypesByName(siteStructure)
 			createValidationErrorForDuplicateTypeNames(typeNamesInCurrentResource)
 
 			val otherResources = getAllResourceDescriptionsButFor(siteStructure.eResource)
@@ -37,16 +37,15 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 		}
 		return notYetValidated
 	}
-	
-	def private getContentAndReferenceTypesByName(SiteStructure siteStructure) {
+
+	def private getTypesByName(SiteStructure siteStructure) {
 		val names = HashMultimap.<String, EObject>create()
 			siteStructure
 				.typeDefinitions
-				.filter[definition | !(definition instanceof PageType)]
 				.forEach[definition | names.put(definition.name, definition)]
 		return names
 	}
-	
+
 	def private createValidationErrorForDuplicateTypeNames(Multimap<String, EObject> typesByName) {
 		typesByName.asMap
 			.values
@@ -54,17 +53,17 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 			.flatten
 			.forEach[definition | error("A type with this name is already defined in this file.", definition, TypeDefinitionLanguagePackage.Literals.TYPE__NAME, "duplicate_type_definition")]
 	}
-	
+
 	def private getAllResourceDescriptionsButFor(Resource resource) {
 		val uri = resource.URI.toString
 		return descriptions
 			.allResourceDescriptions
 			.filter[otherResourceDescription | otherResourceDescription.URI.toString != uri]
 	}
-	
+
 	def private createValidationErrorForDuplicateTypeNames(Multimap<String, EObject> typesByName, IResourceDescription resourceDescription) {
-		val uniqueTypeNamesInOtherResource = getContentAndReferenceTypeNamesFrom(resourceDescription)
-		uniqueTypeNamesInOtherResource.forEach[typeName | {
+		val typeNames = getTypeNamesFrom(resourceDescription)
+		typeNames.forEach[typeName | {
 			if (typesByName.containsKey(typeName)) {
 				typesByName.get(typeName).forEach[type | {
 					error("A type with this name is already defined in " + resourceDescription.URI.path + ".", type, TypeDefinitionLanguagePackage.Literals.TYPE__NAME, "duplicate_type_definition")
@@ -72,12 +71,11 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 			}
 		}]
 	}
-	
-	def private getContentAndReferenceTypeNamesFrom(IResourceDescription resourceDescription) {
-		val types = Iterables.concat(
-			resourceDescription.getExportedObjectsByType(TypeDefinitionLanguagePackage.Literals.CONTENT_TYPE),
-			resourceDescription.getExportedObjectsByType(TypeDefinitionLanguagePackage.Literals.REFERENCE_TYPE)
-		)
-		return types.map[type | type.name.toString].toSet
+
+	def private getTypeNamesFrom(IResourceDescription resourceDescription) {
+		return resourceDescription
+				.exportedObjects
+				.map[type | type.name.toString]
+				.toSet
 	}
 }
