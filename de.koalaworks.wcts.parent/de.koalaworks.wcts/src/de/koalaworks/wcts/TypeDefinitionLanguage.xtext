@@ -3,11 +3,7 @@ grammar de.koalaworks.wcts.TypeDefinitionLanguage with org.eclipse.xtext.common.
 generate typeDefinitionLanguage "http://www.koalaworks.de/wcts/TypeDefinitionLanguage"
 
 SiteStructure:
-	(imports+=Import)*
 	(typeDefinitions+=Type)*;
-
-Import:
-	'use' 'types' 'from' importURI=STRING;
 
 Type:
 	ContentType | PageType | ReferenceType;
