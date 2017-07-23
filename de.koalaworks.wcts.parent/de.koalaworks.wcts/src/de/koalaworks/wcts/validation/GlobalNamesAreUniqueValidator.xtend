@@ -64,7 +64,7 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 		typeNames.forEach[typeName | {
 			if (typesByName.containsKey(typeName)) {
 				typesByName.get(typeName).forEach[type | {
-					error("A type with this name is already defined in " + resourceDescription.URI.path + ".", type, TypeDefinitionLanguagePackage.Literals.TYPE__NAME, "duplicate_type_definition")
+					error("A type with this name is already defined in " + resourceDescription.URI.toPlatformString(true) + ".", type, TypeDefinitionLanguagePackage.Literals.TYPE__NAME, "duplicate_type_definition")
 				}]
 			}
 		}]
