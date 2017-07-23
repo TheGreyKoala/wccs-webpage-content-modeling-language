@@ -6,9 +6,7 @@ import org.eclipse.xtext.resource.IResourceDescriptions
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
 import de.koalaworks.wcts.typeDefinitionLanguage.SiteStructure
 import org.eclipse.emf.ecore.EObject
-import de.koalaworks.wcts.typeDefinitionLanguage.PageType
 import com.google.common.collect.HashMultimap
-import com.google.common.collect.Iterables
 import com.google.common.collect.Multimap
 import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.emf.ecore.resource.Resource
