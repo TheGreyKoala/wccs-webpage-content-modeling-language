@@ -38,6 +38,7 @@ Workflow {
 			}
 			validator = {
 				composedCheck = "de.koalaworks.wcts.validation.GlobalNamesAreUniqueValidator"
+				composedCheck = "de.koalaworks.wcts.validation.FeatureNameValidator"
 			}
 		}
 	}
