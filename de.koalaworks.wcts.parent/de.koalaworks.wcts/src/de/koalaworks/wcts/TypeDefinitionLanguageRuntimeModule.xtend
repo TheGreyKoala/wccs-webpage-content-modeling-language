@@ -8,4 +8,7 @@ package de.koalaworks.wcts
  */
 class TypeDefinitionLanguageRuntimeModule extends AbstractTypeDefinitionLanguageRuntimeModule {
 
+	override bindIValueConverterService() {
+		return TypeDefinitionLanguageTerminalConverters
+	}
 }

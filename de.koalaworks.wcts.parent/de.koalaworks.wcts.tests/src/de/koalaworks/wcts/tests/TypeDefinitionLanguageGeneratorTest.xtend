@@ -27,37 +27,41 @@ class TypeDefinitionLanguageGeneratorTest {
 	@Inject
 	extension ValidationTestHelper
 
+	private val SELECTOR_START = "«"
+	private val SELECTOR_END = "»"
+	
+
 	@Test
 	def testGenerate() {
 		val result =
 		'''
-		page type pType1 is recognized by url pattern "\\/service$"
-		page type pType2 is recognized by css "body.pType2"
+		page type pType1 is recognized by url pattern «SELECTOR_START»/service$«SELECTOR_END»
+		page type pType2 is recognized by css «SELECTOR_START»body.pType2«SELECTOR_END»
 			recognize pType2_f1 as cType2
-			          pType2_f2 as cType3 by css "div.pType2.f2"
-			          pType2_f3 as cType2 by css "div.pType2.f3"
-			          pType2_f4 as rType1 by css "div.pType2.f4"
-			          pType2_f5 as rType1 by url pattern "http://pType2/f5"
+			          pType2_f2 as cType3 by css «SELECTOR_START»div.pType2.f2«SELECTOR_END»
+			          pType2_f3 as cType2 by css «SELECTOR_START»div.pType2.f3«SELECTOR_END»
+			          pType2_f4 as rType1 by css «SELECTOR_START»div.pType2.f4«SELECTOR_END»
+			          pType2_f5 as rType1 by url pattern «SELECTOR_START»http://pType2/f5«SELECTOR_END»
 			          pType2_f6 as rType2
-			          pType2_f7 as rType2 by url pattern "http://pType2/f7"
+			          pType2_f7 as rType2 by url pattern «SELECTOR_START»http://pType2/f7«SELECTOR_END»
 		content type cType1
-		content type cType2 is recognized by css "div.c2"
+		content type cType2 is recognized by css «SELECTOR_START»div.c2«SELECTOR_END»
 		content type cType3
-			recognize cType3_f1 as cType1 by css "div.cType3.f1"
+			recognize cType3_f1 as cType1 by css «SELECTOR_START»div.cType3.f1«SELECTOR_END»
 			          cType3_f2 as cType2
-			          cType3_f3 as rType1 by css "div.cType3.f3"
-			          cType3_f4 as rType1 by url pattern "http://cType3/f4"
+			          cType3_f3 as rType1 by css «SELECTOR_START»div.cType3.f3«SELECTOR_END»
+			          cType3_f4 as rType1 by url pattern «SELECTOR_START»http://cType3/f4«SELECTOR_END»
 			          cType3_f5 as rType2
-			          cType3_f6 as cType2 by css "div.cType3.f6"
-			          cType3_f7 as rType2 by url pattern "http://cType3/f7"
-			          cType3_f8 as rType2 by css "div.cType3.f8"
+			          cType3_f6 as cType2 by css «SELECTOR_START»div.cType3.f6«SELECTOR_END»
+			          cType3_f7 as rType2 by url pattern «SELECTOR_START»http://cType3/f7«SELECTOR_END»
+			          cType3_f8 as rType2 by css «SELECTOR_START»div.cType3.f8«SELECTOR_END»
 		reference type rType1
-		reference type rType2 is recognized by css "div.r2"
-		reference type rType3 is recognized by url pattern "http://rType3"
+		reference type rType2 is recognized by css «SELECTOR_START»div.r2«SELECTOR_END»
+		reference type rType3 is recognized by url pattern «SELECTOR_START»http://rType3«SELECTOR_END»
 		reference type rType4
 			recognize rType4_f1 as cType2
-			          rType4_f2 as cType3 by css "div.rType4.f2"
-			          rType4_f3 as cType2 by css "div.rType4.f3"
+			          rType4_f2 as cType3 by css «SELECTOR_START»div.rType4.f2«SELECTOR_END»
+			          rType4_f3 as cType2 by css «SELECTOR_START»div.rType4.f3«SELECTOR_END»
 		'''.parse
 		
 		result.assertNoErrors
@@ -90,9 +94,9 @@ class TypeDefinitionLanguageGeneratorTest {
 					},
 					"references": {
 						"pType2_f4": { "name": "pType2_f4", "type": "rType1", "selector": { "type": "CssSelector", "value": "div.pType2.f4" } },
-						"pType2_f5": { "name": "pType2_f5", "type": "rType1", "selector": { "type": "UrlPatternSelector", "value": "http://pType2/f5" } },
+						"pType2_f5": { "name": "pType2_f5", "type": "rType1", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f5" } },
 						"pType2_f6": { "name": "pType2_f6", "type": "rType2", "selector": {} },
-						"pType2_f7": { "name": "pType2_f7", "type": "rType2", "selector": { "type": "UrlPatternSelector", "value": "http://pType2/f7" } }
+						"pType2_f7": { "name": "pType2_f7", "type": "rType2", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f7" } }
 					}
 				}
 			},
@@ -123,9 +127,9 @@ class TypeDefinitionLanguageGeneratorTest {
 					},
 					"references": {
 						"cType3_f3": { "name": "cType3_f3", "type": "rType1", "selector": { "type": "CssSelector", "value": "div.cType3.f3" } },
-						"cType3_f4": { "name": "cType3_f4", "type": "rType1", "selector": { "type": "UrlPatternSelector", "value": "http://cType3/f4" } },
+						"cType3_f4": { "name": "cType3_f4", "type": "rType1", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f4" } },
 						"cType3_f5": { "name": "cType3_f5", "type": "rType2", "selector": {} },
-						"cType3_f7": { "name": "cType3_f7", "type": "rType2", "selector": { "type": "UrlPatternSelector", "value": "http://cType3/f7" } },
+						"cType3_f7": { "name": "cType3_f7", "type": "rType2", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f7" } },
 						"cType3_f8": { "name": "cType3_f8", "type": "rType2", "selector": { "type": "CssSelector", "value": "div.cType3.f8" } }
 					}
 				}
@@ -145,7 +149,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				},
 				"rType3": {
 					"name": "rType3",
-					"selector": { "type": "UrlPatternSelector", "value": "http://rType3" },
+					"selector": { "type": "UrlPatternSelector", "value": "http:\/\/rType3" },
 					"properties": {
 					}
 				},
