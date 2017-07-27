@@ -50,4 +50,4 @@ FeatureSelector:
 	CssSelector | UrlPatternSelector;
 
 terminal SELECTOR_VALUE:
-	'«' (!('"' | '\b' | '\f' | '\n' | '\r' | '\t' ))* '»';
+	'«' (!('\b' | '\f' | '\n' | '\r' | '\t' ))* '»';

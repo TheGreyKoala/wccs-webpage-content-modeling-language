@@ -4,10 +4,15 @@
 package de.koalaworks.wcts.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
 @FinalFieldsConstructor
 class TypeDefinitionLanguageUiModule extends AbstractTypeDefinitionLanguageUiModule {
+	
+	def Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
+		return TypeDefinitionLanguageAntlrTokenToAttributeIdMapper
+	}
 }

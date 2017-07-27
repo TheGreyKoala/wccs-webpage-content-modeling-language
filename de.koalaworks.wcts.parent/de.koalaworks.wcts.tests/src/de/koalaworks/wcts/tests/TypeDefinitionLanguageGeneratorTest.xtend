@@ -35,7 +35,7 @@ class TypeDefinitionLanguageGeneratorTest {
 	def testGenerate() {
 		val result =
 		'''
-		page type pType1 is recognized by url pattern «SELECTOR_START»/service$«SELECTOR_END»
+		page type pType1 is recognized by url pattern «SELECTOR_START»\/service\?q=\$test\$$«SELECTOR_END»
 		page type pType2 is recognized by css «SELECTOR_START»body.pType2«SELECTOR_END»
 			recognize pType2_f1 as cType2
 			          pType2_f2 as cType3 by css «SELECTOR_START»div.pType2.f2«SELECTOR_END»
@@ -56,12 +56,12 @@ class TypeDefinitionLanguageGeneratorTest {
 			          cType3_f7 as rType2 by url pattern «SELECTOR_START»http://cType3/f7«SELECTOR_END»
 			          cType3_f8 as rType2 by css «SELECTOR_START»div.cType3.f8«SELECTOR_END»
 		reference type rType1
-		reference type rType2 is recognized by css «SELECTOR_START»div.r2«SELECTOR_END»
+		reference type rType2 is recognized by css «SELECTOR_START»div.r2[data-test='abc']«SELECTOR_END»
 		reference type rType3 is recognized by url pattern «SELECTOR_START»http://rType3«SELECTOR_END»
 		reference type rType4
 			recognize rType4_f1 as cType2
-			          rType4_f2 as cType3 by css «SELECTOR_START»div.rType4.f2«SELECTOR_END»
-			          rType4_f3 as cType2 by css «SELECTOR_START»div.rType4.f3«SELECTOR_END»
+			          rType4_f2 as cType3 by css «SELECTOR_START»div.rType4.f2[data-test="«SELECTOR_START + " " + SELECTOR_START» abc «SELECTOR_END + " " + SELECTOR_END»"]«SELECTOR_END»
+			          rType4_f3 as cType2 by css «SELECTOR_START»div.rType4.f3[data-test="abc"]«SELECTOR_END»
 		'''.parse
 		
 		result.assertNoErrors
@@ -78,7 +78,7 @@ class TypeDefinitionLanguageGeneratorTest {
 			"pageTypes": {
 				"pType1": {
 					"name": "pType1",
-					"selector": { "type": "UrlPatternSelector", "value": "\/service$" },
+					"selector": { "type": "UrlPatternSelector", "value": "\\\/service\\?q=\\$test\\$$" },
 					"properties": {
 					},
 					"references": {
@@ -143,7 +143,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				},
 				"rType2": {
 					"name": "rType2",
-					"selector": { "type": "CssSelector", "value": "div.r2" },
+					"selector": { "type": "CssSelector", "value": "div.r2[data-test='abc']" },
 					"properties": {
 					}
 				},
@@ -158,8 +158,8 @@ class TypeDefinitionLanguageGeneratorTest {
 					"selector": {},
 					"properties": {
 						"rType4_f1": { "name": "rType4_f1", "type": "cType2", "selector": {} },
-						"rType4_f2": { "name": "rType4_f2", "type": "cType3", "selector": { "type": "CssSelector", "value": "div.rType4.f2" } },
-						"rType4_f3": { "name": "rType4_f3", "type": "cType2", "selector": { "type": "CssSelector", "value": "div.rType4.f3" } }
+						"rType4_f2": { "name": "rType4_f2", "type": "cType3", "selector": { "type": "CssSelector", "value": "div.rType4.f2[data-test=\"«SELECTOR_START + " " + SELECTOR_START» abc «SELECTOR_END + " " + SELECTOR_END»\"]" } },
+						"rType4_f3": { "name": "rType4_f3", "type": "cType2", "selector": { "type": "CssSelector", "value": "div.rType4.f3[data-test=\"abc\"]" } }
 					}
 				}
 			}

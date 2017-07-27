@@ -28,8 +28,7 @@ class TypeDefinitionLanguageTerminalConverters extends DefaultTerminalConverters
 	def IValueConverter<String> convertSelectorValue() {
 		return new IValueConverter<String>() {
 			override toString(String value) throws ValueConverterException {
-				val string = value.substring(1, value.length - 1)
-				return escaper.escape(string)
+				return if (value === null) null else escaper.escape(value.substring(1, value.length - 1))
 			}
 			
 			override toValue(String string, INode node) throws ValueConverterException {
