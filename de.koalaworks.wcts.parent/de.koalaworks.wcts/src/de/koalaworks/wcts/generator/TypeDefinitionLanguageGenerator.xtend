@@ -91,7 +91,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 
 		'''
 		"«type.name»": {
-			"name": "«type.name»",
+			"name": "«type.name.trim»",
 			"selector": «IF selector.isPresent»«selector.compileSelector»«ELSE»{}«ENDIF»,
 			"properties": {
 				«compileFeatures(featuresByType.get(TypeDefinitionLanguagePackage.Literals.CONTENT_TYPE))»
@@ -119,7 +119,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 	}
 
 	def private compileSelector(SelectorWrapper selector) {
-		'''{ "type": "«selector.typeName»", "value": "«selector.value»" }'''
+		'''{ "type": "«selector.typeName.trim»", "value": "«selector.value.trim»" }'''
 	}
 
 	def private compileFeatures(Iterable<Feature> features) {
@@ -134,7 +134,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 
 	def private compileFeature(Feature feature) {
 		val selectorWrapper = feature.selectorWrapper
-		'''"«feature.name»": { "name": "«feature.name»", "type": "«feature.type.typeName»", "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
+		'''"«feature.name»": { "name": "«feature.name.trim»", "type": "«feature.type.typeName.trim»", "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
 	}
 	
 	def private dispatch typeName(ContentType contentType) {

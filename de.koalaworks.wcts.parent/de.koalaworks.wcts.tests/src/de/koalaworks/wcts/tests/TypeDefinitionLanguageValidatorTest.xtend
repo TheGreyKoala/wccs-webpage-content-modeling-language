@@ -21,13 +21,16 @@ class TypeDefinitionLanguageValidatorTest {
 	@Inject
 	extension ValidationTestHelper
 
+	private val SELECTOR_START = "«"
+	private val SELECTOR_END = "»"
+
 	@Test
 	def testEnsureInferableFeatureSelector() {
 		val result = 
 		'''
 		content type cType1
 		reference type rType1
-		page type pType1 is recognized by url pattern "123"
+		page type pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
 		    recognize f1 as cType1
 		              f2 as rType1
 		'''.parse
@@ -51,8 +54,8 @@ class TypeDefinitionLanguageValidatorTest {
 		'''
 		content type cType1
 		reference type rType1
-		page type pType1 is recognized by url pattern "123"
-		    recognize f1 as cType1 by url pattern "abc"
+		page type pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+		    recognize f1 as cType1 by url pattern «SELECTOR_START»abc«SELECTOR_END»
 		'''.parse
 		
 		result.assertError(
@@ -66,8 +69,8 @@ class TypeDefinitionLanguageValidatorTest {
 	def testEnsureReferencesHaveNoReferences() {
 		val result = 
 		'''
-		reference type rType1 is recognized by css "a.test"
-		reference type rType2 is recognized by css "a.test2"
+		reference type rType1 is recognized by css «SELECTOR_START»a.test«SELECTOR_END»
+		reference type rType2 is recognized by css «SELECTOR_START»a.test2«SELECTOR_END»
 		    recognize f1 as rType1
 		'''.parse
 		

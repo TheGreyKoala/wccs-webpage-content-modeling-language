@@ -35,7 +35,7 @@ class TypeDefinitionLanguageGeneratorTest {
 	def testGenerate() {
 		val result =
 		'''
-		page type pType1 is recognized by url pattern «SELECTOR_START»\/service\?q=\$test\$$«SELECTOR_END»
+		page type pType1 is recognized by url pattern «SELECTOR_START» \/service\?q=\$test\$$ «SELECTOR_END»
 		page type pType2 is recognized by css «SELECTOR_START»body.pType2«SELECTOR_END»
 			recognize pType2_f1 as cType2
 			          pType2_f2 as cType3 by css «SELECTOR_START»div.pType2.f2«SELECTOR_END»

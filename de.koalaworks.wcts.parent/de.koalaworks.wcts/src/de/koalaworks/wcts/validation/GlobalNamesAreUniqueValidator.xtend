@@ -62,7 +62,8 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 	}
 
 	def private getProjectNameFromResourceUri(String uri) {
-		return uri.split('/').get(2);
+		val parts = uri.split('/');
+		return if (parts.length > 3) parts.get(2) else "";
 	}
 
 	def private createValidationErrorForDuplicateTypeNames(Multimap<String, EObject> typesByName, IResourceDescription resourceDescription) {

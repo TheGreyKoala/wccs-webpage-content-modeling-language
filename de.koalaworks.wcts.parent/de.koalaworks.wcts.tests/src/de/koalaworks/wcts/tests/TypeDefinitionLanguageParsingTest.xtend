@@ -22,13 +22,16 @@ class TypeDefinitionLanguageParsingTest {
 	@Inject
 	extension ValidationTestHelper
 	
+	private val SELECTOR_START = "«"
+	private val SELECTOR_END = "»"
+	
 	@Test
 	def void loadModel() {
 		val result = 
 		'''
-		content type cType1 is recognized by css "h1"
-		reference type rType1 is recognized by css "a.test"
-		page type pType1 is recognized by url pattern "123"
+		content type cType1 is recognized by css «SELECTOR_START»h1«SELECTOR_END»
+		reference type rType1 is recognized by css «SELECTOR_START»a.test«SELECTOR_END»
+		page type pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
 		    recognize f1 as cType1
 		              f2 as rType1
 		'''.parse
