@@ -54,9 +54,15 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 
 	def private getAllResourceDescriptionsButFor(Resource resource) {
 		val uri = resource.URI.toString
+		val resourceProject = getProjectNameFromResourceUri(uri)
 		return descriptions
 			.allResourceDescriptions
 			.filter[otherResourceDescription | otherResourceDescription.URI.toString != uri]
+			.filter[otherResourceDescription | getProjectNameFromResourceUri(otherResourceDescription.URI.toString) == resourceProject]
+	}
+
+	def private getProjectNameFromResourceUri(String uri) {
+		return uri.split('/').get(2);
 	}
 
 	def private createValidationErrorForDuplicateTypeNames(Multimap<String, EObject> typesByName, IResourceDescription resourceDescription) {
