@@ -44,6 +44,10 @@ class TypeDefinitionLanguageGeneratorTest {
 			          pType2_f5 as rType1 by url pattern «SELECTOR_START»http://pType2/f5«SELECTOR_END»
 			          pType2_f6 as rType2
 			          pType2_f7 as rType2 by url pattern «SELECTOR_START»http://pType2/f7«SELECTOR_END»
+			          pType2_f8 as many cType2
+			          pType2_f9 as many cType2 each by css «SELECTOR_START»div.pType2.f9«SELECTOR_END»
+			          pType2_f10 as many rType2
+			          pType2_f11 as many rType2 each by url pattern «SELECTOR_START»http://pType2/f11«SELECTOR_END»
 		content type cType1
 		content type cType2 is recognized by css «SELECTOR_START»div.c2«SELECTOR_END»
 		content type cType3
@@ -88,15 +92,19 @@ class TypeDefinitionLanguageGeneratorTest {
 					"name": "pType2",
 					"selector": { "type": "CssSelector", "value": "body.pType2" },
 					"properties": {
-						"pType2_f1": { "name": "pType2_f1", "type": "cType2", "selector": {} },
-						"pType2_f2": { "name": "pType2_f2", "type": "cType3", "selector": { "type": "CssSelector", "value": "div.pType2.f2" } },
-						"pType2_f3": { "name": "pType2_f3", "type": "cType2", "selector": { "type": "CssSelector", "value": "div.pType2.f3" } }
+						"pType2_f1": { "name": "pType2_f1", "type": "cType2", "isCollection": false, "selector": {} },
+						"pType2_f2": { "name": "pType2_f2", "type": "cType3", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f2" } },
+						"pType2_f3": { "name": "pType2_f3", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f3" } },
+						"pType2_f8": { "name": "pType2_f8", "type": "cType2", "isCollection": true, "selector": {} },
+						"pType2_f9": { "name": "pType2_f9", "type": "cType2", "isCollection": true, "selector": { "type": "CssSelector", "value": "div.pType2.f9" } }
 					},
 					"references": {
-						"pType2_f4": { "name": "pType2_f4", "type": "rType1", "selector": { "type": "CssSelector", "value": "div.pType2.f4" } },
-						"pType2_f5": { "name": "pType2_f5", "type": "rType1", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f5" } },
-						"pType2_f6": { "name": "pType2_f6", "type": "rType2", "selector": {} },
-						"pType2_f7": { "name": "pType2_f7", "type": "rType2", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f7" } }
+						"pType2_f4": { "name": "pType2_f4", "type": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f4" } },
+						"pType2_f5": { "name": "pType2_f5", "type": "rType1", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f5" } },
+						"pType2_f6": { "name": "pType2_f6", "type": "rType2", "isCollection": false, "selector": {} },
+						"pType2_f7": { "name": "pType2_f7", "type": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f7" } },
+						"pType2_f10": { "name": "pType2_f10", "type": "rType2", "isCollection": true, "selector": {} },
+						"pType2_f11": { "name": "pType2_f11", "type": "rType2", "isCollection": true, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f11" } }
 					}
 				}
 			},
@@ -121,16 +129,16 @@ class TypeDefinitionLanguageGeneratorTest {
 					"name": "cType3",
 					"selector": {},
 					"properties": {
-						"cType3_f1": { "name": "cType3_f1", "type": "cType1", "selector": { "type": "CssSelector", "value": "div.cType3.f1" } },
-						"cType3_f2": { "name": "cType3_f2", "type": "cType2", "selector": {} },
-						"cType3_f6": { "name": "cType3_f6", "type": "cType2", "selector": { "type": "CssSelector", "value": "div.cType3.f6" } }
+						"cType3_f1": { "name": "cType3_f1", "type": "cType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f1" } },
+						"cType3_f2": { "name": "cType3_f2", "type": "cType2", "isCollection": false, "selector": {} },
+						"cType3_f6": { "name": "cType3_f6", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f6" } }
 					},
 					"references": {
-						"cType3_f3": { "name": "cType3_f3", "type": "rType1", "selector": { "type": "CssSelector", "value": "div.cType3.f3" } },
-						"cType3_f4": { "name": "cType3_f4", "type": "rType1", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f4" } },
-						"cType3_f5": { "name": "cType3_f5", "type": "rType2", "selector": {} },
-						"cType3_f7": { "name": "cType3_f7", "type": "rType2", "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f7" } },
-						"cType3_f8": { "name": "cType3_f8", "type": "rType2", "selector": { "type": "CssSelector", "value": "div.cType3.f8" } }
+						"cType3_f3": { "name": "cType3_f3", "type": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f3" } },
+						"cType3_f4": { "name": "cType3_f4", "type": "rType1", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f4" } },
+						"cType3_f5": { "name": "cType3_f5", "type": "rType2", "isCollection": false, "selector": {} },
+						"cType3_f7": { "name": "cType3_f7", "type": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f7" } },
+						"cType3_f8": { "name": "cType3_f8", "type": "rType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f8" } }
 					}
 				}
 			},
@@ -157,9 +165,9 @@ class TypeDefinitionLanguageGeneratorTest {
 					"name": "rType4",
 					"selector": {},
 					"properties": {
-						"rType4_f1": { "name": "rType4_f1", "type": "cType2", "selector": {} },
-						"rType4_f2": { "name": "rType4_f2", "type": "cType3", "selector": { "type": "CssSelector", "value": "div.rType4.f2[data-test=\"«SELECTOR_START + " " + SELECTOR_START» abc «SELECTOR_END + " " + SELECTOR_END»\"]" } },
-						"rType4_f3": { "name": "rType4_f3", "type": "cType2", "selector": { "type": "CssSelector", "value": "div.rType4.f3[data-test=\"abc\"]" } }
+						"rType4_f1": { "name": "rType4_f1", "type": "cType2", "isCollection": false, "selector": {} },
+						"rType4_f2": { "name": "rType4_f2", "type": "cType3", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.rType4.f2[data-test=\"«SELECTOR_START + " " + SELECTOR_START» abc «SELECTOR_END + " " + SELECTOR_END»\"]" } },
+						"rType4_f3": { "name": "rType4_f3", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.rType4.f3[data-test=\"abc\"]" } }
 					}
 				}
 			}

@@ -41,7 +41,13 @@ UrlPatternSelector:
 	'url' 'pattern' definition=SELECTOR_VALUE;
 
 Feature:
-	name=ID 'as' type=[FeatureType] ('by' selector=(FeatureSelector))?;
+	ScalarFeature | CollectionFeature;	
+
+ScalarFeature:
+	name=ID 'as' type=[FeatureType] ('by' selector=(FeatureSelector))?;	
+
+CollectionFeature:
+	name=ID 'as' 'many' type=[FeatureType] ('each' 'by' selector=(FeatureSelector))?;
 
 FeatureType:
 	ContentType | ReferenceType;

@@ -18,6 +18,7 @@ import de.koalaworks.wcts.typeDefinitionLanguage.PageType
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
 import java.util.ArrayList
 import de.koalaworks.wcts.typeDefinitionLanguage.Feature
+import de.koalaworks.wcts.typeDefinitionLanguage.CollectionFeature
 import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceType
 import java.util.Collections
 import org.eclipse.emf.ecore.EClass
@@ -134,7 +135,8 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 
 	def private compileFeature(Feature feature) {
 		val selectorWrapper = feature.selectorWrapper
-		'''"«feature.name»": { "name": "«feature.name.trim»", "type": "«feature.type.typeName.trim»", "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
+		val collection = feature instanceof CollectionFeature
+		'''"«feature.name»": { "name": "«feature.name.trim»", "type": "«feature.type.typeName.trim»", "isCollection": «collection», "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
 	}
 	
 	def private dispatch typeName(ContentType contentType) {
