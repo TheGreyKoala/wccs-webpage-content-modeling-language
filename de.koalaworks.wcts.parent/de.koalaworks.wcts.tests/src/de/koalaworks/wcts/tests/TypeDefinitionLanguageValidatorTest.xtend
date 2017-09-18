@@ -64,20 +64,4 @@ class TypeDefinitionLanguageValidatorTest {
 			"Content can not be recognized by an url pattern."
 		);
 	}
-	
-	@Test
-	def testEnsureReferencesHaveNoReferences() {
-		val result = 
-		'''
-		reference type rType1 is recognized by css «SELECTOR_START»a.test«SELECTOR_END»
-		reference type rType2 is recognized by css «SELECTOR_START»a.test2«SELECTOR_END»
-		    recognize f1 as rType1
-		'''.parse
-		
-		result.assertError(
-			TypeDefinitionLanguagePackage::eINSTANCE.feature,
-			TypeDefinitionLanguageValidator::REFERENCE_MUST_NOT_HAVE_REFERENCE,
-			"References are not capable of owning a reference themselves."
-		);
-	}
 }

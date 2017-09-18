@@ -44,19 +44,7 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 			);
 		}
 	}
-	
-	@Check
-	def ensureReferencesHaveNoReferences(Feature feature) {
-		if (feature.eContainer instanceof ReferenceType
-			&& feature.type instanceof ReferenceType
-		) {
-			error("References are not capable of owning a reference themselves.",
-				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
-				REFERENCE_MUST_NOT_HAVE_REFERENCE
-			);
-		}		
-	}
-	
+
 	def dispatch messageSuffix(UrlPatternSelector urlPatternSelector) {
 		return "an url pattern"
 	}

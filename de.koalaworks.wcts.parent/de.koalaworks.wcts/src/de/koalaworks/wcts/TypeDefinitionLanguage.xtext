@@ -8,7 +8,10 @@ SiteStructure:
 	(typeDefinitions+=Type)*;
 
 Type:
-	ContentType | PageType | ReferenceType;
+	FeatureCapableType | ReferenceType;
+
+FeatureCapableType:
+	ContentType | PageType;
 
 ContentType:
 	'content' 'type' name=ID
@@ -22,8 +25,7 @@ PageType:
 
 ReferenceType:
 	'reference' 'type' name=ID
-	('is' 'recognized' 'by' selector=ReferenceSelector)?
-	('recognize' (features+=Feature)+)?;
+	('is' 'recognized' 'by' selector=ReferenceSelector)?;
 
 ContentSelector:
 	CssSelector;

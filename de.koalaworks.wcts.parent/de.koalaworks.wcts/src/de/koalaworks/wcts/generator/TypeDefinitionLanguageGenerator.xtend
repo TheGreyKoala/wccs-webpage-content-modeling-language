@@ -24,6 +24,7 @@ import java.util.Collections
 import org.eclipse.emf.ecore.EClass
 import java.util.Map
 import de.koalaworks.wcts.validation.SelectorWrapper
+import de.koalaworks.wcts.typeDefinitionLanguage.FeatureCapableType
 
 /**
  * Generates code from your model files on save.
@@ -83,7 +84,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 		}
 	}
 
-	def private compileType(Type type) {
+	def private dispatch compileType(FeatureCapableType type) {
 		val Map<EClass, List<Feature>> featuresByType =
 			if (type.features.nullOrEmpty) Collections.emptyMap
 			else type.features.groupBy[feature | feature.type.eClass]
@@ -100,6 +101,16 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 			"references": {
 				«compileFeatures(featuresByType.get(TypeDefinitionLanguagePackage.Literals.REFERENCE_TYPE))»
 			}«ENDIF»
+		}'''
+	}
+	
+	def private dispatch compileType(ReferenceType type) {
+		val selector = type.selectorWrapper
+
+		'''
+		"«type.name»": {
+			"name": "«type.name.trim»",
+			"selector": «IF selector.isPresent»«selector.compileSelector»«ELSE»{}«ENDIF»
 		}'''
 	}
 

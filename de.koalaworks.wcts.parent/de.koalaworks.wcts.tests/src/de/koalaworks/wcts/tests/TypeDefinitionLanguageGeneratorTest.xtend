@@ -63,9 +63,6 @@ class TypeDefinitionLanguageGeneratorTest {
 		reference type rType2 is recognized by css «SELECTOR_START»div.r2[data-test='abc']«SELECTOR_END»
 		reference type rType3 is recognized by url pattern «SELECTOR_START»http://rType3«SELECTOR_END»
 		reference type rType4
-			recognize rType4_f1 as cType2
-			          rType4_f2 as cType3 by css «SELECTOR_START»div.rType4.f2[data-test="«SELECTOR_START + " " + SELECTOR_START» abc «SELECTOR_END + " " + SELECTOR_END»"]«SELECTOR_END»
-			          rType4_f3 as cType2 by css «SELECTOR_START»div.rType4.f3[data-test="abc"]«SELECTOR_END»
 		'''.parse
 		
 		result.assertNoErrors
@@ -145,30 +142,19 @@ class TypeDefinitionLanguageGeneratorTest {
 			"referenceTypes": {
 				"rType1": {
 					"name": "rType1",
-					"selector": {},
-					"properties": {
-					}
+					"selector": {}
 				},
 				"rType2": {
 					"name": "rType2",
-					"selector": { "type": "CssSelector", "value": "div.r2[data-test='abc']" },
-					"properties": {
-					}
+					"selector": { "type": "CssSelector", "value": "div.r2[data-test='abc']" }
 				},
 				"rType3": {
 					"name": "rType3",
-					"selector": { "type": "UrlPatternSelector", "value": "http:\/\/rType3" },
-					"properties": {
-					}
+					"selector": { "type": "UrlPatternSelector", "value": "http:\/\/rType3" }
 				},
 				"rType4": {
 					"name": "rType4",
-					"selector": {},
-					"properties": {
-						"rType4_f1": { "name": "rType4_f1", "type": "cType2", "isCollection": false, "selector": {} },
-						"rType4_f2": { "name": "rType4_f2", "type": "cType3", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.rType4.f2[data-test=\"«SELECTOR_START + " " + SELECTOR_START» abc «SELECTOR_END + " " + SELECTOR_END»\"]" } },
-						"rType4_f3": { "name": "rType4_f3", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.rType4.f3[data-test=\"abc\"]" } }
-					}
+					"selector": {}
 				}
 			}
 		};
