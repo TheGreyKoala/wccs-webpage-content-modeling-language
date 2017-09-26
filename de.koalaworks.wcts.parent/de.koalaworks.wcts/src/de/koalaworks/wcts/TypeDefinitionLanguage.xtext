@@ -31,7 +31,7 @@ ContentSelector:
 	CssSelector;
 
 PageSelector:
-	CssSelector | UrlPatternSelector;
+	UrlPatternSelector;
 
 ReferenceSelector:
 	CssSelector | UrlPatternSelector;

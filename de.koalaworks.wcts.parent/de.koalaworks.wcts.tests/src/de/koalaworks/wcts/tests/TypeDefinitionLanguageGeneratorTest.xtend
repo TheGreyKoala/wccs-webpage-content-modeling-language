@@ -36,7 +36,7 @@ class TypeDefinitionLanguageGeneratorTest {
 		val result =
 		'''
 		page type pType1 is recognized by url pattern «SELECTOR_START» \/service\?q=\$test\$$ «SELECTOR_END»
-		page type pType2 is recognized by css «SELECTOR_START»body.pType2«SELECTOR_END»
+		page type pType2 is recognized by url pattern «SELECTOR_START»http:\/\/www\.mysite\.de\/«SELECTOR_END»
 			recognize pType2_f1 as cType2
 			          pType2_f2 as cType3 by css «SELECTOR_START»div.pType2.f2«SELECTOR_END»
 			          pType2_f3 as cType2 by css «SELECTOR_START»div.pType2.f3«SELECTOR_END»
@@ -87,7 +87,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				},
 				"pType2": {
 					"name": "pType2",
-					"selector": { "type": "CssSelector", "value": "body.pType2" },
+					"selector": { "type": "UrlPatternSelector", "value": "http:\\\/\\\/www\\.mysite\\.de\\\/" },
 					"properties": {
 						"pType2_f1": { "name": "pType2_f1", "type": "cType2", "isCollection": false, "selector": {} },
 						"pType2_f2": { "name": "pType2_f2", "type": "cType3", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f2" } },
