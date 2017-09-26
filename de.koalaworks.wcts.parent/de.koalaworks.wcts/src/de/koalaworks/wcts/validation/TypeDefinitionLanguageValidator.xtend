@@ -12,6 +12,7 @@ import de.koalaworks.wcts.typeDefinitionLanguage.ContentSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.UrlPatternSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.CssSelector
+import de.koalaworks.wcts.typeDefinitionLanguage.XPathSelector
 
 /**
  * This class contains custom validation rules. 
@@ -22,7 +23,6 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	
 	public static val NO_INFERABLE_FEATURE_SELECTOR = 'noInferableFeatureSelector'
 	public static val INVALID_CUSTOM_FEATURE_SELECTOR = 'invalidCustomFeatureSelector'
-	public static val REFERENCE_MUST_NOT_HAVE_REFERENCE = 'referenceMustNotHaveReference'
 
 	@Check
 	def ensureInferableFeatureSelector(Feature feature) {
@@ -44,13 +44,17 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 			);
 		}
 	}
-
+	
 	def dispatch messageSuffix(UrlPatternSelector urlPatternSelector) {
 		return "an url pattern"
 	}
 	
 	def dispatch messageSuffix(CssSelector cssSelector) {
 		return "a css selector"
+	}
+	
+	def dispatch messageSuffix(XPathSelector xPathSelector) {
+		return "a xpath selector"
 	}
 	
 	def dispatch displayName(ContentType contentType) {

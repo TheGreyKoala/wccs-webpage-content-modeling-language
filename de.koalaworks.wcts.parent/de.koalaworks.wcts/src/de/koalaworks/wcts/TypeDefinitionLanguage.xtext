@@ -28,19 +28,22 @@ ReferenceType:
 	('is' 'recognized' 'by' selector=ReferenceSelector)?;
 
 ContentSelector:
-	CssSelector;
+	CssSelector | XPathSelector;
 
 PageSelector:
 	UrlPatternSelector;
 
 ReferenceSelector:
-	CssSelector | UrlPatternSelector;
+	CssSelector | UrlPatternSelector | XPathSelector;
 
 CssSelector:
 	'css' definition=SELECTOR_VALUE;
 
 UrlPatternSelector:
 	'url' 'pattern' definition=SELECTOR_VALUE;
+
+XPathSelector:
+	'xpath' definition=SELECTOR_VALUE;
 
 Feature:
 	ScalarFeature | CollectionFeature;	
@@ -55,7 +58,7 @@ FeatureType:
 	ContentType | ReferenceType;
 
 FeatureSelector:
-	CssSelector | UrlPatternSelector;
+	CssSelector | UrlPatternSelector | XPathSelector;
 
 terminal SELECTOR_VALUE:
 	'«' (!('\b' | '\f' | '\n' | '\r' | '\t' ))* '»';

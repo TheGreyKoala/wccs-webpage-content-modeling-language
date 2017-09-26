@@ -59,6 +59,10 @@ class TypeDefinitionLanguageGeneratorTest {
 			          cType3_f6 as cType2 by css «SELECTOR_START»div.cType3.f6«SELECTOR_END»
 			          cType3_f7 as rType2 by url pattern «SELECTOR_START»http://cType3/f7«SELECTOR_END»
 			          cType3_f8 as rType2 by css «SELECTOR_START»div.cType3.f8«SELECTOR_END»
+			          cType3_f9 as cType1 by xpath «SELECTOR_START».//h4«SELECTOR_END»
+			          cType3_f10 as many cType1 each by xpath «SELECTOR_START».//cType3/f10«SELECTOR_END»
+			          cType3_f11 as rType1 by xpath «SELECTOR_START».//h4«SELECTOR_END»
+			          cType3_f12 as many rType1 each by xpath «SELECTOR_START».//cType3/f10«SELECTOR_END»
 		reference type rType1
 		reference type rType2 is recognized by css «SELECTOR_START»div.r2[data-test='abc']«SELECTOR_END»
 		reference type rType3 is recognized by url pattern «SELECTOR_START»http://rType3«SELECTOR_END»
@@ -128,14 +132,18 @@ class TypeDefinitionLanguageGeneratorTest {
 					"properties": {
 						"cType3_f1": { "name": "cType3_f1", "type": "cType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f1" } },
 						"cType3_f2": { "name": "cType3_f2", "type": "cType2", "isCollection": false, "selector": {} },
-						"cType3_f6": { "name": "cType3_f6", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f6" } }
+						"cType3_f6": { "name": "cType3_f6", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f6" } },
+						"cType3_f9": { "name": "cType3_f9", "type": "cType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": ".\/\/h4" } },
+						"cType3_f10": { "name": "cType3_f10", "type": "cType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } }
 					},
 					"references": {
 						"cType3_f3": { "name": "cType3_f3", "type": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f3" } },
 						"cType3_f4": { "name": "cType3_f4", "type": "rType1", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f4" } },
 						"cType3_f5": { "name": "cType3_f5", "type": "rType2", "isCollection": false, "selector": {} },
 						"cType3_f7": { "name": "cType3_f7", "type": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f7" } },
-						"cType3_f8": { "name": "cType3_f8", "type": "rType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f8" } }
+						"cType3_f8": { "name": "cType3_f8", "type": "rType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f8" } },
+						"cType3_f11": { "name": "cType3_f11", "type": "rType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": ".\/\/h4" } },
+						"cType3_f12": { "name": "cType3_f12", "type": "rType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } }
 					}
 				}
 			},

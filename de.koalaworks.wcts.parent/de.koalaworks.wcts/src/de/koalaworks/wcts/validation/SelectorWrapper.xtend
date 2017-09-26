@@ -2,6 +2,7 @@ package de.koalaworks.wcts.validation
 
 import de.koalaworks.wcts.typeDefinitionLanguage.CssSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.UrlPatternSelector
+import de.koalaworks.wcts.typeDefinitionLanguage.XPathSelector
 
 class SelectorWrapper {
 	private val String typeName
@@ -30,6 +31,10 @@ class SelectorWrapper {
 	
 	def dispatch static create(UrlPatternSelector urlPatternSelector) {
 		return new SelectorWrapper(urlPatternSelector.eClass.name, urlPatternSelector.definition)
+	}
+	
+	def dispatch static create(XPathSelector xPathSelector) {
+		return new SelectorWrapper(xPathSelector.eClass.name, xPathSelector.definition)
 	}
 	
 	def String getTypeName() {
