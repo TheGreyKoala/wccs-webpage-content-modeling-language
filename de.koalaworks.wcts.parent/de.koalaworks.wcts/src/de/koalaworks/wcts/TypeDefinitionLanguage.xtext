@@ -28,16 +28,19 @@ ReferenceType:
 	('is' 'recognized' 'by' selector=ReferenceSelector)?;
 
 ContentSelector:
-	CssSelector | XPathSelector;
+	CssSelector | ScriptSelector | XPathSelector;
 
 PageSelector:
 	UrlPatternSelector;
 
 ReferenceSelector:
-	CssSelector | UrlPatternSelector | XPathSelector;
+	CssSelector | ScriptSelector | UrlPatternSelector | XPathSelector;
 
 CssSelector:
 	'css' definition=SELECTOR_VALUE;
+
+ScriptSelector:
+	'executing' definition=SELECTOR_VALUE;
 
 UrlPatternSelector:
 	'url' 'pattern' definition=SELECTOR_VALUE;
@@ -58,7 +61,7 @@ FeatureType:
 	ContentType | ReferenceType;
 
 FeatureSelector:
-	CssSelector | UrlPatternSelector | XPathSelector;
+	CssSelector | ScriptSelector | UrlPatternSelector | XPathSelector;
 
 terminal SELECTOR_VALUE:
 	'«' (!('\b' | '\f' | '\n' | '\r' | '\t' ))* '»';

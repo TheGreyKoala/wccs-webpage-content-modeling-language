@@ -23,7 +23,7 @@ import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceType
 import java.util.Collections
 import org.eclipse.emf.ecore.EClass
 import java.util.Map
-import de.koalaworks.wcts.validation.SelectorWrapper
+import de.koalaworks.wcts.generator.SelectorWrapper
 import de.koalaworks.wcts.typeDefinitionLanguage.FeatureCapableType
 
 /**
