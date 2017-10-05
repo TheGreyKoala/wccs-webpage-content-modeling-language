@@ -29,22 +29,25 @@ class TypeDefinitionLanguageValidatorTest {
 		val result = 
 		'''
 		content type cType1
+		content type cType2
+			recognize cType2_f1 as cType1 by css «SELECTOR_START»123«SELECTOR_END»
 		reference type rType1
 		page type pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
 		    recognize f1 as cType1
 		              f2 as rType1
+		              f3 as cType2 // Should not provoke an error, since its own feature has a selector
 		'''.parse
 
 		result.assertError(
 			TypeDefinitionLanguagePackage::eINSTANCE.feature,
 			TypeDefinitionLanguageValidator::NO_INFERABLE_FEATURE_SELECTOR,
-			"Type cType1 does not specify a default selector."
+			"f1 requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the type cType1."
 		);
 		
 		result.assertError(
 			TypeDefinitionLanguagePackage::eINSTANCE.feature,
 			TypeDefinitionLanguageValidator::NO_INFERABLE_FEATURE_SELECTOR,
-			"Type rType1 does not specify a default selector."
+			"f2 requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the type rType1."
 		);
 	}
 	
@@ -63,5 +66,27 @@ class TypeDefinitionLanguageValidatorTest {
 			TypeDefinitionLanguageValidator::INVALID_CUSTOM_FEATURE_SELECTOR,
 			"Content can not be recognized by an url pattern."
 		);
+	}
+	
+	@Test
+	def testCheckCollectionFeatures() {
+		val result = 
+		'''
+		content type Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
+		content type Article
+			recognize sections as many Section
+		              section2 as many Section each by css «SELECTOR_START»123«SELECTOR_END»
+		
+		page type TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+			recognize articles as many Article
+		'''.parse
+		
+		result.assertError(
+			TypeDefinitionLanguagePackage::eINSTANCE.feature,
+			TypeDefinitionLanguageValidator::REQUIRE_SCRIPT_SELECTOR,
+			"As articles has no inferable selector and is a collection, sections in Article is required to be selected by a script."
+		);
+		
+		//"As articles has no inferable selector and is a collection, sections2 in Article is required to be selected by a script."
 	}
 }

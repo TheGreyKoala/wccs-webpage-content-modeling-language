@@ -15,6 +15,9 @@ import de.koalaworks.wcts.typeDefinitionLanguage.CssSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.XPathSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.ScriptSelector
 import org.eclipse.core.resources.ResourcesPlugin
+import de.koalaworks.wcts.typeDefinitionLanguage.FeatureType
+import de.koalaworks.wcts.typeDefinitionLanguage.FeatureCapableType
+import de.koalaworks.wcts.typeDefinitionLanguage.CollectionFeature
 
 /**
  * This class contains custom validation rules. 
@@ -26,12 +29,12 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	public static val NO_INFERABLE_FEATURE_SELECTOR = 'noInferableFeatureSelector'
 	public static val INVALID_CUSTOM_FEATURE_SELECTOR = 'invalidCustomFeatureSelector'
 	public static val SCRIPT_FILE_NOT_FOUND = 'scriptFileNotFound'
+	public static val REQUIRE_SCRIPT_SELECTOR = "requireScriptSelector"
 
 	@Check
 	def ensureInferableFeatureSelector(Feature feature) {
-		// feature.type.eContainer is null, if type is not found in current scope
-		if (feature.selector === null && feature.type.eContainer !== null && feature.type.noSelector) {
-			error("Type " + feature.type.name + " does not specify a default selector.",
+		if (feature.noInferableSelector && feature.type.hasNoFeatures) {
+			error(feature.name + " requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the type " + feature.type.name + ".",
 				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
 				NO_INFERABLE_FEATURE_SELECTOR
 			);
@@ -63,6 +66,54 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 				selector, TypeDefinitionLanguagePackage.Literals.SCRIPT_SELECTOR__DEFINITION,
 				SCRIPT_FILE_NOT_FOUND
 			);
+		}
+	}
+
+	private def noInferableSelector(Feature feature) {
+		return feature.noSelector && feature.type.isKnown && feature.type.noSelector
+	}
+
+	/**
+	 * Collections within a collection without a selector require a script selector.
+	 * 
+	 * Therefore search for all collections without an inferable selector
+	 * and check their sub features.
+	 * It can not be done the other way around (check the parent),
+	 * because a content type with a certain feature can be used
+	 * in many places. Therefore it might cause problems in some types,
+	 * but not in all. E.g:
+	 * 
+	 * content type Section is recognized by css « 123 »
+	 * content type Article
+	 *   recognize sections as many Section
+	 * 
+	 * page type TestPage
+	 *   recognize articles as many Article
+	 * 
+	 * 
+	 * The feature sections requires a script selector,
+	 * because Article is used as a collection feature in TestPage as well.
+	 * But Article could also be used in other pages types as a scalar feature.
+	 * Therefore the feature articles must be highlighted.
+	 */
+	@Check
+	def checkNestedCollectionFeatures(CollectionFeature feature) {
+		val noInferableSelector = feature.noInferableSelector
+		val typeIsKnown = feature.type.isKnown
+		val featureCapableType = feature.type instanceof FeatureCapableType
+		if (noInferableSelector && typeIsKnown && featureCapableType) {
+			val subFeatures = (feature.type as FeatureCapableType).features
+			if (subFeatures !== null && !subFeatures.empty) {
+				subFeatures
+					.filter[s | s instanceof CollectionFeature]
+					.filter[s | !(s.selector instanceof ScriptSelector)]
+					.forEach[subFeature | {							
+						error("As " + feature.name + " has no inferable selector and is a collection, " + subFeature.name + " in " + feature.type.name + " is required to be selected by a script.",
+							feature,
+							TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
+							REQUIRE_SCRIPT_SELECTOR)
+					}]
+			}
 		}
 	}
 
@@ -102,6 +153,10 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 		return contentType.selector === null;
 	}
 	
+	def dispatch noSelector(Feature feature) {
+		return feature.selector === null;
+	}
+	
 	def dispatch noSelector(ReferenceType referenceType) {
 		return referenceType.selector === null;
 	}
@@ -112,5 +167,17 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	
 	def dispatch name(ReferenceType referenceType) {
 		return referenceType.name;
+	}
+	
+	def isKnown(FeatureType featureType) {
+		featureType.eContainer !== null
+	}
+	
+	def hasNoFeatures(FeatureType featureType) {
+		if (featureType instanceof FeatureCapableType) {
+			return featureType.features === null || featureType.features.empty
+		} else {
+			return true			
+		}
 	}
 }
