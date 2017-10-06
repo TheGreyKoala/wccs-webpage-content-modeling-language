@@ -48,6 +48,8 @@ class TypeDefinitionLanguageGeneratorTest {
 			          pType2_f9 as many cType2 each by css «SELECTOR_START»div.pType2.f9«SELECTOR_END»
 			          pType2_f10 as many rType2
 			          pType2_f11 as many rType2 each by url pattern «SELECTOR_START»http://pType2/f11«SELECTOR_END»
+		page type pType3 is recognized by url pattern «SELECTOR_START»test«SELECTOR_END»
+			recognize pType3_f1 as cType3
 		content type cType1
 		content type cType2 is recognized by css «SELECTOR_START»div.c2«SELECTOR_END»
 		content type cType3
@@ -106,6 +108,15 @@ class TypeDefinitionLanguageGeneratorTest {
 						"pType2_f7": { "name": "pType2_f7", "type": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f7" } },
 						"pType2_f10": { "name": "pType2_f10", "type": "rType2", "isCollection": true, "selector": {} },
 						"pType2_f11": { "name": "pType2_f11", "type": "rType2", "isCollection": true, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f11" } }
+					}
+				},
+				"pType3": {
+					"name": "pType3",
+					"selector": { "type": "UrlPatternSelector", "value": "test" },
+					"properties": {
+						"pType3_f1": { "name": "pType3_f1", "type": "cType3", "isCollection": false, "selector": {} }
+					},
+					"references": {
 					}
 				}
 			},
