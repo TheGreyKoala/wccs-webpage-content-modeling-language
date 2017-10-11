@@ -95,7 +95,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 		"«type.name»": {
 			"name": "«type.name.trim»",
 			"selector": «IF selector.isPresent»«selector.compileSelector»«ELSE»{}«ENDIF»,
-			"properties": {
+			"contents": {
 				«compileFeatures(featuresByType.get(TypeDefinitionLanguagePackage.Literals.CONTENT_TYPE))»
 			}«IF !(type instanceof ReferenceType)»,
 			"references": {

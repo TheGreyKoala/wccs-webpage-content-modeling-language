@@ -86,7 +86,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				"pType1": {
 					"name": "pType1",
 					"selector": { "type": "UrlPatternSelector", "value": "\\\/service\\?q=\\$test\\$$" },
-					"properties": {
+					"contents": {
 					},
 					"references": {
 					}
@@ -94,7 +94,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				"pType2": {
 					"name": "pType2",
 					"selector": { "type": "UrlPatternSelector", "value": "http:\\\/\\\/www\\.mysite\\.de\\\/" },
-					"properties": {
+					"contents": {
 						"pType2_f1": { "name": "pType2_f1", "type": "cType2", "isCollection": false, "selector": {} },
 						"pType2_f2": { "name": "pType2_f2", "type": "cType3", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f2" } },
 						"pType2_f3": { "name": "pType2_f3", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f3" } },
@@ -113,7 +113,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				"pType3": {
 					"name": "pType3",
 					"selector": { "type": "UrlPatternSelector", "value": "test" },
-					"properties": {
+					"contents": {
 						"pType3_f1": { "name": "pType3_f1", "type": "cType3", "isCollection": false, "selector": {} }
 					},
 					"references": {
@@ -124,7 +124,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				"cType1": {
 					"name": "cType1",
 					"selector": {},
-					"properties": {
+					"contents": {
 					},
 					"references": {
 					}
@@ -132,7 +132,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				"cType2": {
 					"name": "cType2",
 					"selector": { "type": "CssSelector", "value": "div.c2" },
-					"properties": {
+					"contents": {
 					},
 					"references": {
 					}
@@ -140,7 +140,7 @@ class TypeDefinitionLanguageGeneratorTest {
 				"cType3": {
 					"name": "cType3",
 					"selector": {},
-					"properties": {
+					"contents": {
 						"cType3_f1": { "name": "cType3_f1", "type": "cType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f1" } },
 						"cType3_f2": { "name": "cType3_f2", "type": "cType2", "isCollection": false, "selector": {} },
 						"cType3_f6": { "name": "cType3_f6", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f6" } },
