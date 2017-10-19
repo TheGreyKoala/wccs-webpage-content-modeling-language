@@ -14,17 +14,17 @@ FeatureCapableType:
 	ContentType | PageType;
 
 ContentType:
-	'content' 'type' name=ID
+	'content' 'class' name=ID
 	('is' 'recognized' 'by' selector=ContentSelector)?
-	('recognize' (features+=Feature)+)?;
+	('classifies' (features+=Feature)+)?;
 
 PageType:
-	'page' 'type' name=ID
+	'page' 'class' name=ID
 	'is' 'recognized' 'by' selector=PageSelector
-	('recognize' (features+=Feature)+)?;
+	('classifies' (features+=Feature)+)?;
 
 ReferenceType:
-	'reference' 'type' name=ID
+	'reference' 'class' name=ID
 	('is' 'recognized' 'by' selector=ReferenceSelector)?;
 
 ContentSelector:

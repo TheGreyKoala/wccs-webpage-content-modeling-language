@@ -35,9 +35,9 @@ class TypeDefinitionLanguageGeneratorTest {
 	def testGenerate() {
 		val result =
 		'''
-		page type pType1 is recognized by url pattern «SELECTOR_START» \/service\?q=\$test\$$ «SELECTOR_END»
-		page type pType2 is recognized by url pattern «SELECTOR_START»http:\/\/www\.mysite\.de\/«SELECTOR_END»
-			recognize pType2_f1 as cType2
+		page class pType1 is recognized by url pattern «SELECTOR_START» \/service\?q=\$test\$$ «SELECTOR_END»
+		page class pType2 is recognized by url pattern «SELECTOR_START»http:\/\/www\.mysite\.de\/«SELECTOR_END»
+			classifies pType2_f1 as cType2
 			          pType2_f2 as cType3 by css «SELECTOR_START»div.pType2.f2«SELECTOR_END»
 			          pType2_f3 as cType2 by css «SELECTOR_START»div.pType2.f3«SELECTOR_END»
 			          pType2_f4 as rType1 by css «SELECTOR_START»div.pType2.f4«SELECTOR_END»
@@ -48,12 +48,12 @@ class TypeDefinitionLanguageGeneratorTest {
 			          pType2_f9 as many cType2 each by css «SELECTOR_START»div.pType2.f9«SELECTOR_END»
 			          pType2_f10 as many rType2
 			          pType2_f11 as many rType2 each by url pattern «SELECTOR_START»http://pType2/f11«SELECTOR_END»
-		page type pType3 is recognized by url pattern «SELECTOR_START»test«SELECTOR_END»
-			recognize pType3_f1 as cType3
-		content type cType1
-		content type cType2 is recognized by css «SELECTOR_START»div.c2«SELECTOR_END»
-		content type cType3
-			recognize cType3_f1 as cType1 by css «SELECTOR_START»div.cType3.f1«SELECTOR_END»
+		page class pType3 is recognized by url pattern «SELECTOR_START»test«SELECTOR_END»
+			classifies pType3_f1 as cType3
+		content class cType1
+		content class cType2 is recognized by css «SELECTOR_START»div.c2«SELECTOR_END»
+		content class cType3
+			classifies cType3_f1 as cType1 by css «SELECTOR_START»div.cType3.f1«SELECTOR_END»
 			          cType3_f2 as cType2
 			          cType3_f3 as rType1 by css «SELECTOR_START»div.cType3.f3«SELECTOR_END»
 			          cType3_f4 as rType1 by url pattern «SELECTOR_START»http://cType3/f4«SELECTOR_END»
@@ -65,10 +65,10 @@ class TypeDefinitionLanguageGeneratorTest {
 			          cType3_f10 as many cType1 each by xpath «SELECTOR_START».//cType3/f10«SELECTOR_END»
 			          cType3_f11 as rType1 by xpath «SELECTOR_START».//h4«SELECTOR_END»
 			          cType3_f12 as many rType1 each by xpath «SELECTOR_START».//cType3/f10«SELECTOR_END»
-		reference type rType1
-		reference type rType2 is recognized by css «SELECTOR_START»div.r2[data-test='abc']«SELECTOR_END»
-		reference type rType3 is recognized by url pattern «SELECTOR_START»http://rType3«SELECTOR_END»
-		reference type rType4
+		reference class rType1
+		reference class rType2 is recognized by css «SELECTOR_START»div.r2[data-test='abc']«SELECTOR_END»
+		reference class rType3 is recognized by url pattern «SELECTOR_START»http://rType3«SELECTOR_END»
+		reference class rType4
 		'''.parse
 		
 		result.assertNoErrors

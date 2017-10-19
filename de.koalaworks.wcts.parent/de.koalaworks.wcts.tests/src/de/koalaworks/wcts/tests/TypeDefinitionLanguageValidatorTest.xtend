@@ -28,12 +28,12 @@ class TypeDefinitionLanguageValidatorTest {
 	def testEnsureInferableFeatureSelector() {
 		val result = 
 		'''
-		content type cType1
-		content type cType2
-			recognize cType2_f1 as cType1 by css «SELECTOR_START»123«SELECTOR_END»
-		reference type rType1
-		page type pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
-		    recognize f1 as cType1
+		content class cType1
+		content class cType2
+			classifies cType2_f1 as cType1 by css «SELECTOR_START»123«SELECTOR_END»
+		reference class rType1
+		page class pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+		    classifies f1 as cType1
 		              f2 as rType1
 		              f3 as cType2 // Should not provoke an error, since its own feature has a selector
 		'''.parse
@@ -55,10 +55,10 @@ class TypeDefinitionLanguageValidatorTest {
 	def testEnsureFeatureSelectorTypeMatch() {
 		val result = 
 		'''
-		content type cType1
-		reference type rType1
-		page type pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
-		    recognize f1 as cType1 by url pattern «SELECTOR_START»abc«SELECTOR_END»
+		content class cType1
+		reference class rType1
+		page class pType1 is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+		    classifies f1 as cType1 by url pattern «SELECTOR_START»abc«SELECTOR_END»
 		'''.parse
 		
 		result.assertError(
@@ -72,13 +72,13 @@ class TypeDefinitionLanguageValidatorTest {
 	def testCheckCollectionFeatures_negativeTest() {
 		val result = 
 		'''
-		content type Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
-		content type Article
-			recognize sections as many Section
+		content class Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
+		content class Article
+			classifies sections as many Section
 		              sections2 as many Section each by css «SELECTOR_START»123«SELECTOR_END»
 		
-		page type TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
-			recognize articles as many Article
+		page class TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+			classifies articles as many Article
 		'''.parse
 		
 		result.assertError(
@@ -98,42 +98,42 @@ class TypeDefinitionLanguageValidatorTest {
 	def testCheckCollectionFeatures_positiveTest() {
 		val result = 
 		'''
-		content type Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
-		content type Article
-			recognize sections as many Section each by executing «SELECTOR_START»123«SELECTOR_END»
+		content class Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
+		content class Article
+			classifies sections as many Section each by executing «SELECTOR_START»123«SELECTOR_END»
 		
-		page type TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
-			recognize articles as many Article
+		page class TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+			classifies articles as many Article
 		'''.parse
 		
 		val result2 = 
 		'''
-		content type Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
-		content type Article
-			recognize sections as many Section
+		content class Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
+		content class Article
+			classifies sections as many Section
 		
-		page type TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
-			recognize articles as many Article each by css «SELECTOR_START»123«SELECTOR_END»
+		page class TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+			classifies articles as many Article each by css «SELECTOR_START»123«SELECTOR_END»
 		'''.parse
 		
 		val result3 = 
 		'''
-		content type Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
-		content type Article
-			recognize sections as Section
+		content class Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
+		content class Article
+			classifies sections as Section
 		
-		page type TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
-			recognize articles as many Article
+		page class TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+			classifies articles as many Article
 		'''.parse
 		
 		val result4 = 
 		'''
-		content type Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
-		content type Article
-			recognize sections as many Section
+		content class Section is recognized by css «SELECTOR_START»123«SELECTOR_END»
+		content class Article
+			classifies sections as many Section
 		
-		page type TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
-			recognize articles as Article
+		page class TestPage is recognized by url pattern «SELECTOR_START»123«SELECTOR_END»
+			classifies articles as Article
 		'''.parse
 		
 		result.assertNoErrors
