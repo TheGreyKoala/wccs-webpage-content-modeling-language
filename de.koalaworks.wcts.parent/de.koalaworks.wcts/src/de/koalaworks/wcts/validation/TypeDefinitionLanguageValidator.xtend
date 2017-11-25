@@ -13,8 +13,6 @@ import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.UrlPatternSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.CssSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.XPathSelector
-import de.koalaworks.wcts.typeDefinitionLanguage.ScriptSelector
-import org.eclipse.core.resources.ResourcesPlugin
 import de.koalaworks.wcts.typeDefinitionLanguage.FeatureType
 
 /**
@@ -26,7 +24,6 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	
 	public static val NO_INFERABLE_FEATURE_SELECTOR = 'noInferableFeatureSelector'
 	public static val INVALID_CUSTOM_FEATURE_SELECTOR = 'invalidCustomFeatureSelector'
-	public static val SCRIPT_FILE_NOT_FOUND = 'scriptFileNotFound'
 
 	@Check
 	def ensureInferableFeatureSelector(Feature feature) {
@@ -47,24 +44,6 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 			);
 		}
 	}
-	
-	@Check
-	def ensureScriptFileExists(ScriptSelector selector) {
-		val resource = selector.eResource
-		val resourcePlatformString = resource.URI.toPlatformString(true)
-		val projectName = resourcePlatformString.split("/", 3).get(1)
-		val project = ResourcesPlugin.workspace.root.getProject(projectName)
-		val trimmedSelectorDefinition = selector.definition.trim.replace("\\", "")
-		val scriptProjectFile = project.getFile(trimmedSelectorDefinition)
-		val scriptFile = scriptProjectFile.location.toFile
-
-		if (!scriptFile.exists) {
-			error("Script file '" + trimmedSelectorDefinition + "' can not be found.",
-				selector, TypeDefinitionLanguagePackage.Literals.SCRIPT_SELECTOR__DEFINITION,
-				SCRIPT_FILE_NOT_FOUND
-			);
-		}
-	}
 
 	private def noInferableSelector(Feature feature) {
 		return feature.noSelector && feature.type.isKnown && feature.type.noSelector
@@ -82,14 +61,10 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 		return "a xpath selector"
 	}
 
-	def dispatch messageSuffix(ScriptSelector scriptSelector) {
-		return "a script selector"
-	}
-
 	def dispatch displayName(ContentType contentType) {
 		return "Content"
 	}
-	
+
 	def dispatch displayName(ReferenceType referenceType) {
 		return "Reference"
 	}
