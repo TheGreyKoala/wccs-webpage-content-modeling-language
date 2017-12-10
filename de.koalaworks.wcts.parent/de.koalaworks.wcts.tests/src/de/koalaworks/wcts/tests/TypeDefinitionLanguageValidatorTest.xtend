@@ -5,18 +5,18 @@ import org.junit.runner.RunWith
 import org.eclipse.xtext.testing.InjectWith
 import javax.inject.Inject
 import org.eclipse.xtext.testing.util.ParseHelper
-import de.koalaworks.wcts.typeDefinitionLanguage.SiteStructure
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
 import de.koalaworks.wcts.validation.TypeDefinitionLanguageValidator
+import de.koalaworks.wcts.typeDefinitionLanguage.ClassDeclarations
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(TypeDefinitionLanguageInjectorProvider)
 class TypeDefinitionLanguageValidatorTest {
 	
 	@Inject
-	extension ParseHelper<SiteStructure>
+	extension ParseHelper<ClassDeclarations>
 	
 	@Inject
 	extension ValidationTestHelper

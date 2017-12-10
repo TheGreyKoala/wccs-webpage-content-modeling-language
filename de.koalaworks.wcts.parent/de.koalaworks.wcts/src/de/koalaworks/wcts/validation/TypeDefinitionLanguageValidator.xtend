@@ -6,14 +6,14 @@ package de.koalaworks.wcts.validation
 import org.eclipse.xtext.validation.Check
 import de.koalaworks.wcts.typeDefinitionLanguage.Feature
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
-import de.koalaworks.wcts.typeDefinitionLanguage.ContentType
-import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceType
 import de.koalaworks.wcts.typeDefinitionLanguage.ContentSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.UrlPatternSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.CssSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.XPathSelector
-import de.koalaworks.wcts.typeDefinitionLanguage.FeatureType
+import de.koalaworks.wcts.typeDefinitionLanguage.ContentClass
+import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceClass
+import de.koalaworks.wcts.typeDefinitionLanguage.FeatureClass
 
 /**
  * This class contains custom validation rules. 
@@ -28,7 +28,7 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	@Check
 	def ensureInferableFeatureSelector(Feature feature) {
 		if (feature.noInferableSelector) {
-			error(feature.name + " requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the class " + feature.type.name + ".",
+			error(feature.name + " requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the class " + feature.featureClass.name + ".",
 				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
 				NO_INFERABLE_FEATURE_SELECTOR
 			);
@@ -37,8 +37,8 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 
 	@Check
 	def ensureFeatureSelectorTypeMatch(Feature feature) {
-		if (feature.selector !== null && !(feature.type.selectorType as Class).isAssignableFrom(feature.selector.class)) {
-			error(feature.type.displayName + " can not be recognized by " + feature.selector.messageSuffix + ".",
+		if (feature.selector !== null && !(feature.featureClass.selectorType as Class).isAssignableFrom(feature.selector.class)) {
+			error(feature.featureClass.displayName + " can not be recognized by " + feature.selector.messageSuffix + ".",
 				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
 				INVALID_CUSTOM_FEATURE_SELECTOR
 			);
@@ -46,7 +46,7 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	}
 
 	private def noInferableSelector(Feature feature) {
-		return feature.noSelector && feature.type.isKnown && feature.type.noSelector
+		return feature.noSelector && feature.featureClass.isKnown && feature.featureClass.noSelector
 	}
 
 	def dispatch messageSuffix(UrlPatternSelector urlPatternSelector) {
@@ -61,23 +61,23 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 		return "a xpath selector"
 	}
 
-	def dispatch displayName(ContentType contentType) {
+	def dispatch displayName(ContentClass contentType) {
 		return "Content"
 	}
 
-	def dispatch displayName(ReferenceType referenceType) {
+	def dispatch displayName(ReferenceClass referenceType) {
 		return "Reference"
 	}
 	
-	def dispatch selectorType(ContentType contentType) {
+	def dispatch selectorType(ContentClass contentType) {
 		return ContentSelector
 	}
 	
-	def dispatch selectorType(ReferenceType contentType) {
+	def dispatch selectorType(ReferenceClass contentType) {
 		return ReferenceSelector
 	}
 	
-	def dispatch noSelector(ContentType contentType) {
+	def dispatch noSelector(ContentClass contentType) {
 		return contentType.selector === null;
 	}
 	
@@ -85,19 +85,19 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 		return feature.selector === null;
 	}
 
-	def dispatch noSelector(ReferenceType referenceType) {
+	def dispatch noSelector(ReferenceClass referenceType) {
 		return referenceType.selector === null;
 	}
 	
-	def dispatch name(ContentType contentType) {
+	def dispatch name(ContentClass contentType) {
 		return contentType.name;
 	}
 	
-	def dispatch name(ReferenceType referenceType) {
+	def dispatch name(ReferenceClass referenceType) {
 		return referenceType.name;
 	}
 
-	def isKnown(FeatureType featureType) {
+	def isKnown(FeatureClass featureType) {
 		featureType.eContainer !== null
 	}
 }

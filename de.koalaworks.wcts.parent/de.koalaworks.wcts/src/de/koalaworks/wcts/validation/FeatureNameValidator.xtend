@@ -5,12 +5,12 @@ import org.eclipse.xtext.validation.Check
 import de.koalaworks.wcts.typeDefinitionLanguage.Feature
 import com.google.common.collect.HashMultimap
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
-import de.koalaworks.wcts.typeDefinitionLanguage.FeatureCapableType
+import de.koalaworks.wcts.typeDefinitionLanguage.FeatureCapableClass
 
 class FeatureNameValidator extends AbstractTypeDefinitionLanguageValidator {
 	
 	@Check
-	def ensureUniqueFeatureNames(FeatureCapableType type) {
+	def ensureUniqueFeatureNames(FeatureCapableClass type) {
 		val featuresByName = HashMultimap.<String, Feature>create()
 		type.features.forEach[feature | featuresByName.put(feature.name, feature)]
 		

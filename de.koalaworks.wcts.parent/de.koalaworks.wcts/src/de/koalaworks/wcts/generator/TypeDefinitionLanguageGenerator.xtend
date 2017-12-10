@@ -7,24 +7,24 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import de.koalaworks.wcts.typeDefinitionLanguage.ContentType
 import com.google.inject.Inject
 import org.eclipse.xtext.resource.IResourceDescriptions
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.IContainer
-import de.koalaworks.wcts.typeDefinitionLanguage.Type
+import de.koalaworks.wcts.typeDefinitionLanguage.Class
 import java.util.List
-import de.koalaworks.wcts.typeDefinitionLanguage.PageType
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
 import java.util.ArrayList
 import de.koalaworks.wcts.typeDefinitionLanguage.Feature
 import de.koalaworks.wcts.typeDefinitionLanguage.CollectionFeature
-import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceType
 import java.util.Collections
 import org.eclipse.emf.ecore.EClass
 import java.util.Map
 import de.koalaworks.wcts.generator.SelectorWrapper
-import de.koalaworks.wcts.typeDefinitionLanguage.FeatureCapableType
+import de.koalaworks.wcts.typeDefinitionLanguage.FeatureCapableClass
+import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceClass
+import de.koalaworks.wcts.typeDefinitionLanguage.PageClass
+import de.koalaworks.wcts.typeDefinitionLanguage.ContentClass
 
 /**
  * Generates code from your model files on save.
@@ -49,32 +49,32 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 				.map[description | EcoreUtil2.getResource(resource, description.URI.toString)]
 				.map[otherResource | otherResource.allContents.toIterable ]
 				.flatten
-				.filter(Type)
+				.filter(Class)
 				.groupBy[type | type.eClass]
 			
 			doGenerate(projectName, typeDefinitionsByType, fsa)
 		}
 	}
 	
-	def void doGenerate(String projectName, Map<EClass, List<Type>> typeDefinitionsByType, IFileSystemAccess2 fsa) {
+	def void doGenerate(String projectName, Map<EClass, List<Class>> typeDefinitionsByType, IFileSystemAccess2 fsa) {
 		fsa.generateFile(projectName + ".js",
 			'''
 			"use strict;"
 			module.exports = {
 				"pageTypes": {
-					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.PAGE_TYPE))»
+					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.PAGE_CLASS))»
 				},
 				"contentTypes": {
-					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.CONTENT_TYPE))»
+					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.CONTENT_CLASS))»
 				},
 				"referenceTypes": {
-					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.REFERENCE_TYPE))»
+					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.REFERENCE_CLASS))»
 				}
 			};
 			''')
 	}
 	
-	def private compileTypes(List<Type> types) {
+	def private compileTypes(List<Class> types) {
 		if (!types.isNullOrEmpty) {
 			val List<CharSequence> compiledTypes = new ArrayList(types.size)
 			for (type : types) {
@@ -84,10 +84,10 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 		}
 	}
 
-	def private dispatch compileType(FeatureCapableType type) {
+	def private dispatch compileType(FeatureCapableClass type) {
 		val Map<EClass, List<Feature>> featuresByType =
 			if (type.features.nullOrEmpty) Collections.emptyMap
-			else type.features.groupBy[feature | feature.type.eClass]
+			else type.features.groupBy[feature | feature.featureClass.eClass]
 		
 		val selector = type.selectorWrapper
 
@@ -96,15 +96,15 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 			"name": "«type.name.trim»",
 			"selector": «IF selector.isPresent»«selector.compileSelector»«ELSE»{}«ENDIF»,
 			"contents": {
-				«compileFeatures(featuresByType.get(TypeDefinitionLanguagePackage.Literals.CONTENT_TYPE))»
-			}«IF !(type instanceof ReferenceType)»,
+				«compileFeatures(featuresByType.get(TypeDefinitionLanguagePackage.Literals.CONTENT_CLASS))»
+			}«IF !(type instanceof ReferenceClass)»,
 			"references": {
-				«compileFeatures(featuresByType.get(TypeDefinitionLanguagePackage.Literals.REFERENCE_TYPE))»
+				«compileFeatures(featuresByType.get(TypeDefinitionLanguagePackage.Literals.REFERENCE_CLASS))»
 			}«ENDIF»
 		}'''
 	}
 	
-	def private dispatch compileType(ReferenceType type) {
+	def private dispatch compileType(ReferenceClass type) {
 		val selector = type.selectorWrapper
 
 		'''
@@ -114,15 +114,15 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 		}'''
 	}
 
-	def private dispatch selectorWrapper(PageType pageType) {
+	def private dispatch selectorWrapper(PageClass pageType) {
 		return SelectorWrapper.create(pageType.selector)
 	}
 
-	def private dispatch selectorWrapper(ContentType contentType) {
+	def private dispatch selectorWrapper(ContentClass contentType) {
 		return SelectorWrapper.create(contentType.selector)
 	}
 	
-	def private dispatch selectorWrapper(ReferenceType referenceType) {
+	def private dispatch selectorWrapper(ReferenceClass referenceType) {
 		return SelectorWrapper.create(referenceType.selector)
 	}
 	
@@ -147,14 +147,14 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 	def private compileFeature(Feature feature) {
 		val selectorWrapper = feature.selectorWrapper
 		val collection = feature instanceof CollectionFeature
-		'''"«feature.name»": { "name": "«feature.name.trim»", "type": "«feature.type.typeName.trim»", "isCollection": «collection», "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
+		'''"«feature.name»": { "name": "«feature.name.trim»", "type": "«feature.featureClass.typeName.trim»", "isCollection": «collection», "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
 	}
 	
-	def private dispatch typeName(ContentType contentType) {
+	def private dispatch typeName(ContentClass contentType) {
 		return contentType.name
 	}
 	
-	def private dispatch typeName(ReferenceType referenceType) {
+	def private dispatch typeName(ReferenceClass referenceType) {
 		return referenceType.name
 	}
 }

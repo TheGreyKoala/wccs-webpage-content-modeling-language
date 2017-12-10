@@ -5,7 +5,6 @@ import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import com.google.inject.Inject
 import org.eclipse.xtext.testing.util.ParseHelper
-import de.koalaworks.wcts.typeDefinitionLanguage.SiteStructure
 import org.junit.Test
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
@@ -13,6 +12,7 @@ import org.eclipse.xtext.generator.IGenerator2
 import de.koalaworks.wcts.generator.TypeDefinitionLanguageGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import static org.junit.Assert.assertEquals
+import de.koalaworks.wcts.typeDefinitionLanguage.ClassDeclarations
 
 @RunWith(XtextRunner)
 @InjectWith(TypeDefinitionLanguageInjectorProvider)
@@ -22,7 +22,7 @@ class TypeDefinitionLanguageGeneratorTest {
 	IGenerator2 generator
 	
 	@Inject
-	extension ParseHelper<SiteStructure>
+	extension ParseHelper<ClassDeclarations>
 	
 	@Inject
 	extension ValidationTestHelper
@@ -71,7 +71,7 @@ class TypeDefinitionLanguageGeneratorTest {
 		
 		result.assertNoErrors
 		val fsa = new InMemoryFileSystemAccess()	
-		val definitionsByType = result.typeDefinitions.groupBy[type | type.eClass]
+		val definitionsByType = result.classes.groupBy[class | class.eClass]
 		
 		(generator as TypeDefinitionLanguageGenerator).doGenerate("test", definitionsByType, fsa)
 		

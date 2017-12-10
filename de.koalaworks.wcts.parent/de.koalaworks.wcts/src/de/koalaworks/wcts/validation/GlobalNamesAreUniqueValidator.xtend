@@ -4,12 +4,12 @@ import org.eclipse.xtext.validation.Check
 import com.google.inject.Inject
 import org.eclipse.xtext.resource.IResourceDescriptions
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
-import de.koalaworks.wcts.typeDefinitionLanguage.SiteStructure
 import org.eclipse.emf.ecore.EObject
 import com.google.common.collect.HashMultimap
 import com.google.common.collect.Multimap
 import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.emf.ecore.resource.Resource
+import de.koalaworks.wcts.typeDefinitionLanguage.ClassDeclarations
 
 class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValidator {
 
@@ -17,30 +17,30 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 	private IResourceDescriptions descriptions;
 
 	@Check
-	def ensureUniqeNames(SiteStructure siteStructure) {
-		if (isNotYetValidated(siteStructure)) {
-			val typeNamesInCurrentResource = getTypesByName(siteStructure)
+	def ensureUniqeNames(ClassDeclarations classDeclarations) {
+		if (isNotYetValidated(classDeclarations)) {
+			val typeNamesInCurrentResource = getTypesByName(classDeclarations)
 			createValidationErrorForDuplicateTypeNames(typeNamesInCurrentResource)
 
-			val otherResources = getAllResourceDescriptionsButFor(siteStructure.eResource)
+			val otherResources = getAllResourceDescriptionsButFor(classDeclarations.eResource)
 			otherResources.forEach[otherResource | createValidationErrorForDuplicateTypeNames(typeNamesInCurrentResource, otherResource)]
 		}
 	}
 	
-	def private isNotYetValidated(SiteStructure siteStructure) {
-		val uri = siteStructure.eResource.URI.toString
+	def private isNotYetValidated(ClassDeclarations classDeclarations) {
+		val uri = classDeclarations.eResource.URI.toString
 		val notYetValidated = !context.containsKey(uri)
 		if (notYetValidated) {
-			context.put(uri, siteStructure)
+			context.put(uri, classDeclarations)
 		}
 		return notYetValidated
 	}
 
-	def private getTypesByName(SiteStructure siteStructure) {
+	def private getTypesByName(ClassDeclarations classDeclarations) {
 		val names = HashMultimap.<String, EObject>create()
-			siteStructure
-				.typeDefinitions
-				.forEach[definition | names.put(definition.name, definition)]
+			classDeclarations
+				.classes
+				.forEach[class | names.put(class.name, class)]
 		return names
 	}
 
@@ -49,7 +49,7 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 			.values
 			.filter[definitionsList | definitionsList.size > 1]
 			.flatten
-			.forEach[definition | error("A type with this name is already defined in this file.", definition, TypeDefinitionLanguagePackage.Literals.TYPE__NAME, "duplicate_type_definition")]
+			.forEach[definition | error("A type with this name is already defined in this file.", definition, TypeDefinitionLanguagePackage.Literals.CLASS__NAME, "duplicate_type_definition")]
 	}
 
 	def private getAllResourceDescriptionsButFor(Resource resource) {
@@ -71,7 +71,7 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 		typeNames.forEach[typeName | {
 			if (typesByName.containsKey(typeName)) {
 				typesByName.get(typeName).forEach[type | {
-					error("A type with this name is already defined in " + resourceDescription.URI.toPlatformString(true) + ".", type, TypeDefinitionLanguagePackage.Literals.TYPE__NAME, "duplicate_type_definition")
+					error("A type with this name is already defined in " + resourceDescription.URI.toPlatformString(true) + ".", type, TypeDefinitionLanguagePackage.Literals.CLASS__NAME, "duplicate_type_definition")
 				}]
 			}
 		}]
