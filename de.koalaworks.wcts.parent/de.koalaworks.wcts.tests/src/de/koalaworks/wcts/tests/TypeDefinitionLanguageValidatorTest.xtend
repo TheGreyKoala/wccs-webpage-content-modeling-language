@@ -64,4 +64,46 @@ class TypeDefinitionLanguageValidatorTest {
 			"Content can not be recognized by an url pattern."
 		);
 	}
+	
+	@Test
+	def testEnsureNonEmptyCssSelector() {
+		val result =
+		'''
+		content class cClass1 is recognized by css «SELECTOR_START»   «SELECTOR_END»
+		'''.parse
+		
+		result.assertError(
+			TypeDefinitionLanguagePackage::eINSTANCE.cssSelector,
+			TypeDefinitionLanguageValidator::EMPTY_CSS_SELECTOR,
+			"Selector must not be empty."
+		);
+	}
+	
+	@Test
+	def testEnsureNonEmptyUrlPatternSelector() {
+		val result =
+		'''
+		page class pClass1 is recognized by url pattern «SELECTOR_START»   «SELECTOR_END»
+		'''.parse
+		
+		result.assertError(
+			TypeDefinitionLanguagePackage::eINSTANCE.urlPatternSelector,
+			TypeDefinitionLanguageValidator::EMPTY_URL_PATTERN_SELECTOR,
+			"Selector must not be empty."
+		);
+	}
+	
+	@Test
+	def testEnsureNonEmptyXPathSelector() {
+		val result =
+		'''
+		content class cClass1 is recognized by xpath «SELECTOR_START»   «SELECTOR_END»
+		'''.parse
+		
+		result.assertError(
+			TypeDefinitionLanguagePackage::eINSTANCE.XPathSelector,
+			TypeDefinitionLanguageValidator::EMPTY_XPATH_SELECTOR,
+			"Selector must not be empty."
+		);
+	}
 }

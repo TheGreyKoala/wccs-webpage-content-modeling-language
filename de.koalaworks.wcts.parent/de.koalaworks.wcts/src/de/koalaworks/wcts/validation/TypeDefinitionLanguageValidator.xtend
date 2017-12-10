@@ -14,6 +14,8 @@ import de.koalaworks.wcts.typeDefinitionLanguage.XPathSelector
 import de.koalaworks.wcts.typeDefinitionLanguage.ContentClass
 import de.koalaworks.wcts.typeDefinitionLanguage.ReferenceClass
 import de.koalaworks.wcts.typeDefinitionLanguage.FeatureClass
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EStructuralFeature
 
 /**
  * This class contains custom validation rules. 
@@ -24,6 +26,31 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	
 	public static val NO_INFERABLE_FEATURE_SELECTOR = 'noInferableFeatureSelector'
 	public static val INVALID_CUSTOM_FEATURE_SELECTOR = 'invalidCustomFeatureSelector'
+	
+	public static final String EMPTY_CSS_SELECTOR = "emptyCssSelector"
+	public static final String EMPTY_URL_PATTERN_SELECTOR = "emptyUrlPatternSelector"
+	public static final String EMPTY_XPATH_SELECTOR = "emptyXPathSelector"
+
+	@Check
+	def ensureNonEmptyCssSelector(CssSelector selector) {
+		ensureNonEmptySelector(selector.definition, selector, TypeDefinitionLanguagePackage.Literals.CSS_SELECTOR__DEFINITION, EMPTY_CSS_SELECTOR)
+	}
+	
+	@Check
+	def ensureNonEmptyUrlPatternSelector(UrlPatternSelector selector) {
+		ensureNonEmptySelector(selector.definition, selector, TypeDefinitionLanguagePackage.Literals.URL_PATTERN_SELECTOR__DEFINITION, EMPTY_URL_PATTERN_SELECTOR)
+	}
+	
+	@Check
+	def ensureNonEmptyXPathSelector(XPathSelector selector) {
+		ensureNonEmptySelector(selector.definition, selector, TypeDefinitionLanguagePackage.Literals.XPATH_SELECTOR__DEFINITION, EMPTY_XPATH_SELECTOR)
+	}
+	
+	private def ensureNonEmptySelector(String definition, EObject source, EStructuralFeature feature, String code) {
+		if (definition.trim.isEmpty) {
+			error("Selector must not be empty.", source, feature, code)
+		}
+	}
 
 	@Check
 	def ensureInferableFeatureSelector(Feature feature) {

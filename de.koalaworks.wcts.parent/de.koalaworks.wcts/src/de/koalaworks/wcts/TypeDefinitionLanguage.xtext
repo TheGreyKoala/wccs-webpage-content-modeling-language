@@ -46,7 +46,7 @@ XPathSelector:
 	'xpath' definition=SELECTOR_VALUE;
 
 terminal SELECTOR_VALUE:
-	'«' (!('\b' | '\f' | '\n' | '\r' | '\t' ))* '»';
+	'«' (!('\b' | '\f' | '\n' | '\r' | '\t' ))+ '»';
 
 Feature:
 	ScalarFeature | CollectionFeature;	
