@@ -9,7 +9,7 @@ import com.google.common.collect.HashMultimap
 import com.google.common.collect.Multimap
 import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.emf.ecore.resource.Resource
-import de.koalaworks.wcts.typeDefinitionLanguage.ClassDeclarations
+import de.koalaworks.wcts.typeDefinitionLanguage.ClassificationModel
 
 class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValidator {
 
@@ -17,7 +17,7 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 	private IResourceDescriptions descriptions;
 
 	@Check
-	def ensureUniqeNames(ClassDeclarations classDeclarations) {
+	def ensureUniqeNames(ClassificationModel classDeclarations) {
 		if (isNotYetValidated(classDeclarations)) {
 			val typeNamesInCurrentResource = getTypesByName(classDeclarations)
 			createValidationErrorForDuplicateTypeNames(typeNamesInCurrentResource)
@@ -27,18 +27,18 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 		}
 	}
 	
-	def private isNotYetValidated(ClassDeclarations classDeclarations) {
-		val uri = classDeclarations.eResource.URI.toString
+	def private isNotYetValidated(ClassificationModel classificationModel) {
+		val uri = classificationModel.eResource.URI.toString
 		val notYetValidated = !context.containsKey(uri)
 		if (notYetValidated) {
-			context.put(uri, classDeclarations)
+			context.put(uri, classificationModel)
 		}
 		return notYetValidated
 	}
 
-	def private getTypesByName(ClassDeclarations classDeclarations) {
+	def private getTypesByName(ClassificationModel classificationModel) {
 		val names = HashMultimap.<String, EObject>create()
-			classDeclarations
+			classificationModel
 				.classes
 				.forEach[class | names.put(class.name, class)]
 		return names

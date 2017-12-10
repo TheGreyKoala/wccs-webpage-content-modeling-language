@@ -12,7 +12,7 @@ import org.eclipse.xtext.generator.IGenerator2
 import de.koalaworks.wcts.generator.TypeDefinitionLanguageGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import static org.junit.Assert.assertEquals
-import de.koalaworks.wcts.typeDefinitionLanguage.ClassDeclarations
+import de.koalaworks.wcts.typeDefinitionLanguage.ClassificationModel
 
 @RunWith(XtextRunner)
 @InjectWith(TypeDefinitionLanguageInjectorProvider)
@@ -22,7 +22,7 @@ class TypeDefinitionLanguageGeneratorTest {
 	IGenerator2 generator
 	
 	@Inject
-	extension ParseHelper<ClassDeclarations>
+	extension ParseHelper<ClassificationModel>
 	
 	@Inject
 	extension ValidationTestHelper

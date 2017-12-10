@@ -9,14 +9,14 @@ import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import de.koalaworks.wcts.typeDefinitionLanguage.TypeDefinitionLanguagePackage
 import de.koalaworks.wcts.validation.TypeDefinitionLanguageValidator
-import de.koalaworks.wcts.typeDefinitionLanguage.ClassDeclarations
+import de.koalaworks.wcts.typeDefinitionLanguage.ClassificationModel
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(TypeDefinitionLanguageInjectorProvider)
 class TypeDefinitionLanguageValidatorTest {
 	
 	@Inject
-	extension ParseHelper<ClassDeclarations>
+	extension ParseHelper<ClassificationModel>
 	
 	@Inject
 	extension ValidationTestHelper
