@@ -58,7 +58,7 @@ FeatureType:
 	ContentType | ReferenceType;
 
 FeatureSelector:
-	CssSelector | UrlPatternSelector | XPathSelector;
+	CssSelector | UrlPatternSelector | XPathSelector; // "ContentSelector | ReferenceSelector" causes an ambiguity
 
 terminal SELECTOR_VALUE:
 	'«' (!('\b' | '\f' | '\n' | '\r' | '\t' ))* '»';
