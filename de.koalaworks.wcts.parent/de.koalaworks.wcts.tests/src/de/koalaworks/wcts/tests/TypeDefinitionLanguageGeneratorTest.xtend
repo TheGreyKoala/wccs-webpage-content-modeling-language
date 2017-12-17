@@ -75,11 +75,10 @@ class TypeDefinitionLanguageGeneratorTest {
 		
 		(generator as TypeDefinitionLanguageGenerator).doGenerate("test", definitionsByType, fsa)
 		
-		val actualResult = fsa.allFiles.get(IFileSystemAccess2::DEFAULT_OUTPUT + "test.js").toString
+		val actualResult = fsa.allFiles.get(IFileSystemAccess2::DEFAULT_OUTPUT + "test.json").toString
 		val expectedResult =
 		'''
-		"use strict;"
-		module.exports = {
+		{
 			"pageTypes": {
 				"pType1": {
 					"name": "pType1",
@@ -165,7 +164,7 @@ class TypeDefinitionLanguageGeneratorTest {
 					"selector": {}
 				}
 			}
-		};
+		}
 		'''
 
 		assertEquals(expectedResult, actualResult)

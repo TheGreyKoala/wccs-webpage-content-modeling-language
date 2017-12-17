@@ -57,10 +57,9 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 	}
 	
 	def void doGenerate(String projectName, Map<EClass, List<Class>> typeDefinitionsByType, IFileSystemAccess2 fsa) {
-		fsa.generateFile(projectName + ".js",
+		fsa.generateFile(projectName + ".json",
 			'''
-			"use strict;"
-			module.exports = {
+			{
 				"pageTypes": {
 					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.PAGE_CLASS))»
 				},
@@ -70,7 +69,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 				"referenceTypes": {
 					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.REFERENCE_CLASS))»
 				}
-			};
+			}
 			''')
 	}
 	
