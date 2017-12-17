@@ -60,13 +60,13 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 		fsa.generateFile(projectName + ".json",
 			'''
 			{
-				"pageTypes": {
+				"pageClasses": {
 					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.PAGE_CLASS))»
 				},
-				"contentTypes": {
+				"contentClasses": {
 					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.CONTENT_CLASS))»
 				},
-				"referenceTypes": {
+				"referenceClasses": {
 					«compileTypes(typeDefinitionsByType.get(TypeDefinitionLanguagePackage.Literals.REFERENCE_CLASS))»
 				}
 			}
@@ -146,7 +146,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 	def private compileFeature(Feature feature) {
 		val selectorWrapper = feature.selectorWrapper
 		val collection = feature instanceof CollectionFeature
-		'''"«feature.name»": { "name": "«feature.name.trim»", "type": "«feature.featureClass.typeName.trim»", "isCollection": «collection», "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
+		'''"«feature.name»": { "name": "«feature.name.trim»", "class": "«feature.featureClass.typeName.trim»", "isCollection": «collection», "selector": «IF selectorWrapper.isPresent»«selectorWrapper.compileSelector»«ELSE»{}«ENDIF» }'''
 	}
 	
 	def private dispatch typeName(ContentClass contentType) {

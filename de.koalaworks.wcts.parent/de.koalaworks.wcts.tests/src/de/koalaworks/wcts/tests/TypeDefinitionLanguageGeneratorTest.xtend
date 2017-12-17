@@ -79,7 +79,7 @@ class TypeDefinitionLanguageGeneratorTest {
 		val expectedResult =
 		'''
 		{
-			"pageTypes": {
+			"pageClasses": {
 				"pType1": {
 					"name": "pType1",
 					"selector": { "type": "UrlPatternSelector", "value": "\\\/service\\?q=\\$test\\$$" },
@@ -92,23 +92,23 @@ class TypeDefinitionLanguageGeneratorTest {
 					"name": "pType2",
 					"selector": { "type": "UrlPatternSelector", "value": "http:\\\/\\\/www\\.mysite\\.de\\\/" },
 					"contents": {
-						"pType2_f1": { "name": "pType2_f1", "type": "cType2", "isCollection": false, "selector": {} },
-						"pType2_f2": { "name": "pType2_f2", "type": "cType3", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f2" } },
-						"pType2_f3": { "name": "pType2_f3", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f3" } },
-						"pType2_f8": { "name": "pType2_f8", "type": "cType2", "isCollection": true, "selector": {} },
-						"pType2_f9": { "name": "pType2_f9", "type": "cType2", "isCollection": true, "selector": { "type": "CssSelector", "value": "div.pType2.f9" } }
+						"pType2_f1": { "name": "pType2_f1", "class": "cType2", "isCollection": false, "selector": {} },
+						"pType2_f2": { "name": "pType2_f2", "class": "cType3", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f2" } },
+						"pType2_f3": { "name": "pType2_f3", "class": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f3" } },
+						"pType2_f8": { "name": "pType2_f8", "class": "cType2", "isCollection": true, "selector": {} },
+						"pType2_f9": { "name": "pType2_f9", "class": "cType2", "isCollection": true, "selector": { "type": "CssSelector", "value": "div.pType2.f9" } }
 					},
 					"references": {
-						"pType2_f4": { "name": "pType2_f4", "type": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f4" } },
-						"pType2_f5": { "name": "pType2_f5", "type": "rType1", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f5" } },
-						"pType2_f6": { "name": "pType2_f6", "type": "rType2", "isCollection": false, "selector": {} },
-						"pType2_f7": { "name": "pType2_f7", "type": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f7" } },
-						"pType2_f10": { "name": "pType2_f10", "type": "rType2", "isCollection": true, "selector": {} },
-						"pType2_f11": { "name": "pType2_f11", "type": "rType2", "isCollection": true, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f11" } }
+						"pType2_f4": { "name": "pType2_f4", "class": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.pType2.f4" } },
+						"pType2_f5": { "name": "pType2_f5", "class": "rType1", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f5" } },
+						"pType2_f6": { "name": "pType2_f6", "class": "rType2", "isCollection": false, "selector": {} },
+						"pType2_f7": { "name": "pType2_f7", "class": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f7" } },
+						"pType2_f10": { "name": "pType2_f10", "class": "rType2", "isCollection": true, "selector": {} },
+						"pType2_f11": { "name": "pType2_f11", "class": "rType2", "isCollection": true, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/pType2\/f11" } }
 					}
 				}
 			},
-			"contentTypes": {
+			"contentClasses": {
 				"cType1": {
 					"name": "cType1",
 					"selector": {},
@@ -129,24 +129,24 @@ class TypeDefinitionLanguageGeneratorTest {
 					"name": "cType3",
 					"selector": {},
 					"contents": {
-						"cType3_f1": { "name": "cType3_f1", "type": "cType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f1" } },
-						"cType3_f2": { "name": "cType3_f2", "type": "cType2", "isCollection": false, "selector": {} },
-						"cType3_f6": { "name": "cType3_f6", "type": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f6" } },
-						"cType3_f9": { "name": "cType3_f9", "type": "cType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": ".\/\/h4" } },
-						"cType3_f10": { "name": "cType3_f10", "type": "cType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } }
+						"cType3_f1": { "name": "cType3_f1", "class": "cType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f1" } },
+						"cType3_f2": { "name": "cType3_f2", "class": "cType2", "isCollection": false, "selector": {} },
+						"cType3_f6": { "name": "cType3_f6", "class": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f6" } },
+						"cType3_f9": { "name": "cType3_f9", "class": "cType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": ".\/\/h4" } },
+						"cType3_f10": { "name": "cType3_f10", "class": "cType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } }
 					},
 					"references": {
-						"cType3_f3": { "name": "cType3_f3", "type": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f3" } },
-						"cType3_f4": { "name": "cType3_f4", "type": "rType1", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f4" } },
-						"cType3_f5": { "name": "cType3_f5", "type": "rType2", "isCollection": false, "selector": {} },
-						"cType3_f7": { "name": "cType3_f7", "type": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f7" } },
-						"cType3_f8": { "name": "cType3_f8", "type": "rType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f8" } },
-						"cType3_f11": { "name": "cType3_f11", "type": "rType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": ".\/\/h4" } },
-						"cType3_f12": { "name": "cType3_f12", "type": "rType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } }
+						"cType3_f3": { "name": "cType3_f3", "class": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f3" } },
+						"cType3_f4": { "name": "cType3_f4", "class": "rType1", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f4" } },
+						"cType3_f5": { "name": "cType3_f5", "class": "rType2", "isCollection": false, "selector": {} },
+						"cType3_f7": { "name": "cType3_f7", "class": "rType2", "isCollection": false, "selector": { "type": "UrlPatternSelector", "value": "http:\/\/cType3\/f7" } },
+						"cType3_f8": { "name": "cType3_f8", "class": "rType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f8" } },
+						"cType3_f11": { "name": "cType3_f11", "class": "rType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": ".\/\/h4" } },
+						"cType3_f12": { "name": "cType3_f12", "class": "rType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } }
 					}
 				}
 			},
-			"referenceTypes": {
+			"referenceClasses": {
 				"rType1": {
 					"name": "rType1",
 					"selector": {}
