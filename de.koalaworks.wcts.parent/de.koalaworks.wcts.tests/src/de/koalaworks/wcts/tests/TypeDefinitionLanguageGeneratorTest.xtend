@@ -63,6 +63,7 @@ class TypeDefinitionLanguageGeneratorTest {
 			          cType3_f10 as many cType1 each by xpath «SELECTOR_START».//cType3/f10«SELECTOR_END»
 			          cType3_f11 as rType1 by xpath «SELECTOR_START».//h4«SELECTOR_END»
 			          cType3_f12 as many rType1 each by xpath «SELECTOR_START».//cType3/f10«SELECTOR_END»
+			          cType3_f13 as cType1 by xpath «SELECTOR_START»substring-before(substring-after(.//div[2]/div[@class="team-member-des"], "Tel.: "), "\n")«SELECTOR_END»
 		reference class rType1
 		reference class rType2 is recognized by css «SELECTOR_START»div.r2[data-test='abc']«SELECTOR_END»
 		reference class rType3 is recognized by url pattern «SELECTOR_START»http://rType3«SELECTOR_END»
@@ -133,7 +134,8 @@ class TypeDefinitionLanguageGeneratorTest {
 						"cType3_f2": { "name": "cType3_f2", "class": "cType2", "isCollection": false, "selector": {} },
 						"cType3_f6": { "name": "cType3_f6", "class": "cType2", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f6" } },
 						"cType3_f9": { "name": "cType3_f9", "class": "cType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": ".\/\/h4" } },
-						"cType3_f10": { "name": "cType3_f10", "class": "cType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } }
+						"cType3_f10": { "name": "cType3_f10", "class": "cType1", "isCollection": true, "selector": { "type": "XPathSelector", "value": ".\/\/cType3\/f10" } },
+						"cType3_f13": { "name": "cType3_f13", "class": "cType1", "isCollection": false, "selector": { "type": "XPathSelector", "value": "substring-before(substring-after(.\/\/div[2]\/div[@class=\"team-member-des\"], \"Tel.: \"), \"\n\")" } }
 					},
 					"references": {
 						"cType3_f3": { "name": "cType3_f3", "class": "rType1", "isCollection": false, "selector": { "type": "CssSelector", "value": "div.cType3.f3" } },
