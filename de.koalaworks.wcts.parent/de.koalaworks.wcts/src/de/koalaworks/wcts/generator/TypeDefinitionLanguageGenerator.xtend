@@ -76,7 +76,7 @@ class TypeDefinitionLanguageGenerator extends AbstractGenerator {
 	def private compileTypes(List<Class> types) {
 		if (!types.isNullOrEmpty) {
 			val List<CharSequence> compiledTypes = new ArrayList(types.size)
-			for (type : types) {
+			for (type : types.sortInplaceBy[c | c.name]) {
 				compiledTypes.add(compileType(type))
 			}
 			return String.join(",\n", compiledTypes)
