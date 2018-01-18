@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.koalaworks.wccs.wcml.ui
-Bundle-Vendor: My Company
+Bundle-Vendor: Tim Gremplewski
 Bundle-Version: 1.0.0
 Bundle-SymbolicName: de.koalaworks.wccs.wcml.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
