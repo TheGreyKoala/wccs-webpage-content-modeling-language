@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.koalaworks.wccs.wcml</groupId>
 		<artifactId>de.koalaworks.wccs.wcml.parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>de.koalaworks.wccs.wcml.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>

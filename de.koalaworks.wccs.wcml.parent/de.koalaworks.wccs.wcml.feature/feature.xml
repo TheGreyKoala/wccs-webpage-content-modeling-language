@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature id="de.koalaworks.wccs.wcml.feature"
 	label="WebContentModelingLanguage Feature "
-	version="1.0.0.qualifier">
+	version="1.0.0">
 	<plugin
 			id="de.koalaworks.wccs.wcml"
 			download-size="0"

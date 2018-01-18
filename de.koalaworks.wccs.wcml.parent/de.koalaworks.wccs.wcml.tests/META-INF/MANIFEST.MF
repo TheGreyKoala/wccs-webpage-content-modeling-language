@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.koalaworks.wccs.wcml.tests
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-SymbolicName: de.koalaworks.wccs.wcml.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.koalaworks.wccs.wcml,
