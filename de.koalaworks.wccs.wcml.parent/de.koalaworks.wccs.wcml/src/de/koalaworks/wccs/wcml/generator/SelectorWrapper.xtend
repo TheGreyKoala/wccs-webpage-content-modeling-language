@@ -1,8 +1,8 @@
 package de.koalaworks.wccs.wcml.generator
 
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.CssSelector
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.UrlPatternSelector
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.XPathSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.CssSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.UrlPatternSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.XPathSelector
 
 class SelectorWrapper {
 	private val String typeName

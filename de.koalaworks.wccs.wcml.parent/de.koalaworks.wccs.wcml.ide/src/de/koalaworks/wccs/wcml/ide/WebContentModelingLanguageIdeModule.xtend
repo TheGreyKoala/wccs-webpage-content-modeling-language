@@ -7,5 +7,5 @@ package de.koalaworks.wccs.wcml.ide
 /**
  * Use this class to register ide components.
  */
-class TypeDefinitionLanguageIdeModule extends AbstractTypeDefinitionLanguageIdeModule {
+class WebContentModelingLanguageIdeModule extends AbstractWebContentModelingLanguageIdeModule {
 }

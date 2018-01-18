@@ -10,9 +10,9 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeI
  * Use this class to register components to be used within the Eclipse IDE.
  */
 @FinalFieldsConstructor
-class TypeDefinitionLanguageUiModule extends AbstractTypeDefinitionLanguageUiModule {
+class WebContentModelingLanguageUiModule extends AbstractWebContentModelingLanguageUiModule {
 	
 	def Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
-		return TypeDefinitionLanguageAntlrTokenToAttributeIdMapper
+		return WebContentModelingLanguageAntlrTokenToAttributeIdMapper
 	}
 }

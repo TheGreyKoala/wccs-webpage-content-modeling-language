@@ -3,15 +3,15 @@ package de.koalaworks.wccs.wcml.validation
 import org.eclipse.xtext.validation.Check
 import com.google.inject.Inject
 import org.eclipse.xtext.resource.IResourceDescriptions
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.TypeDefinitionLanguagePackage
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.WebContentModelingLanguagePackage
 import org.eclipse.emf.ecore.EObject
 import com.google.common.collect.HashMultimap
 import com.google.common.collect.Multimap
 import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.emf.ecore.resource.Resource
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.ClassificationModel
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.ClassificationModel
 
-class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValidator {
+class GlobalNamesAreUniqueValidator extends AbstractWebContentModelingLanguageValidator {
 
 	@Inject
 	private IResourceDescriptions descriptions;
@@ -49,7 +49,7 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 			.values
 			.filter[definitionsList | definitionsList.size > 1]
 			.flatten
-			.forEach[definition | error("A type with this name is already defined in this file.", definition, TypeDefinitionLanguagePackage.Literals.CLASS__NAME, "duplicate_type_definition")]
+			.forEach[definition | error("A type with this name is already defined in this file.", definition, WebContentModelingLanguagePackage.Literals.CLASS__NAME, "duplicate_type_definition")]
 	}
 
 	def private getAllResourceDescriptionsButFor(Resource resource) {
@@ -71,7 +71,7 @@ class GlobalNamesAreUniqueValidator extends AbstractTypeDefinitionLanguageValida
 		typeNames.forEach[typeName | {
 			if (typesByName.containsKey(typeName)) {
 				typesByName.get(typeName).forEach[type | {
-					error("A type with this name is already defined in " + resourceDescription.URI.toPlatformString(true) + ".", type, TypeDefinitionLanguagePackage.Literals.CLASS__NAME, "duplicate_type_definition")
+					error("A type with this name is already defined in " + resourceDescription.URI.toPlatformString(true) + ".", type, WebContentModelingLanguagePackage.Literals.CLASS__NAME, "duplicate_type_definition")
 				}]
 			}
 		}]

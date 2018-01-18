@@ -13,7 +13,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#content-assist
  * on how to customize the content assistant.
  */
-class TypeDefinitionLanguageProposalProvider extends AbstractTypeDefinitionLanguageProposalProvider {
+class WebContentModelingLanguageProposalProvider extends AbstractWebContentModelingLanguageProposalProvider {
 		
 	override void complete_SELECTOR_VALUE(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		val proposal = createCompletionProposal("«  »", "Selector («  »)", null, context) as ConfigurableCompletionProposal

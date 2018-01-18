@@ -7,9 +7,9 @@ package de.koalaworks.wccs.wcml
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
-class TypeDefinitionLanguageStandaloneSetup extends TypeDefinitionLanguageStandaloneSetupGenerated {
+class WebContentModelingLanguageStandaloneSetup extends WebContentModelingLanguageStandaloneSetupGenerated {
 
 	def static void doSetup() {
-		new TypeDefinitionLanguageStandaloneSetup().createInjectorAndDoEMFRegistration()
+		new WebContentModelingLanguageStandaloneSetup().createInjectorAndDoEMFRegistration()
 	}
 }

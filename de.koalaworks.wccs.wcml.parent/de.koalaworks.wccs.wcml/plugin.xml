@@ -3,8 +3,8 @@
 <plugin>
 	<extension point="org.eclipse.emf.ecore.generated_package">
 		<package 
-			uri = "http://www.koalaworks.de/wccs/wcml/TypeDefinitionLanguage"
-			class = "de.koalaworks.wccs.wcml.typeDefinitionLanguage.TypeDefinitionLanguagePackage"
-			genModel = "model/generated/TypeDefinitionLanguage.genmodel" />
+			uri = "http://www.koalaworks.de/wccs/wcml/WebContentModelingLanguage"
+			class = "de.koalaworks.wccs.wcml.webContentModelingLanguage.WebContentModelingLanguagePackage"
+			genModel = "model/generated/WebContentModelingLanguage.genmodel" />
 	</extension>
 </plugin>

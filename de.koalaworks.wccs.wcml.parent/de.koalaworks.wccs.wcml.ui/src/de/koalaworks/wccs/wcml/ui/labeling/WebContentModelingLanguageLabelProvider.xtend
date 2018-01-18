@@ -12,7 +12,7 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
  * 
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#label-provider
  */
-class TypeDefinitionLanguageLabelProvider extends DefaultEObjectLabelProvider {
+class WebContentModelingLanguageLabelProvider extends DefaultEObjectLabelProvider {
 
 	@Inject
 	new(AdapterFactoryLabelProvider delegate) {

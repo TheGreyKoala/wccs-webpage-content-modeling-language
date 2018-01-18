@@ -4,48 +4,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
-			extensions="wcml"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			name="TypeDefinitionLanguage Editor">
+			extensions="wcm"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			name="WebContentModelingLanguage Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+					definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.validate">
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.validate">
 		<activeWhen>
 			<reference
-					definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+					definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 			</reference>
 		</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened" />
+				<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.XtextEditor.opened" />
+					<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+		<definition id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
+						value="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
 		</definition>
-		<definition id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.XtextEditor.opened">
+		<definition id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
+						value="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
@@ -78,33 +78,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			name="TypeDefinitionLanguage">
-			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"/>
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			name="WebContentModelingLanguage">
+			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"/>
 		</page>
 		<page
-			category="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.coloring"
+			category="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"/>
+			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"/>
 		</page>
 		<page
-			category="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.templates"
+			category="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.templates"
 			name="Templates">
-			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"/>
+			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			name="TypeDefinitionLanguage">
-			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"/>
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			name="WebContentModelingLanguage">
+			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -114,14 +114,14 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"
-			label="TypeDefinitionLanguage"/>
+			id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"
+			label="WebContentModelingLanguage"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 	<command
 			description="Trigger expensive validation"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.validate"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.validate"
 			name="Validate">
 	</command>
 	<!-- copy qualified name -->
@@ -142,12 +142,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			 <command
-				 commandId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.validate"
+				 commandId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.validate"
 				 style="push"
 				 tooltip="Trigger expensive validation">
 			<visibleWhen checkEnabled="false">
 				<reference
-					definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+					definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 				</reference>
 			</visibleWhen>
 		</command>
@@ -157,7 +157,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened" />
+					<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -165,7 +165,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened" />
+					<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.XtextEditor.opened" />
+						<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+					<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -195,11 +195,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+					definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -208,59 +208,59 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="wcml">
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="wcm">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-			uriExtension="wcml">
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="wcm">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for de.koalaworks.wccs.wcml.TypeDefinitionLanguage -->
+	<!-- marker definitions for de.koalaworks.wccs.wcml.WebContentModelingLanguage -->
 	<extension
 			id="typedefinitionlanguage.check.fast"
-			name="TypeDefinitionLanguage Problem"
+			name="WebContentModelingLanguage Problem"
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.fast"/>
 		<persistent value="true"/>
 	</extension>
 	<extension
 			id="typedefinitionlanguage.check.normal"
-			name="TypeDefinitionLanguage Problem"
+			name="WebContentModelingLanguage Problem"
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.normal"/>
 		<persistent value="true"/>
 	</extension>
 	<extension
 			id="typedefinitionlanguage.check.expensive"
-			name="TypeDefinitionLanguage Problem"
+			name="WebContentModelingLanguage Problem"
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-			fileExtensions="wcml"/>
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			fileExtensions="wcm"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.compiler.preferencePage"
+			category="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"/>
+			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.compiler.propertyPage"
+			category="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"/>
+			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -271,20 +271,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.OpenGeneratedCode"
+				id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened" />
+					<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened" />
+				<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -292,11 +292,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+					definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -316,16 +316,16 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened"/>
+					<reference definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for de.koalaworks.wccs.wcml.TypeDefinitionLanguage -->
+	<!-- quickfix marker resolution generator for de.koalaworks.wccs.wcml.WebContentModelingLanguage -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="de.koalaworks.wccs.wcml.ui.typedefinitionlanguage.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
@@ -333,7 +333,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="de.koalaworks.wccs.wcml.ui.typedefinitionlanguage.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
@@ -341,7 +341,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="de.koalaworks.wccs.wcml.ui.typedefinitionlanguage.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
@@ -352,11 +352,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+					definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -368,7 +368,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.Editor.opened">
+						definitionId="de.koalaworks.wccs.wcml.WebContentModelingLanguage.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -376,34 +376,34 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="de.koalaworks.wccs.wcml.TypeDefinitionLanguage"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.refactoring"
+			category="de.koalaworks.wccs.wcml.WebContentModelingLanguage"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.refactoring"
 			name="Refactoring">
-			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_TypeDefinitionLanguage"/>
+			<keywordReference id="de.koalaworks.wccs.wcml.ui.keyword_WebContentModelingLanguage"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.compare.contentViewers"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="wcml">
+		<viewer id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.compare.contentViewers"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="wcm">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.compare.contentMergeViewers"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="wcml" label="TypeDefinitionLanguage Compare">
+		<viewer id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.compare.contentMergeViewers"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="wcm" label="WebContentModelingLanguage Compare">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="de.koalaworks.wccs.wcml.TypeDefinitionLanguage.editors.documentProviders"
-			class="de.koalaworks.wccs.wcml.ui.TypeDefinitionLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-			extensions="wcml">
+		<provider id="de.koalaworks.wccs.wcml.WebContentModelingLanguage.editors.documentProviders"
+			class="de.koalaworks.wccs.wcml.ui.WebContentModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+			extensions="wcm">
 		</provider>
 	</extension>
 	<extension point="org.eclipse.team.core.fileTypes">
 		<fileTypes
-			extension="wcml"
+			extension="wcm"
 			type="text">
 		</fileTypes>
 	</extension>

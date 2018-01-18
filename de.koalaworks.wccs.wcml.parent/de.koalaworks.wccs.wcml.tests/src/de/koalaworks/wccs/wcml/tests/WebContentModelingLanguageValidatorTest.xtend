@@ -7,13 +7,13 @@ import javax.inject.Inject
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.TypeDefinitionLanguagePackage
-import de.koalaworks.wccs.wcml.validation.TypeDefinitionLanguageValidator
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.ClassificationModel
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.WebContentModelingLanguagePackage
+import de.koalaworks.wccs.wcml.validation.WebContentModelingLanguageValidator
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.ClassificationModel
 
 @RunWith(typeof(XtextRunner))
-@InjectWith(TypeDefinitionLanguageInjectorProvider)
-class TypeDefinitionLanguageValidatorTest {
+@InjectWith(WebContentModelingLanguageInjectorProvider)
+class WebContentModelingLanguageValidatorTest {
 	
 	@Inject
 	extension ParseHelper<ClassificationModel>
@@ -36,14 +36,14 @@ class TypeDefinitionLanguageValidatorTest {
 		'''.parse
 
 		result.assertError(
-			TypeDefinitionLanguagePackage::eINSTANCE.feature,
-			TypeDefinitionLanguageValidator::NO_INFERABLE_FEATURE_SELECTOR,
+			WebContentModelingLanguagePackage::eINSTANCE.feature,
+			WebContentModelingLanguageValidator::NO_INFERABLE_FEATURE_SELECTOR,
 			"f1 requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the class cType1."
 		);
 		
 		result.assertError(
-			TypeDefinitionLanguagePackage::eINSTANCE.feature,
-			TypeDefinitionLanguageValidator::NO_INFERABLE_FEATURE_SELECTOR,
+			WebContentModelingLanguagePackage::eINSTANCE.feature,
+			WebContentModelingLanguageValidator::NO_INFERABLE_FEATURE_SELECTOR,
 			"f2 requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the class rType1."
 		);
 	}
@@ -59,8 +59,8 @@ class TypeDefinitionLanguageValidatorTest {
 		'''.parse
 		
 		result.assertError(
-			TypeDefinitionLanguagePackage::eINSTANCE.feature,
-			TypeDefinitionLanguageValidator::INVALID_CUSTOM_FEATURE_SELECTOR,
+			WebContentModelingLanguagePackage::eINSTANCE.feature,
+			WebContentModelingLanguageValidator::INVALID_CUSTOM_FEATURE_SELECTOR,
 			"Content can not be recognized by an url pattern."
 		);
 	}
@@ -73,8 +73,8 @@ class TypeDefinitionLanguageValidatorTest {
 		'''.parse
 		
 		result.assertError(
-			TypeDefinitionLanguagePackage::eINSTANCE.cssSelector,
-			TypeDefinitionLanguageValidator::EMPTY_CSS_SELECTOR,
+			WebContentModelingLanguagePackage::eINSTANCE.cssSelector,
+			WebContentModelingLanguageValidator::EMPTY_CSS_SELECTOR,
 			"Selector must not be empty."
 		);
 	}
@@ -87,8 +87,8 @@ class TypeDefinitionLanguageValidatorTest {
 		'''.parse
 		
 		result.assertError(
-			TypeDefinitionLanguagePackage::eINSTANCE.urlPatternSelector,
-			TypeDefinitionLanguageValidator::EMPTY_URL_PATTERN_SELECTOR,
+			WebContentModelingLanguagePackage::eINSTANCE.urlPatternSelector,
+			WebContentModelingLanguageValidator::EMPTY_URL_PATTERN_SELECTOR,
 			"Selector must not be empty."
 		);
 	}
@@ -101,8 +101,8 @@ class TypeDefinitionLanguageValidatorTest {
 		'''.parse
 		
 		result.assertError(
-			TypeDefinitionLanguagePackage::eINSTANCE.XPathSelector,
-			TypeDefinitionLanguageValidator::EMPTY_XPATH_SELECTOR,
+			WebContentModelingLanguagePackage::eINSTANCE.XPathSelector,
+			WebContentModelingLanguageValidator::EMPTY_XPATH_SELECTOR,
 			"Selector must not be empty."
 		);
 	}

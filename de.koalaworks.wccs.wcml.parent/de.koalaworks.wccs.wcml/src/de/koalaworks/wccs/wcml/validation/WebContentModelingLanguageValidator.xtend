@@ -4,16 +4,16 @@
 package de.koalaworks.wccs.wcml.validation
 
 import org.eclipse.xtext.validation.Check
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.Feature
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.TypeDefinitionLanguagePackage
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.ContentSelector
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.ReferenceSelector
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.UrlPatternSelector
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.CssSelector
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.XPathSelector
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.ContentClass
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.ReferenceClass
-import de.koalaworks.wccs.wcml.typeDefinitionLanguage.FeatureClass
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.Feature
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.WebContentModelingLanguagePackage
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.ContentSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.ReferenceSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.UrlPatternSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.CssSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.XPathSelector
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.ContentClass
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.ReferenceClass
+import de.koalaworks.wccs.wcml.webContentModelingLanguage.FeatureClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature
  *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
-class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageValidator {
+class WebContentModelingLanguageValidator extends AbstractWebContentModelingLanguageValidator {
 	
 	public static val NO_INFERABLE_FEATURE_SELECTOR = 'noInferableFeatureSelector'
 	public static val INVALID_CUSTOM_FEATURE_SELECTOR = 'invalidCustomFeatureSelector'
@@ -33,17 +33,17 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 
 	@Check
 	def ensureNonEmptyCssSelector(CssSelector selector) {
-		ensureNonEmptySelector(selector.definition, selector, TypeDefinitionLanguagePackage.Literals.CSS_SELECTOR__DEFINITION, EMPTY_CSS_SELECTOR)
+		ensureNonEmptySelector(selector.definition, selector, WebContentModelingLanguagePackage.Literals.CSS_SELECTOR__DEFINITION, EMPTY_CSS_SELECTOR)
 	}
 	
 	@Check
 	def ensureNonEmptyUrlPatternSelector(UrlPatternSelector selector) {
-		ensureNonEmptySelector(selector.definition, selector, TypeDefinitionLanguagePackage.Literals.URL_PATTERN_SELECTOR__DEFINITION, EMPTY_URL_PATTERN_SELECTOR)
+		ensureNonEmptySelector(selector.definition, selector, WebContentModelingLanguagePackage.Literals.URL_PATTERN_SELECTOR__DEFINITION, EMPTY_URL_PATTERN_SELECTOR)
 	}
 	
 	@Check
 	def ensureNonEmptyXPathSelector(XPathSelector selector) {
-		ensureNonEmptySelector(selector.definition, selector, TypeDefinitionLanguagePackage.Literals.XPATH_SELECTOR__DEFINITION, EMPTY_XPATH_SELECTOR)
+		ensureNonEmptySelector(selector.definition, selector, WebContentModelingLanguagePackage.Literals.XPATH_SELECTOR__DEFINITION, EMPTY_XPATH_SELECTOR)
 	}
 	
 	private def ensureNonEmptySelector(String definition, EObject source, EStructuralFeature feature, String code) {
@@ -56,7 +56,7 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	def ensureInferableFeatureSelector(Feature feature) {
 		if (feature.noInferableSelector) {
 			error(feature.name + " requires an inferable selector. Either specify a selector for this particular feature, or a default selector for the class " + feature.featureClass.name + ".",
-				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
+				feature, WebContentModelingLanguagePackage.Literals.FEATURE__SELECTOR,
 				NO_INFERABLE_FEATURE_SELECTOR
 			);
 		}
@@ -66,7 +66,7 @@ class TypeDefinitionLanguageValidator extends AbstractTypeDefinitionLanguageVali
 	def ensureFeatureSelectorTypeMatch(Feature feature) {
 		if (feature.selector !== null && !(feature.featureClass.selectorType as Class).isAssignableFrom(feature.selector.class)) {
 			error(feature.featureClass.displayName + " can not be recognized by " + feature.selector.messageSuffix + ".",
-				feature, TypeDefinitionLanguagePackage.Literals.FEATURE__SELECTOR,
+				feature, WebContentModelingLanguagePackage.Literals.FEATURE__SELECTOR,
 				INVALID_CUSTOM_FEATURE_SELECTOR
 			);
 		}
