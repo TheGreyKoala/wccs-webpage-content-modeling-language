@@ -18,22 +18,19 @@ class WebContentModelingLanguageTerminalConverters extends DefaultTerminalConver
 			.addEscape('"', "\\\"")
 			.addEscape('\\', "\\\\")
 			.addEscape('/', "\\/")
-			.addEscape('\u0008', "\\b")
-			.addEscape('\u000C', "\\f")
-			.addEscape('\u000A', "\\n")
-			.addEscape('\u000D', "\\r")
-			.addEscape('\u0009', "\\t")
 			.build
-	
+
+	/*
+	 * XPath does not know escape sequences like \n.
+	 * And XPath 1.0 (that is used by document.evaluate) does not know codepoints-to-string either.
+	 * Therefore it is not possible write line feeds etc. in an one line expression.
+	 * But we can still achieve this, by not escaping the backslash.
+	 * E.g. \n will be literally included in the generated json and the xpath expressions will therefore match a line feed.
+	 */
 	private static val Escaper xpathEscaper
 		= Escapers.builder()
 			.addEscape('"', "\\\"")
 			.addEscape('/', "\\/")
-			.addEscape('\u0008', "\\b")
-			.addEscape('\u000C', "\\f")
-			.addEscape('\u000A', "\\n")
-			.addEscape('\u000D', "\\r")
-			.addEscape('\u0009', "\\t")
 			.build
 
 	@ValueConverter(rule = "SELECTOR_VALUE")
