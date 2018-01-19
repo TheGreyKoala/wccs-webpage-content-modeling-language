@@ -21,6 +21,7 @@
 		<module>de.koalaworks.wccs.wcml.feature</module>
 		<module>de.koalaworks.wccs.wcml.tests</module>
 		<module>de.koalaworks.wccs.wcml.ui.tests</module>
+		<module>de.koalaworks.wccs.wcml.distribution</module>
 	</modules>
 	<build>
 		<plugins>

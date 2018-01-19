@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="de.koalaworks.wccs.wcml.feature">
+      <category name="de.koalaworks.wccs"/>
+   </feature>
+   <category-def name="de.koalaworks.wccs" label="Web Content Classification System">
+      <description>
+         Plugins for the Web Content Classification Service.
+      </description>
+   </category-def>
+</site>
