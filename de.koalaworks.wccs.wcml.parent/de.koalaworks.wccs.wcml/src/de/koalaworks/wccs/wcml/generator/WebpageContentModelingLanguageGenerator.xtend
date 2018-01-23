@@ -11,27 +11,27 @@ import com.google.inject.Inject
 import org.eclipse.xtext.resource.IResourceDescriptions
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.IContainer
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.Class
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.Class
 import java.util.List
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.WebContentModelingLanguagePackage
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.WebpageContentModelingLanguagePackage
 import java.util.ArrayList
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.Feature
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.CollectionFeature
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.Feature
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.CollectionFeature
 import java.util.Collections
 import org.eclipse.emf.ecore.EClass
 import java.util.Map
 import de.koalaworks.wccs.wcml.generator.SelectorWrapper
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.FeatureCapableClass
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.ReferenceClass
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.PageClass
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.ContentClass
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.FeatureCapableClass
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.ReferenceClass
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.PageClass
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.ContentClass
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class WebContentModelingLanguageGenerator extends AbstractGenerator {
+class WebpageContentModelingLanguageGenerator extends AbstractGenerator {
 
 	@Inject
 	private IResourceDescriptions descriptions;
@@ -61,13 +61,13 @@ class WebContentModelingLanguageGenerator extends AbstractGenerator {
 			'''
 			{
 				"pageClasses": {
-					«compileTypes(typeDefinitionsByType.get(WebContentModelingLanguagePackage.Literals.PAGE_CLASS))»
+					«compileTypes(typeDefinitionsByType.get(WebpageContentModelingLanguagePackage.Literals.PAGE_CLASS))»
 				},
 				"contentClasses": {
-					«compileTypes(typeDefinitionsByType.get(WebContentModelingLanguagePackage.Literals.CONTENT_CLASS))»
+					«compileTypes(typeDefinitionsByType.get(WebpageContentModelingLanguagePackage.Literals.CONTENT_CLASS))»
 				},
 				"referenceClasses": {
-					«compileTypes(typeDefinitionsByType.get(WebContentModelingLanguagePackage.Literals.REFERENCE_CLASS))»
+					«compileTypes(typeDefinitionsByType.get(WebpageContentModelingLanguagePackage.Literals.REFERENCE_CLASS))»
 				}
 			}
 			''')
@@ -95,10 +95,10 @@ class WebContentModelingLanguageGenerator extends AbstractGenerator {
 			"name": "«type.name.trim»",
 			"selector": «IF selector.isPresent»«selector.compileSelector»«ELSE»{}«ENDIF»,
 			"contents": {
-				«compileFeatures(featuresByType.get(WebContentModelingLanguagePackage.Literals.CONTENT_CLASS))»
+				«compileFeatures(featuresByType.get(WebpageContentModelingLanguagePackage.Literals.CONTENT_CLASS))»
 			}«IF !(type instanceof ReferenceClass)»,
 			"references": {
-				«compileFeatures(featuresByType.get(WebContentModelingLanguagePackage.Literals.REFERENCE_CLASS))»
+				«compileFeatures(featuresByType.get(WebpageContentModelingLanguagePackage.Literals.REFERENCE_CLASS))»
 			}«ENDIF»
 		}'''
 	}

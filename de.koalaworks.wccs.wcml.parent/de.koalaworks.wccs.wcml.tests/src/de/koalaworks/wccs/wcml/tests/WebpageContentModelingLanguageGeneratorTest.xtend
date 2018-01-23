@@ -9,14 +9,14 @@ import org.junit.Test
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator2
-import de.koalaworks.wccs.wcml.generator.WebContentModelingLanguageGenerator
+import de.koalaworks.wccs.wcml.generator.WebpageContentModelingLanguageGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import static org.junit.Assert.assertEquals
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.ClassificationModel
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.ClassificationModel
 
 @RunWith(XtextRunner)
-@InjectWith(WebContentModelingLanguageInjectorProvider)
-class WebContentModelingLanguageGeneratorTest {
+@InjectWith(WebpageContentModelingLanguageInjectorProvider)
+class WebpageContentModelingLanguageGeneratorTest {
 	
 	@Inject
 	IGenerator2 generator
@@ -74,7 +74,7 @@ class WebContentModelingLanguageGeneratorTest {
 		val fsa = new InMemoryFileSystemAccess()	
 		val definitionsByType = result.classes.groupBy[class | class.eClass]
 		
-		(generator as WebContentModelingLanguageGenerator).doGenerate("test", definitionsByType, fsa)
+		(generator as WebpageContentModelingLanguageGenerator).doGenerate("test", definitionsByType, fsa)
 		
 		val actualResult = fsa.allFiles.get(IFileSystemAccess2::DEFAULT_OUTPUT + "test.json").toString
 		val expectedResult =

@@ -1,13 +1,13 @@
 package de.koalaworks.wccs.wcml.validation
 
-import de.koalaworks.wccs.wcml.validation.AbstractWebContentModelingLanguageValidator
+import de.koalaworks.wccs.wcml.validation.AbstractWebpageContentModelingLanguageValidator
 import org.eclipse.xtext.validation.Check
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.Feature
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.Feature
 import com.google.common.collect.HashMultimap
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.WebContentModelingLanguagePackage
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.FeatureCapableClass
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.WebpageContentModelingLanguagePackage
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.FeatureCapableClass
 
-class FeatureNameValidator extends AbstractWebContentModelingLanguageValidator {
+class FeatureNameValidator extends AbstractWebpageContentModelingLanguageValidator {
 	
 	@Check
 	def ensureUniqueFeatureNames(FeatureCapableClass type) {
@@ -19,6 +19,6 @@ class FeatureNameValidator extends AbstractWebContentModelingLanguageValidator {
 			.values
 			.filter[featureList | featureList.size > 1]
 			.flatten
-			.forEach[feature | error("Feature names must be unique within a type.", feature, WebContentModelingLanguagePackage.Literals.FEATURE__NAME, "duplicate_feature_name")]
+			.forEach[feature | error("Feature names must be unique within a type.", feature, WebpageContentModelingLanguagePackage.Literals.FEATURE__NAME, "duplicate_feature_name")]
 	}
 }

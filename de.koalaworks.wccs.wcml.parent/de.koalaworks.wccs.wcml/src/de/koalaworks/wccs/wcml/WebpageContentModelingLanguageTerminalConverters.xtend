@@ -7,9 +7,9 @@ import org.eclipse.xtext.conversion.ValueConverterException
 import org.eclipse.xtext.nodemodel.INode
 import com.google.common.escape.Escaper
 import com.google.common.escape.Escapers
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.XPathSelector
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.XPathSelector
 
-class WebContentModelingLanguageTerminalConverters extends DefaultTerminalConverters {
+class WebpageContentModelingLanguageTerminalConverters extends DefaultTerminalConverters {
 
 	// Escape characters in json http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf
 

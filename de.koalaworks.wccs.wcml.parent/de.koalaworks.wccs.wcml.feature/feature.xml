@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="de.koalaworks.wccs.wcml.feature"
-      label="Web Content Modeling Language"
+      label="Webpage Content Modeling Language"
       version="1.0.0"
       provider-name="Tim Gremplewski"
       plugin="de.koalaworks.wccs.wcml">
 
    <description>
-      The Web Content Modeling Language can be used to write classification models for the Web Content Classification System.
+      The Webpage Content Modeling Language can be used to write classification models for the Webpage Content Classification System.
    </description>
 
    <copyright>

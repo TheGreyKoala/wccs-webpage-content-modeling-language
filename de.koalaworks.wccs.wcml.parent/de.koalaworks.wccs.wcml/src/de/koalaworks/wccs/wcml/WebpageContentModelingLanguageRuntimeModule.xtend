@@ -6,9 +6,9 @@ package de.koalaworks.wccs.wcml
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
-class WebContentModelingLanguageRuntimeModule extends AbstractWebContentModelingLanguageRuntimeModule {
+class WebpageContentModelingLanguageRuntimeModule extends AbstractWebpageContentModelingLanguageRuntimeModule {
 
 	override bindIValueConverterService() {
-		return WebContentModelingLanguageTerminalConverters
+		return WebpageContentModelingLanguageTerminalConverters
 	}
 }

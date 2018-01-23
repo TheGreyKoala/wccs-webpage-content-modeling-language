@@ -10,11 +10,11 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
-import de.koalaworks.wccs.wcml.webContentModelingLanguage.ClassificationModel
+import de.koalaworks.wccs.wcml.webpageContentModelingLanguage.ClassificationModel
 
 @RunWith(XtextRunner)
-@InjectWith(WebContentModelingLanguageInjectorProvider)
-class WebContentModelingLanguageParsingTest {
+@InjectWith(WebpageContentModelingLanguageInjectorProvider)
+class WebpageContentModelingLanguageParsingTest {
 	
 	@Inject
 	extension ParseHelper<ClassificationModel>

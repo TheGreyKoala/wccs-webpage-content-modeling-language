@@ -3,7 +3,7 @@
    <feature id="de.koalaworks.wccs.wcml.feature">
       <category name="de.koalaworks.wccs"/>
    </feature>
-   <category-def name="de.koalaworks.wccs" label="Web Content Classification System">
+   <category-def name="de.koalaworks.wccs" label="Webpage Content Classification System">
       <description>
          Plugins for the Web Content Classification Service.
       </description>
