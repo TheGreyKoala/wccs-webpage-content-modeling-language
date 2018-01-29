@@ -5,7 +5,7 @@
    </feature>
    <category-def name="de.koalaworks.wccs" label="Webpage Content Classification System">
       <description>
-         Plugins for the Web Content Classification Service.
+         Plugins for the Webpage Content Classification System.
       </description>
    </category-def>
 </site>
