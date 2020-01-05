@@ -1,5 +1,8 @@
-= Configuration Language
+= WCCS Webpage Content Modeling Language
 
-This little DSL is used to configure the analyser service.
+This is the reference implementation of the Webpage Content Modeling Language, a domain specific language that is used to instruct the Web Content Classification System.
+See my https://github.com/TheGreyKoala/masters-thesis[master's thesis] for more information about this system and the role of the Webpage Content Modeling Language.
 
-Build the eclipse Plugin with mvn install
+== Building the eclipse plugin
+
+Run `mvn install` to build the eclipse plugin.
